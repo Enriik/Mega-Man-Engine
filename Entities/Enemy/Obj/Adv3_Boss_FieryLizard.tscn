@@ -1,9 +1,9 @@
-[gd_scene load_steps=31 format=2]
+[gd_scene load_steps=32 format=2]
 
 [ext_resource path="res://Entities/Enemy/Core/BossCore.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Entities/Enemy/Obj/Adv3_Boss_FieryLizard.gd" type="Script" id=2]
 [ext_resource path="res://Assets/Sprites/Enemies/Adv3_Miniboss_FieryLizard.png" type="Texture" id=3]
-[ext_resource path="res://Assets/Sounds/Bgm/ChaosWorld_Battle.ogg" type="AudioStream" id=4]
+[ext_resource path="res://Assets/Sounds/Bgm/finalboss.ogg" type="AudioStream" id=4]
 [ext_resource path="res://Misc/PaletteSpriteCore/PaletteSpriteCore.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Misc/PaletteSpriteCore/SpriteColorPaletteData.gd" type="Script" id=6]
 [ext_resource path="res://Lib/FJ_LibHelper/ItemTable/ItemSet/ItemSet.tscn" type="PackedScene" id=7]
@@ -13,7 +13,7 @@
 atlas = ExtResource( 3 )
 region = Rect2( 0, 0, 64, 48 )
 
-[sub_resource type="Animation" id=17]
+[sub_resource type="Animation" id=2]
 resource_name = "EmergeAtkBullet"
 length = 3.2
 tracks/0/type = "value"
@@ -52,7 +52,7 @@ tracks/1/keys = {
 } ]
 }
 
-[sub_resource type="Animation" id=20]
+[sub_resource type="Animation" id=3]
 resource_name = "EmergeAtkBullet v2"
 length = 4.0
 tracks/0/type = "value"
@@ -103,7 +103,7 @@ tracks/1/keys = {
 } ]
 }
 
-[sub_resource type="Animation" id=16]
+[sub_resource type="Animation" id=4]
 resource_name = "EmergeAtkFlameBlast"
 length = 3.2
 step = 0.06
@@ -178,7 +178,7 @@ tracks/2/keys = {
 } ]
 }
 
-[sub_resource type="Animation" id=21]
+[sub_resource type="Animation" id=5]
 resource_name = "EmergeAtkFlameBlast v2"
 length = 3.0
 step = 0.06
@@ -289,7 +289,7 @@ tracks/2/keys = {
 } ]
 }
 
-[sub_resource type="Animation" id=18]
+[sub_resource type="Animation" id=6]
 resource_name = "EmergeAtkLargeFireball"
 length = 2.5
 step = 0.06
@@ -323,8 +323,37 @@ tracks/1/keys = {
 } ]
 }
 
-[sub_resource type="Animation" id=19]
-resource_name = "InitialDisappear"
+[sub_resource type="Animation" id=7]
+resource_name = "EmergeDisappearHeal"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("SpriteMain/Ani:current_animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 2,
+"values": [ "Emerge", "Disappear" ]
+}
+tracks/1/type = "method"
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 1.9 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "heal_heal"
+} ]
+}
+
+[sub_resource type="Animation" id=8]
 length = 3.0
 tracks/0/type = "value"
 tracks/0/path = NodePath("SpriteMain/Ani:current_animation")
@@ -339,8 +368,7 @@ tracks/0/keys = {
 "values": [ "Emerge", "Disappear" ]
 }
 
-[sub_resource type="Animation" id=5]
-resource_name = "Animating"
+[sub_resource type="Animation" id=9]
 length = 0.4
 loop = true
 tracks/0/type = "value"
@@ -356,64 +384,55 @@ tracks/0/keys = {
 "values": [ 0, 1 ]
 }
 
-[sub_resource type="Resource" id=7]
-resource_name = "ColorPalData"
+[sub_resource type="Resource" id=10]
 script = ExtResource( 6 )
 primary_color = 255
 secondary_color = 255
 outline_color = 255
 
-[sub_resource type="Resource" id=8]
-resource_name = "ColorPalData"
+[sub_resource type="Resource" id=11]
 script = ExtResource( 6 )
 primary_color = 2316566783
 secondary_color = 255
 outline_color = 1381126911
 
-[sub_resource type="Resource" id=9]
-resource_name = "ColorPalData"
+[sub_resource type="Resource" id=12]
 script = ExtResource( 6 )
 primary_color = 3881636095
 secondary_color = 2316566783
 outline_color = 2038004223
 
-[sub_resource type="Resource" id=10]
-resource_name = "ColorPalData"
+[sub_resource type="Resource" id=13]
 script = ExtResource( 6 )
 primary_color = 4288824831
 secondary_color = 3881636095
 outline_color = 4294967295
 
-[sub_resource type="Resource" id=11]
-resource_name = "ColorPalData"
+[sub_resource type="Resource" id=14]
 script = ExtResource( 6 )
 primary_color = 255
 secondary_color = 255
 outline_color = 255
 
-[sub_resource type="Resource" id=12]
-resource_name = "ColorPalData"
+[sub_resource type="Resource" id=15]
 script = ExtResource( 6 )
 primary_color = 65535
 secondary_color = 255
 outline_color = 1381126911
 
-[sub_resource type="Resource" id=13]
-resource_name = "ColorPalData"
+[sub_resource type="Resource" id=16]
 script = ExtResource( 6 )
 primary_color = 7994367
 secondary_color = 255
 outline_color = 2038004223
 
-[sub_resource type="Resource" id=14]
-resource_name = "ColorPalData"
+[sub_resource type="Resource" id=17]
 script = ExtResource( 6 )
 primary_color = 1019150335
 secondary_color = 65535
 outline_color = 4294967295
 
-[sub_resource type="Animation" id=15]
-resource_name = "Disappear"
+[sub_resource type="Animation" id=18]
 length = 0.6
 step = 0.15
 tracks/0/type = "value"
@@ -477,8 +496,7 @@ tracks/4/keys = {
 "values": [ false ]
 }
 
-[sub_resource type="Animation" id=6]
-resource_name = "Emerge"
+[sub_resource type="Animation" id=19]
 length = 1.1
 step = 0.15
 tracks/0/type = "value"
@@ -568,8 +586,7 @@ tracks/6/keys = {
 "values": [ "Animating" ]
 }
 
-[sub_resource type="Animation" id=2]
-resource_name = "Initial"
+[sub_resource type="Animation" id=20]
 tracks/0/type = "method"
 tracks/0/path = NodePath("..")
 tracks/0/interp = 1
@@ -612,13 +629,13 @@ tracks/2/keys = {
 "values": [ 0 ]
 }
 
-[sub_resource type="RectangleShape2D" id=4]
+[sub_resource type="RectangleShape2D" id=21]
 extents = Vector2( 32, 16 )
 
-[sub_resource type="RectangleShape2D" id=3]
+[sub_resource type="RectangleShape2D" id=22]
 extents = Vector2( 8, 10 )
 
-[sub_resource type="Resource" id=22]
+[sub_resource type="Resource" id=23]
 script = ExtResource( 8 )
 item = "res://Assets/Database/Items/Material/RareDiamonda.tres"
 weight = 10
@@ -639,12 +656,13 @@ vital_bar_secondary_color = 3881636095
 current_sprite_color_state = 2
 
 [node name="ProcessAnimationPlayer" type="AnimationPlayer" parent="." index="0"]
-anims/EmergeAtkBullet = SubResource( 17 )
-"anims/EmergeAtkBullet v2" = SubResource( 20 )
-anims/EmergeAtkFlameBlast = SubResource( 16 )
-"anims/EmergeAtkFlameBlast v2" = SubResource( 21 )
-anims/EmergeAtkLargeFireball = SubResource( 18 )
-anims/InitialDisappear = SubResource( 19 )
+anims/EmergeAtkBullet = SubResource( 2 )
+"anims/EmergeAtkBullet v2" = SubResource( 3 )
+anims/EmergeAtkFlameBlast = SubResource( 4 )
+"anims/EmergeAtkFlameBlast v2" = SubResource( 5 )
+anims/EmergeAtkLargeFireball = SubResource( 6 )
+anims/EmergeDisappearHeal = SubResource( 7 )
+anims/InitialDisappear = SubResource( 8 )
 
 [node name="Sprite" parent="SpriteMain" index="0"]
 editor/display_folded = true
@@ -655,19 +673,19 @@ hframes = 2
 frame = 1
 
 [node name="SpriteFrameAni" type="AnimationPlayer" parent="SpriteMain/Sprite" index="0"]
-anims/Animating = SubResource( 5 )
+anims/Animating = SubResource( 9 )
 
 [node name="PaletteSprite" parent="SpriteMain/Sprite" index="1" instance=ExtResource( 5 )]
 primary_color_frame_add = 2
 secondary_color_frame_add = 4
 outline_color_frame_add = 6
-palette_states = [ SubResource( 7 ), SubResource( 8 ), SubResource( 9 ), SubResource( 10 ), SubResource( 11 ), SubResource( 12 ), SubResource( 13 ), SubResource( 14 ) ]
+palette_states = [ SubResource( 10 ), SubResource( 11 ), SubResource( 12 ), SubResource( 13 ), SubResource( 14 ), SubResource( 15 ), SubResource( 16 ), SubResource( 17 ) ]
 
 [node name="Ani" type="AnimationPlayer" parent="SpriteMain" index="2"]
 autoplay = "Initial"
-anims/Disappear = SubResource( 15 )
-anims/Emerge = SubResource( 6 )
-anims/Initial = SubResource( 2 )
+anims/Disappear = SubResource( 18 )
+anims/Emerge = SubResource( 19 )
+anims/Initial = SubResource( 20 )
 
 [node name="DamagePlayerArea2D" type="Area2D" parent="SpriteMain" index="3"]
 collision_layer = 0
@@ -675,7 +693,7 @@ collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="SpriteMain/DamagePlayerArea2D" index="0"]
 position = Vector2( 0, 8 )
-shape = SubResource( 4 )
+shape = SubResource( 21 )
 
 [node name="DamageArea2D" type="Area2D" parent="SpriteMain" index="4"]
 collision_layer = 8
@@ -683,7 +701,7 @@ collision_mask = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="SpriteMain/DamageArea2D" index="0"]
 position = Vector2( -16, 10 )
-shape = SubResource( 3 )
+shape = SubResource( 22 )
 
 [node name="Mouth" type="Position2D" parent="SpriteMain" index="5"]
 position = Vector2( -16, 20 )
@@ -692,7 +710,7 @@ position = Vector2( -16, 20 )
 position = Vector2( -24, 0 )
 
 [node name="ItemSet" parent="ItemTable" index="0" instance=ExtResource( 7 )]
-items = [ SubResource( 22 ) ]
+items = [ SubResource( 23 ) ]
 [connection signal="boss_done_posing" from="." to="." method="_on_FieryLizard_boss_done_posing"]
 [connection signal="taken_damage" from="." to="." method="_on_FieryLizard_taken_damage"]
 [connection signal="animation_finished" from="ProcessAnimationPlayer" to="." method="_on_ProcessAnimationPlayer_animation_finished"]

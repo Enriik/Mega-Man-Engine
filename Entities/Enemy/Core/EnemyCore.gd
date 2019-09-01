@@ -48,6 +48,7 @@ export var damage_custom_invis_timer = 0.1 #How long the player will be able to 
 export (int, 1, 2147483647) var hit_points_base = 40 #Initial maximum hit points.
 export var repel_player_enabled = true #Repel player away when damage is applied
 export var repel_power = 300 #Strength to push player away when collided with enemy.
+export var max_damage_receive = 99
 
 export var DEATH_SHAKE_STRENGTH = 3
 #Range checking mode. Used when calling method within_player_range()
@@ -248,6 +249,8 @@ func calculate_damage_output(var raw_damage : float) -> float:
 	#Ex: If damage is -25, it's finalized as 1 by default.
 	if damage_result < damage_taken_minimum:
 		damage_result = damage_taken_minimum
+	if damage_result > max_damage_receive:
+		damage_result = max_damage_receive
 	
 	return damage_result
 

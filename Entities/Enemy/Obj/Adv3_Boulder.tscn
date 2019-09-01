@@ -19,6 +19,7 @@ damage_area_nodes = [ NodePath("DamageArea2D") ]
 explosion_effect = ExtResource( 4 )
 death_sound = 2
 contact_damage = 6.0
+hit_points_base = 6
 pickups_drop_enabled = false
 
 [node name="PlatformBehavior" parent="." index="0" instance=ExtResource( 5 )]
@@ -42,6 +43,7 @@ collision_mask = 6
 shape = SubResource( 2 )
 
 [node name="ProjectileReflector" parent="DamageArea2D" index="1" instance=ExtResource( 6 )]
+enabled = false
 [connection signal="by_wall" from="PlatformBehavior" to="." method="_on_PlatformBehavior_by_wall"]
 [connection signal="collided" from="PlatformBehavior" to="." method="_on_PlatformBehavior_collided"]
 [connection signal="landed" from="PlatformBehavior" to="." method="_on_PlatformBehavior_landed"]

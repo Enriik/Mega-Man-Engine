@@ -43,6 +43,14 @@ func change_phase_check():
 		vital_bar_primary_color = NESColorPalette.NesColor.TORQUOISE3
 		vital_bar_secondary_color = NESColorPalette.NesColor.TORQUOISE1
 		update_current_boss_bar_colors()
+		
+		var d = dmg_counter.instance()
+		get_parent().add_child(d)
+		d.label.set_text("FULL POWER!!!")
+		d.global_position = self.global_position
+		current_hp = 28
+		GameHUD.fill_boss_vital_bar(28)
+		get_tree().paused = true
 
 func fire_bullet_at_player():
 	var blt = bullet.instance()
@@ -102,6 +110,11 @@ func teleport_to_appear_pos():
 	if picked_pos is Node2D:
 		set_global_position(picked_pos.global_position)
 
+func heal_heal():
+	current_hp += 3
+	if current_hp > hit_points_base:
+		current_hp = hit_points_base
+	GameHUD.fill_boss_vital_bar(3)
 
 
 func _on_ProcessAnimationPlayer_animation_finished(anim_name: String) -> void:
@@ -116,6 +129,7 @@ func _on_ProcessAnimationPlayer_animation_finished(anim_name: String) -> void:
 			2:
 				process_ani.play("EmergeAtkLargeFireball")
 	else:
+		rand_index = randi() % 3
 		match rand_index:
 			0:
 				process_ani.play("EmergeAtkBullet v2")
@@ -123,6 +137,8 @@ func _on_ProcessAnimationPlayer_animation_finished(anim_name: String) -> void:
 				process_ani.play("EmergeAtkFlameBlast v2")
 			2:
 				process_ani.play("EmergeAtkLargeFireball")
+			3:
+				process_ani.play("EmergeDisappearHeal")
 	
 	teleport_to_appear_pos()
 	sprite_frame_ani.stop()

@@ -28,7 +28,6 @@ extents = Vector2( 16, 16 )
 
 [node name="FullyChargedMegaBuster" index="0" instance=ExtResource( 1 )]
 script = ExtResource( 2 )
-DAMAGE_POWER = 1
 DESTROY_ON_COLLIDE_TYPE = 1
 projectile_limit_cost = 3.0
 destroy_on_overkill = false

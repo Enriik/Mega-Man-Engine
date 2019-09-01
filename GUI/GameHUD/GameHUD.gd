@@ -24,6 +24,11 @@ func _ready() -> void:
 	#Default
 	reset_all_bars_to_default_color()
 
+func _process(delta: float) -> void:
+	player_weapon_bar_palette.primary_sprite.modulate = GlobalVariables.current_player_primary_color
+	player_weapon_bar_palette.second_sprite.modulate = GlobalVariables.current_player_secondary_color
+	player_weapon_bar_palette.outline_sprite.modulate = GlobalVariables.current_player_outline_color
+
 func update_player_weapon_bar_colors(var primary_color : Color, var secondary_color : Color, var outline_color : Color):
 	player_weapon_bar_palette.primary_sprite.modulate = primary_color
 	player_weapon_bar_palette.second_sprite.modulate = secondary_color
@@ -59,8 +64,8 @@ func reset_all_bars_to_default_color():
 	player_vital_bar_palette.primary_sprite.modulate = NESColorPalette.WHITE4
 	player_vital_bar_palette.second_sprite.modulate = NESColorPalette.LIGHTSALMON4
 	player_vital_bar_palette.outline_sprite.modulate = NESColorPalette.BLACK1
-	player_weapon_bar_palette.primary_sprite.modulate = NESColorPalette.WHITE4
-	player_weapon_bar_palette.second_sprite.modulate = NESColorPalette.TORQUOISE2
+	player_weapon_bar_palette.primary_sprite.modulate = NESColorPalette.CHOCOLATE3
+	player_weapon_bar_palette.second_sprite.modulate = NESColorPalette.WHITE4
 	player_weapon_bar_palette.outline_sprite.modulate = NESColorPalette.BLACK1
 	boss_vital_bar_palette.primary_sprite.modulate = NESColorPalette.WHITE4
 	boss_vital_bar_palette.second_sprite.modulate = NESColorPalette.TOMATO2

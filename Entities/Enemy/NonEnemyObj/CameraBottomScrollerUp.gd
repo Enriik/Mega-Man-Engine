@@ -9,12 +9,27 @@ export (float) var distance = 224 #Offset at which the camera bottom limit chang
  
 onready var camera : CameraCustom
 
+var actual_top_limit : int
+
 func _ready():
 	init_find_camera()
 
+var increase = 0
 func _process(delta):
 	if camera == null:
 		return
+	
+	
+	increase += 1
+	
+	if camera.limit_top < actual_top_limit:
+		camera.limit_top = actual_top_limit
+		queue_free()
+		return
+	else:
+		if increase % 2 == 1:
+			camera.limit_bottom -= 1
+			camera.limit_top = camera.limit_bottom - 224
 	
 	var cam_pos_y = camera.get_camera_position().y
 	
@@ -27,3 +42,4 @@ func init_find_camera():
 	
 	if cam_obj is CameraCustom:
 		camera = cam_obj
+		actual_top_limit = camera.limit_top

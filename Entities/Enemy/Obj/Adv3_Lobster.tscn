@@ -5,11 +5,11 @@
 [ext_resource path="res://Assets/Sprites/Enemies/Adv3_Lobster.png" type="Texture" id=3]
 [ext_resource path="res://Lib/FJ_LibHelper/PlatformBehavior2D/PlatformBehavior2D.tscn" type="PackedScene" id=4]
 
-[sub_resource type="AtlasTexture" id=6]
+[sub_resource type="AtlasTexture" id=1]
 atlas = ExtResource( 3 )
 region = Rect2( 0, 0, 32, 32 )
 
-[sub_resource type="Animation" id=7]
+[sub_resource type="Animation" id=2]
 length = 0.2
 loop = true
 tracks/0/type = "value"
@@ -37,7 +37,7 @@ tracks/1/keys = {
 "values": [ Vector2( 0, 0 ) ]
 }
 
-[sub_resource type="Animation" id=8]
+[sub_resource type="Animation" id=3]
 length = 0.2
 loop = true
 tracks/0/type = "value"
@@ -73,10 +73,10 @@ extents = Vector2( 12, 5 )
 
 [node name="Lobster" index="0" instance=ExtResource( 1 )]
 script = ExtResource( 2 )
-sprite_preview_texture = SubResource( 6 )
+sprite_preview_texture = SubResource( 1 )
 damage_area_nodes = [ NodePath("DamageArea2D") ]
-contact_damage = 2.0
-hit_points_base = 2
+contact_damage = 5.0
+hit_points_base = 4
 
 [node name="PlatformBehavior" parent="." index="0" instance=ExtResource( 4 )]
 JUMP_SPEED = 300.0
@@ -88,8 +88,8 @@ hframes = 3
 
 [node name="Ani" type="AnimationPlayer" parent="SpriteMain" index="2"]
 autoplay = "Idle"
-anims/Idle = SubResource( 7 )
-anims/Jump = SubResource( 8 )
+anims/Idle = SubResource( 2 )
+anims/Jump = SubResource( 3 )
 
 [node name="PlatformCollisionShape2D" parent="." index="2"]
 visible = true
