@@ -26,6 +26,7 @@ pickups_drop_enabled = false
 WALK_SPEED = 60.0
 JUMP_SPEED = 50.0
 VELOCITY_X_DAMPING = 1.0
+SNAP_FLOOR_VEL = Vector2( 0, 1 )
 
 [node name="Sprite" parent="SpriteMain" index="0"]
 texture = ExtResource( 3 )

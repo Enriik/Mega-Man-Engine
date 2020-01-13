@@ -1,7 +1,7 @@
 [gd_scene load_steps=21 format=2]
 
 [ext_resource path="res://Entities/Player/Player.gd" type="Script" id=1]
-[ext_resource path="res://DatabaseCore/CharacterData/Reimu.tres" type="Resource" id=2]
+[ext_resource path="res://DatabaseCore/CharacterData/RokkoChan.tres" type="Resource" id=2]
 [ext_resource path="res://Lib/FJ_LibHelper/PlatformBehavior2D/PlatformBehavior2D.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Misc/PlatformerSprite/PlatformerSprite.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Assets/Sprites/Effects/Damage.png" type="Texture" id=5]
@@ -327,7 +327,7 @@ disabled = true
 one_shot = true
 
 [node name="TakingDamageTimer" type="Timer" parent="."]
-wait_time = 0.3
+wait_time = 0.1
 one_shot = true
 
 [node name="Area2D" type="Area2D" parent="." groups=[
@@ -369,7 +369,7 @@ anims/StopFlashin = SubResource( 15 )
 
 [node name="DeathFreezeTimer" type="Timer" parent="."]
 pause_mode = 2
-wait_time = 0.5
+wait_time = 0.01
 one_shot = true
 [connection signal="input_event" from="." to="." method="_on_Player_input_event"]
 [connection signal="launched_attack" from="." to="PlatformerSprite" method="start_normal_attack_animation"]

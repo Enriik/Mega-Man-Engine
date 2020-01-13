@@ -24,3 +24,4 @@ wave = SubResource( 1 )
 period = 1.0
 period_offset = 0.25
 magnitude = -48.0
+[connection signal="taken_damage" from="." to="." method="_on_Basser_taken_damage"]

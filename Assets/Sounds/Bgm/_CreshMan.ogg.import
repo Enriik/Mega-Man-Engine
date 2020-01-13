@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/_CreshMan.ogg-b349876112b6f90f7006aa2c1d020513.oggstr"
+
+[deps]
+
+source_file="res://Assets/Sounds/Bgm/_CreshMan.ogg"
+dest_files=[ "res://.import/_CreshMan.ogg-b349876112b6f90f7006aa2c1d020513.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

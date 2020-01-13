@@ -14,20 +14,21 @@ var actual_top_limit : int
 func _ready():
 	init_find_camera()
 
-var increase = 0
+var increase : float = 0
 func _process(delta):
 	if camera == null:
 		return
 	
 	
-	increase += 1
+	increase += 60 * delta
 	
 	if camera.limit_top < actual_top_limit:
 		camera.limit_top = actual_top_limit
 		queue_free()
 		return
 	else:
-		if increase % 2 == 1:
+		if increase > 3:
+			increase -= 3
 			camera.limit_bottom -= 1
 			camera.limit_top = camera.limit_bottom - 224
 	

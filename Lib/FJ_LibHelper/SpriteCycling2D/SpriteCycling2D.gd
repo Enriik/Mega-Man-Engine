@@ -45,6 +45,9 @@ var z_swapping = 0 #Increment every frames. Resets on reaching frames_per_iterat
 var pointer = 0 #Pointer on array of frames_per_iterate
 var swap_mode = 0 #0 = no iterate, other than 0 = iterate
 
+const MAX_LOOPABLE = 12
+var current_loop = 0
+
 func _process(delta : float) -> void:
 	if !GameSettings.gameplay.sprite_flicker:
 		return
@@ -53,6 +56,7 @@ func _process(delta : float) -> void:
 	
 	var children = get_parent().get_children()
 	var it = children.size()
+	current_loop = 0
 	
 	for i in children:
 		if(swap_mode == 0):
@@ -61,6 +65,29 @@ func _process(delta : float) -> void:
 			it -= 1
 		if "z_index" in i: #Safe call
 			i.z_index = it
+	
+	if children != null:
+		if swap_mode == 0:
+			for i in children:
+				if i is Node2D or i is Control:
+					if current_loop < MAX_LOOPABLE:
+						i.visible = true
+					else:
+						i.visible = false
+					current_loop += 1
+		else:
+			for i in range(children.size() -1, -1, -1):
+				if children[i] is Node2D or children[i] is Control:
+					if current_loop < MAX_LOOPABLE:
+						children[i].visible = true
+					else:
+						children[i].visible = false
+					current_loop += 1
+
+	if current_loop >= MAX_LOOPABLE * 2:
+		Engine.set_time_scale(0.6)
+	else:
+		Engine.set_time_scale(1)
 	
 	if(z_swapping >= frames_per_iterate[pointer]):
 		z_swapping = 0

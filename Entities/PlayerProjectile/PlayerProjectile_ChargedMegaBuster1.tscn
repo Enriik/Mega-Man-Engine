@@ -25,7 +25,7 @@ tracks/0/keys = {
 extents = Vector2( 8, 8 )
 
 [node name="MiniChargedMegaBuster" index="0" instance=ExtResource( 1 )]
-DAMAGE_POWER = 0
+DAMAGE_POWER = -1
 DESTROY_ON_COLLIDE_TYPE = 1
 
 [node name="BulletBehavior" parent="." index="0"]

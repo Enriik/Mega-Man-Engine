@@ -178,31 +178,33 @@ func spawn_object(var check : bool = true):
 	if level.is_screen_transiting:
 		return
 	
+	if get_node_or_null(spawn_target_node) == null:
+		spawn_target_node = "./../"
+	
 	var obj_inst = obj_spawn.instance()
 	
-	if get_node_or_null(spawn_target_node) != null:
-		if obj_inst is Node2D:
-			obj_inst.global_position = self.global_position
-		
-		#Set custom parameters for obj_inst (if any..).
-		_set_custom_parameters(obj_inst)
-		
-		get_node(spawn_target_node).add_child(obj_inst)
-		
-		#Connect to spawned obj to notify me if you were destroyed.
-		if !obj_inst.is_connected("tree_exited", self, "_on_my_spawned_obj_exited"):
-			obj_inst.connect("tree_exited", self, "_on_my_spawned_obj_exited")
-		
-		#Connect to spawned obj to notify me if you were destroyed
-		#to decrease object count.
-		for i in obj_deletion_by_signals:
-			i = i as String
-			if not obj_inst.is_connected(i, self, "_on_obj_emitted_signal_for_deletion"):
-				obj_inst.connect(i, self, "_on_obj_emitted_signal_for_deletion")
-		
-		emit_signal("spawned", obj_inst)
-		
-		my_obj_count += 1
+	if obj_inst is Node2D:
+		obj_inst.global_position = self.global_position
+	
+	#Set custom parameters for obj_inst (if any..).
+	_set_custom_parameters(obj_inst)
+	
+	get_node(spawn_target_node).add_child(obj_inst)
+	
+	#Connect to spawned obj to notify me if you were destroyed.
+	if !obj_inst.is_connected("tree_exited", self, "_on_my_spawned_obj_exited"):
+		obj_inst.connect("tree_exited", self, "_on_my_spawned_obj_exited")
+	
+	#Connect to spawned obj to notify me if you were destroyed
+	#to decrease object count.
+	for i in obj_deletion_by_signals:
+		i = i as String
+		if not obj_inst.is_connected(i, self, "_on_obj_emitted_signal_for_deletion"):
+			obj_inst.connect(i, self, "_on_obj_emitted_signal_for_deletion")
+	
+	emit_signal("spawned", obj_inst)
+	
+	my_obj_count += 1
 
 #Set parameters for obj.
 func _set_custom_parameters(var obj : Object):

@@ -24,7 +24,7 @@ export (int) var CURRENT_PALETTE_STATE #Don't touch this!
 const HP_BASE : int = 28
 const MP_BASE : int = 20
 const DAMAGE_BASE = 2
-const DEFAULT_INVIS_TIME : float = 1.4
+const DEFAULT_INVIS_TIME : float = 0.6
 const ATTACK_HOTKEY = 'game_action'
 const ATTACK_HOTKEY_1 = 'game_hotkey1'
 const PROJECTILE_ON_SCREEN_LIMIT : float = 3.0
@@ -402,7 +402,7 @@ func check_sliding(delta : float):
 	
 	if is_sliding:
 		slide_direction_x = platformer_sprite.scale.x
-		pf_bhv.velocity.x = SLIDE_SPEED * slide_direction_x * 60 * delta
+		pf_bhv.velocity.x = (SLIDE_SPEED * slide_direction_x)
 		pf_bhv.left_right_key_press_time = 30 #Fix tipping toe glitch
 	
 	#Decrease slide remaining
@@ -561,7 +561,11 @@ func set_player_disappear(var set : bool) -> void:
 	set_process(!set)
 	pf_bhv.INITIAL_STATE = !set #Platformer's Behaviour.
 	invis_timer.paused = set
-	visible = !set
+	if set:
+		modulate = Color(0, 0, 0, 0)
+	else:
+		modulate = Color(1, 1, 1, 1)
+	
 	collision_shape.call_deferred("set_disabled", set)
 	area_collision.call_deferred("set_disabled", set)
 

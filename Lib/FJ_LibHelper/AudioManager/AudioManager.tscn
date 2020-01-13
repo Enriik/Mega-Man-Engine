@@ -46,6 +46,8 @@
 [ext_resource path="res://Assets/Sounds/Sfx/UI/OneUp.wav" type="AudioStream" id=44]
 [ext_resource path="res://Assets/Sounds/Sfx/Uncategorized/MAGMML2_SeriousDamage.wav" type="AudioStream" id=45]
 
+
+
 [sub_resource type="Animation" id=1]
 resource_name = "Dim"
 length = 0.5

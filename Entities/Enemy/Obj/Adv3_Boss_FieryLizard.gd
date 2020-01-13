@@ -1,6 +1,6 @@
 extends BossCore
 
-const CHANGE_COLOR_AT_HP = 12
+const CHANGE_COLOR_AT_HP = 2
 const APPEAR_POSITION_GROUP_NAME = "AppearPosition"
 
 export (int) var current_sprite_color_state #For animation
@@ -129,7 +129,7 @@ func _on_ProcessAnimationPlayer_animation_finished(anim_name: String) -> void:
 			2:
 				process_ani.play("EmergeAtkLargeFireball")
 	else:
-		rand_index = randi() % 3
+		rand_index = randi() % 4
 		match rand_index:
 			0:
 				process_ani.play("EmergeAtkBullet v2")

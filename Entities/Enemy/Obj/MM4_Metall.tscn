@@ -8,6 +8,8 @@
 [ext_resource path="res://Entities/ProjectileReflector/ProjectileReflector.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Assets/Sounds/Sfx/Combat/Generelea.wav" type="AudioStream" id=7]
 
+
+
 [sub_resource type="Animation" id=1]
 resource_name = "Hiding"
 length = 1.3

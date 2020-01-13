@@ -6,7 +6,7 @@
 [ext_resource path="res://Assets/Sprites/Enemies/Adv3_LargeFieryBall.png" type="Texture" id=4]
 [ext_resource path="res://Misc/PaletteSpriteCore/PaletteSpriteCore.tscn" type="PackedScene" id=5]
 
-[sub_resource type="Curve" id=5]
+[sub_resource type="Curve" id=1]
 _data = [ Vector2( 0, 0.5 ), 0.0, -2.02172, 0, 1, Vector2( 0.25, 0 ), 0.0, 0.0, 0, 0, Vector2( 0.75, 1 ), 0.0, 0.0, 0, 0, Vector2( 1, 0.5 ), -1.98258, 0.0, 1, 0 ]
 
 [sub_resource type="Animation" id=2]
@@ -51,18 +51,17 @@ extents = Vector2( 8, 8 )
 [node name="LargeFieryBall" index="0" instance=ExtResource( 1 )]
 script = ExtResource( 2 )
 damage_area_nodes = [ NodePath("DamageArea2D") ]
-contact_damage = 5.0
-hit_points_base = 3
-pickups_drop_enabled = false
+contact_damage = 8.0
+hit_points_base = 4
 
 [node name="SineBehaviorHori" parent="." index="0" instance=ExtResource( 3 )]
-wave = SubResource( 5 )
+wave = SubResource( 1 )
 period = 3.0
 magnitude = 0.0
 
 [node name="SineBehaviorVert" parent="." index="1" instance=ExtResource( 3 )]
 movement = 1
-wave = SubResource( 5 )
+wave = SubResource( 1 )
 period = 3.0
 period_offset = 0.75
 magnitude = 0.0
@@ -77,6 +76,8 @@ frame = 1
 primary_color_frame_add = 4
 secondary_color_frame_add = 8
 outline_color_frame_add = 12
+current_palette_state = 0
+palette_states = [  ]
 
 [node name="Ani" type="AnimationPlayer" parent="SpriteMain" index="2"]
 autoplay = "Small"

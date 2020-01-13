@@ -68,6 +68,13 @@ export(float) var SIDING_CHANGE_SPEED = 10
 export(float) var VELOCITY_X_DAMPING = 0.1
 export(float) var MAX_FALL_SPEED = 360
 
+#Current velocity reported after move_and_slide or
+#move_and_collided on root node is called.
+#Note that if you want to get velocity report before
+#move_and_slide or move_and_collide is called, use
+#velocity_before_move_and_slide instead.
+export (Vector2) var SNAP_FLOOR_VEL = Vector2(0, 2)
+
 export var FLOOR_NORMAL = Vector2(0, -1)
 
 export(bool) var INITIAL_STATE = true
@@ -255,7 +262,12 @@ func _physics_process(delta):
 #Sets velocity after move_and_slide() on parent node is called.
 func custom_move_and_slide(custom_velocity, custom_floor_normal) -> Vector2:
 	if parent is KinematicBody2D:
-		var vel = parent.move_and_slide(custom_velocity, custom_floor_normal)
+		var vel : Vector2
+		
+		if on_floor and jump:
+			vel = parent.move_and_slide(custom_velocity, custom_floor_normal)
+		else:
+			vel = parent.move_and_slide_with_snap(custom_velocity, SNAP_FLOOR_VEL, custom_floor_normal)
 		
 		if parent.get_slide_count() > 0:
 			for i in parent.get_slide_count():

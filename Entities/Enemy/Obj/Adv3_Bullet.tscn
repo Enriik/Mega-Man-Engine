@@ -25,11 +25,12 @@ extents = Vector2( 4, 4 )
 
 [node name="Adv3Bullet" index="0" instance=ExtResource( 1 )]
 damage_area_nodes = [ NodePath("DamageArea2D") ]
+contact_damage = 2.0
+can_hit = true
+eat_player_projectile = true
 
 [node name="BulletBehavior" parent="." index="0"]
-speed = 350.0
-acceleration = -250.0
-allow_negative_speed = true
+speed = 180.0
 
 [node name="Sprite" parent="SpriteMain" index="0"]
 texture = ExtResource( 2 )

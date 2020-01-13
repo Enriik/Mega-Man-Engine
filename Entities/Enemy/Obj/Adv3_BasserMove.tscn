@@ -1,22 +1,35 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Entities/Enemy/Obj/Adv3_Basser.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Entities/Enemy/Obj/Adv3_BasserMove.gd" type="Script" id=2]
-[ext_resource path="res://Lib/FJ_LibHelper/SineBehavior2D/SineBehavior2D.tscn" type="PackedScene" id=3]
-[ext_resource path="res://Lib/FJ_LibHelper/BulletBehavior2D/BulletBehavior2D.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Entities/Effects/LargeExplosion/LargeExplosion.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Lib/FJ_LibHelper/SineBehavior2D/SineBehavior2D.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Lib/FJ_LibHelper/BulletBehavior2D/BulletBehavior2D.tscn" type="PackedScene" id=5]
 
 [sub_resource type="Curve" id=1]
 _data = [ Vector2( 0, 1 ), 0.0, 0.0, 0, 0, Vector2( 0.501791, 0 ), 0.0, 0.0, 0, 0, Vector2( 1, 1 ), 0.0, 0.0, 0, 0 ]
 
 [node name="Basser" index="0" instance=ExtResource( 1 )]
+visible = false
+modulate = Color( 1, 0, 0, 1 )
 script = ExtResource( 2 )
+explosion_effect = ExtResource( 3 )
+death_sound = 1
+contact_damage = 6.0
+hit_points_base = 6
 
-[node name="SineBehavior" parent="." index="0" instance=ExtResource( 3 )]
+[node name="SineBehavior" parent="." index="0" instance=ExtResource( 4 )]
 movement = 1
 wave = SubResource( 1 )
 period = 1.0
 period_offset = 0.25
 magnitude = 48.0
 
-[node name="BulletBehavior" parent="." index="1" instance=ExtResource( 4 )]
+[node name="BulletBehavior" parent="." index="1" instance=ExtResource( 5 )]
 speed = 60.0
+
+[node name="AtkTimer" type="Timer" parent="." index="2"]
+wait_time = 0.3
+autostart = true
+[connection signal="taken_damage" from="." to="." method="_on_Basser_taken_damage"]
+[connection signal="timeout" from="AtkTimer" to="." method="_on_AtkTimer_timeout"]

@@ -1,6 +1,6 @@
 extends EnemyCore
 
-const VEL_Y_ON_WALL = 25
+const VEL_Y_ON_WALL = 1500
 
 export (bool) var initial_state = true
 export (float) var bouncing_power = 0.5
@@ -16,7 +16,7 @@ func _ready():
 
 func _process(delta):
 	if is_on_wall():
-		pf_bhv.velocity.y -= VEL_Y_ON_WALL
+		pf_bhv.velocity.y -= VEL_Y_ON_WALL * delta
 
 func set_move_direction(dir : int):
 	move_direction = dir

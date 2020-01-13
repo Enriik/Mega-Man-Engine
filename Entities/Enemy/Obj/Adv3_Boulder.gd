@@ -34,9 +34,18 @@ func change_direction():
 			pf_bhv.simulate_walk_left = false
 			current_dir = DIRECTION_RIGHT
 
+var flameburst_fireball = preload("res://Entities/Enemy/Obj/MM6_FlameBurstFireball.tscn")
 func _on_PlatformBehavior_landed():
 	pf_bhv.velocity.y = bounce_set_vel_y
 	FJ_AudioManager.sfx_combat_boulder.play()
+	
+	var fireball = flameburst_fireball.instance()
+	get_parent().add_child(fireball)
+	fireball.global_position = global_position
+	fireball.bullet_behavior.angle_in_degrees = 90
+	fireball.get_node("SpriteMain/Sprite/PaletteSprite").primary_sprite.modulate = NESColorPalette.LIGHTSALMON4
+	fireball.get_node("SpriteMain/Sprite/PaletteSprite").second_sprite.modulate = NESColorPalette.TOMATO3
+	fireball.get_node("SpriteMain/Sprite/PaletteSprite").outline_sprite.modulate = NESColorPalette.BLACK1
 
 
 func _on_PlatformBehavior_by_wall():

@@ -112,6 +112,7 @@ collision_mask = 6
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DamageArea2D" index="0"]
 position = Vector2( 0, 1 )
 shape = SubResource( 5 )
+[connection signal="taken_damage" from="." to="." method="_on_Lobster_taken_damage"]
 [connection signal="landed" from="PlatformBehavior" to="." method="_on_PlatformBehavior_landed"]
 [connection signal="timeout" from="TurnTowardsTimer" to="." method="_on_TurnTowardsTimer_timeout"]
 [connection signal="timeout" from="AttackTimer" to="." method="_on_AttackTimer_timeout"]

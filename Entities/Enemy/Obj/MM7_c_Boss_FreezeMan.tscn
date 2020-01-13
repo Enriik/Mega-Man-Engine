@@ -10,6 +10,8 @@
 [ext_resource path="res://Lib/FJ_LibHelper/ItemTable/ItemSet/ItemSet.tscn" type="PackedScene" id=8]
 [ext_resource path="res://Lib/FJ_LibHelper/ItemTable/ItemSet/ItemSetData/ItemSetData.gd" type="Script" id=9]
 
+
+
 [sub_resource type="AtlasTexture" id=1]
 atlas = ExtResource( 3 )
 region = Rect2( 0, 96, 48, 48 )

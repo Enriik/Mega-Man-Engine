@@ -55,7 +55,6 @@ z_index = 999
 z_as_relative = false
 
 [node name="SpriteCycling" parent="Iterable" instance=ExtResource( 3 )]
-frames_per_iterate = [ 1, 1 ]
 
 [node name="Player" parent="Iterable" instance=ExtResource( 4 )]
 position = Vector2( 166.438, 80.0763 )
@@ -66,7 +65,6 @@ tilemap_path = NodePath("../../TileMap")
 create_target = NodePath("../..")
 
 [node name="DeathTimer" type="Timer" parent="."]
-wait_time = 3.0
 one_shot = true
 
 [node name="FadeScreen" parent="." instance=ExtResource( 6 )]
@@ -110,7 +108,7 @@ default_view = NodePath("View")
 WARPS_PLAYER_AROUND_UP_DOWN = false
 WARPS_PLAYER_LEFT_RIGHT_SIDE = false
 [connection signal="player_die_normally" from="Iterable/Player" to="Iterable/Player/ThiunEffectCreator" method="create"]
-[connection signal="tween_all_completed" from="Camera2D/TransitionTween" to="." method="_on_TransitionTween_tween_all_completed"]
 [connection signal="tween_all_completed" from="Camera2D/TransitionTween" to="Iterable/Player" method="_on_TransitionTween_tween_all_completed"]
+[connection signal="tween_all_completed" from="Camera2D/TransitionTween" to="." method="_on_TransitionTween_tween_all_completed"]
 
 [editable path="Camera2D"]

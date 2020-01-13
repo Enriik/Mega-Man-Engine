@@ -54,6 +54,8 @@ extents = Vector2( 16, 4 )
 [node name="FlameBurstVertical" index="0" instance=ExtResource( 1 )]
 damage_area_nodes = [ NodePath("DamageArea2D") ]
 contact_damage = 4.0
+can_hit = true
+eat_player_projectile = true
 
 [node name="BulletBehavior" parent="." index="0"]
 active = false
@@ -74,6 +76,8 @@ autoplay = "New Anim"
 primary_color_frame_add = 7
 secondary_color_frame_add = 14
 outline_color_frame_add = 21
+current_palette_state = 0
+palette_states = [  ]
 
 [node name="PlatformCollisionShape2D" parent="." index="2"]
 shape = SubResource( 2 )

@@ -10,6 +10,8 @@
 [ext_resource path="res://Entities/ProjectileReflector/ProjectileReflector.tscn" type="PackedScene" id=8]
 [ext_resource path="res://Assets/Sounds/Sfx/Combat/Undertale_Encounter.wav" type="AudioStream" id=9]
 
+
+
 [sub_resource type="Animation" id=1]
 resource_name = "Attacking"
 length = 0.42

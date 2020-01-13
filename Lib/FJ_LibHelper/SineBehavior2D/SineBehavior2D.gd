@@ -13,6 +13,8 @@
 extends Node
 class_name FJ_SineBehavior2D
 
+signal cycle_completed
+
 enum MOVEMENT_TYPE {
 	HORIZONTAL,
 	VERTICAL,
@@ -196,3 +198,4 @@ func _do_process(delta: float) -> void:
 	_current_cycle += delta
 	if _current_cycle > period:
 		_current_cycle -= period
+		emit_signal("cycle_completed")

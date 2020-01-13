@@ -7,6 +7,8 @@
 [ext_resource path="res://Entities/ProjectileReflector/ProjectileReflector.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Assets/Sounds/Sfx/Combat/Countbomb.wav" type="AudioStream" id=6]
 
+
+
 [sub_resource type="AtlasTexture" id=1]
 atlas = ExtResource( 3 )
 region = Rect2( 0, 0, 32, 32 )

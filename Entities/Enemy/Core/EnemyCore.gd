@@ -254,6 +254,7 @@ func calculate_damage_output(var raw_damage : float) -> float:
 	
 	return damage_result
 
+
 #Use calculated damage value to apply damage to enemy.
 #Ignores invisibility time.
 func apply_damage(var calculated_damage, var update_hp_bar = true):
