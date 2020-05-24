@@ -44,7 +44,7 @@ onready var checkpoint_spawn_position = $CheckpointSpawnPositon
 onready var spawn_point_label = $CheckpointSpawnPositon/SpawnPointLabel
 
 #lookup nodes
-onready var checkpoint_manager := $"/root/CheckpointManager" as CheckpointManager
+onready var checkpoint_manager := $"/root/CheckpointManager"
 
 var spawn_offset := Vector2(0, -1)
 
