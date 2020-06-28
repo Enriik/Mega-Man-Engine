@@ -1,0 +1,690 @@
+[gd_scene load_steps=14 format=2]
+
+[ext_resource path="res://Levels/Core/Lv_Core.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Assets/Tilesets/BottomlessPitTileset.tres" type="TileSet" id=2]
+[ext_resource path="res://Entities/Enemy/Obj/Adv3_SpikePlatformFall.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Misc/ObjSpawner/ObjSpawner.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Assets/Sounds/Bgm/X6_BlazeHeatnix_by_ZeroJanitor.ogg" type="AudioStream" id=5]
+[ext_resource path="res://Entities/Enemy/Obj/Adv3_Podoboo.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Entities/DeathSpike/DeathSpike.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Entities/Pickups/LifeEnergyLarge.tscn" type="PackedScene" id=8]
+[ext_resource path="res://Entities/Pickups/WeaponEnergyLarge.tscn" type="PackedScene" id=9]
+[ext_resource path="res://Entities/Enemy/Obj/Adv3_Boulder.tscn" type="PackedScene" id=10]
+[ext_resource path="res://Levels/Views/View.tscn" type="PackedScene" id=11]
+[ext_resource path="res://Entities/ScreenTransitor/ScreenTransitor.tscn" type="PackedScene" id=12]
+[ext_resource path="res://Entities/Enemy/Obj/Adv3_BasserStatic.tscn" type="PackedScene" id=13]
+
+[node name="Level" instance=ExtResource( 1 )]
+BG_COLOR = Color( 0, 0, 0, 1 )
+MUSIC = ExtResource( 5 )
+
+[node name="TileMap" parent="." index="0"]
+tile_set = ExtResource( 2 )
+tile_data = PoolIntArray( -1835008, 8, 0, -1835007, 20, 0, -1835006, 23, 0, -1835005, 60, 0, -1835004, 61, 0, -1835003, 62, 0, -1835002, 60, 0, -1835001, 61, 0, -1835000, 62, 0, -1834999, 64, 0, -1834998, 6, 0, -1834997, 7, 0, -1834996, 7, 0, -1834995, 7, 0, -1834994, 8, 0, -1834993, 15, 0, -1769472, 8, 0, -1769471, 15, 0, -1769470, 18, 0, -1769469, 65, 0, -1769468, 66, 0, -1769467, 67, 0, -1769466, 65, 0, -1769465, 66, 0, -1769464, 67, 0, -1769462, 6, 0, -1769461, 7, 0, -1769460, 7, 0, -1769459, 7, 0, -1769458, 8, 0, -1769457, 20, 0, -1703936, 8, 0, -1703935, 20, 0, -1703934, 23, 0, -1703933, 70, 0, -1703932, 71, 0, -1703930, 70, 0, -1703929, 71, 0, -1703926, 6, 0, -1703925, 7, 0, -1703924, 7, 0, -1703923, 7, 0, -1703922, 8, 0, -1703921, 15, 0, -1638400, 8, 0, -1638399, 15, 0, -1638398, 18, 0, -1638390, 6, 0, -1638389, 7, 0, -1638388, 7, 0, -1638387, 7, 0, -1638386, 8, 0, -1638385, 20, 0, -1572864, 8, 0, -1572863, 20, 0, -1572862, 23, 0, -1572854, 6, 0, -1572853, 7, 0, -1572852, 7, 0, -1572851, 7, 0, -1572850, 8, 0, -1572849, 15, 0, -1507328, 8, 0, -1507327, 15, 0, -1507326, 18, 0, -1507318, 6, 0, -1507317, 7, 0, -1507316, 7, 0, -1507315, 7, 0, -1507314, 8, 0, -1507313, 20, 0, -1441792, 4, 0, -1441791, 20, 0, -1441790, 23, 0, -1441782, 6, 0, -1441781, 7, 0, -1441780, 7, 0, -1441779, 7, 0, -1441778, 8, 0, -1441777, 15, 0, -1376256, 9, 0, -1376255, 15, 0, -1376254, 18, 0, -1376246, 6, 0, -1376245, 7, 0, -1376244, 7, 0, -1376243, 7, 0, -1376242, 8, 0, -1376241, 20, 0, -1310720, 11, 0, -1310719, 22, 0, -1310718, 23, 0, -1310710, 6, 0, -1310709, 7, 0, -1310708, 7, 0, -1310707, 7, 0, -1310706, 8, 0, -1310705, 15, 0, -1245184, 16, 0, -1245183, 17, 0, -1245182, 18, 0, -1245174, 6, 0, -1245173, 7, 0, -1245172, 7, 0, -1245171, 7, 0, -1245170, 8, 0, -1245169, 20, 0, -1179648, 21, 0, -1179647, 22, 0, -1179646, 23, 0, -1179638, 6, 0, -1179637, 7, 0, -1179636, 7, 0, -1179635, 7, 0, -1179634, 8, 0, -1179633, 15, 0, -1114112, 16, 0, -1114111, 17, 0, -1114110, 18, 0, -1114102, 6, 0, -1114101, 7, 0, -1114100, 7, 0, -1114099, 7, 0, -1114098, 8, 0, -1114097, 20, 0, -1048576, 21, 0, -1048575, 22, 0, -1048574, 23, 0, -1048567, 36, 0, -1048566, 6, 0, -1048565, 7, 0, -1048564, 7, 0, -1048563, 7, 0, -1048562, 8, 0, -1048561, 15, 0, -983040, 16, 0, -983039, 17, 0, -983038, 18, 0, -983032, 36, 0, -983031, 31, 0, -983030, 6, 0, -983029, 7, 0, -983028, 7, 0, -983027, 7, 0, -983026, 8, 0, -983025, 20, 0, -917504, 21, 0, -917503, 22, 0, -917502, 23, 0, -917497, 36, 0, -917496, 31, 0, -917495, 37, 0, -917494, 6, 0, -917493, 7, 0, -917492, 7, 0, -917491, 7, 0, -917490, 8, 0, -917489, 15, 0, -851968, 16, 0, -851967, 17, 0, -851966, 18, 0, -851962, 36, 0, -851961, 31, 0, -851960, 40, 0, -851959, 42, 0, -851958, 6, 0, -851957, 7, 0, -851956, 7, 0, -851955, 7, 0, -851954, 8, 0, -851953, 20, 0, -786432, 21, 0, -786431, 22, 0, -786430, 23, 0, -786427, 39, 0, -786426, 32, 0, -786425, 37, 0, -786424, 45, 0, -786423, 47, 0, -786422, 6, 0, -786421, 7, 0, -786420, 7, 0, -786419, 7, 0, -786418, 8, 0, -786417, 15, 0, -720896, 16, 0, -720895, 17, 0, -720894, 18, 0, -720891, 33, 0, -720890, 24, 0, -720889, 24, 0, -720888, 10, 0, -720887, 13, 0, -720886, 4, 0, -720885, 4, 0, -720884, 4, 0, -720883, 4, 0, -720882, 4, 0, -720881, 20, 0, -655360, 21, 0, -655359, 22, 0, -655358, 23, 0, -655352, 15, 0, -655351, 18, 0, -655350, 9, 0, -655349, 9, 0, -655348, 9, 0, -655347, 9, 0, -655346, 9, 0, -655345, 15, 0, -589824, 16, 0, -589823, 17, 0, -589822, 18, 0, -589816, 20, 0, -589815, 21, 0, -589814, 12, 0, -589813, 11, 0, -589812, 12, 0, -589811, 11, 0, -589810, 12, 0, -589809, 21, 0, -524288, 21, 0, -524287, 22, 0, -524286, 23, 0, -524280, 25, 0, -524279, 26, 0, -524278, 27, 0, -524277, 26, 0, -524276, 27, 0, -524275, 26, 0, -524274, 27, 0, -524273, 26, 0, -458752, 16, 0, -458751, 17, 0, -458750, 18, 0, -393216, 21, 0, -393215, 22, 0, -393214, 23, 0, -327680, 16, 0, -327679, 17, 0, -327678, 18, 0, -262144, 21, 0, -262143, 22, 0, -262142, 23, 0, -196608, 16, 0, -196607, 17, 0, -196606, 18, 0, -131072, 21, 0, -131071, 22, 0, -131070, 23, 0, -65536, 16, 0, -65535, 17, 0, -65534, 18, 0, 0, 21, 0, 1, 22, 0, 2, 23, 0, 17, 70, 0, 18, 65, 0, 19, 61, 0, 20, 62, 0, 21, 60, 0, 22, 61, 0, 23, 62, 0, 24, 60, 0, 25, 61, 0, 26, 62, 0, 27, 60, 0, 28, 20, 0, 29, 23, 0, 30, 60, 0, 31, 61, 0, 34, 60, 0, 35, 61, 0, 36, 62, 0, 37, 60, 0, 40, 60, 0, 41, 61, 0, 42, 62, 0, 43, 60, 0, 44, 61, 0, 45, 62, 0, 46, 60, 0, 47, 61, 0, 48, 62, 0, 49, 60, 0, 50, 61, 0, 51, 62, 0, 52, 60, 0, 53, 61, 0, 54, 62, 0, 55, 60, 0, 56, 61, 0, 57, 62, 0, 58, 60, 0, 59, 61, 0, 60, 24, 0, 61, 24, 0, 62, 24, 0, 63, 24, 0, 64, 24, 0, 65, 24, 0, 66, 24, 0, 67, 24, 0, 68, 24, 0, 69, 24, 0, 70, 24, 0, 71, 24, 0, 72, 24, 0, 73, 24, 0, 74, 24, 0, 75, 24, 0, 79, 24, 0, 65536, 16, 0, 65537, 17, 0, 65538, 18, 0, 65539, 32, 0, 65540, 44, 0, 65554, 70, 0, 65555, 66, 0, 65556, 67, 0, 65557, 65, 0, 65558, 66, 0, 65559, 67, 0, 65560, 65, 0, 65561, 66, 0, 65562, 67, 0, 65563, 65, 0, 65564, 15, 0, 65565, 18, 0, 65566, 65, 0, 65567, 66, 0, 65570, 65, 0, 65571, 66, 0, 65572, 67, 0, 65573, 65, 0, 65576, 65, 0, 65577, 66, 0, 65578, 67, 0, 65579, 65, 0, 65580, 66, 0, 65581, 67, 0, 65582, 65, 0, 65583, 66, 0, 65584, 67, 0, 65585, 65, 0, 65586, 66, 0, 65587, 67, 0, 65588, 65, 0, 65589, 66, 0, 65590, 67, 0, 65591, 65, 0, 65592, 66, 0, 65593, 67, 0, 65594, 65, 0, 65595, 66, 0, 65596, 24, 0, 65597, 24, 0, 65598, 24, 0, 65599, 24, 0, 65600, 24, 0, 65601, 24, 0, 65602, 24, 0, 65603, 24, 0, 65604, 24, 0, 65605, 24, 0, 65606, 24, 0, 65607, 24, 0, 65615, 24, 0, 131072, 21, 0, 131073, 22, 0, 131074, 23, 0, 131075, 37, 0, 131076, 32, 0, 131077, 44, 0, 131091, 71, 0, 131092, 72, 0, 131093, 70, 0, 131094, 71, 0, 131095, 72, 0, 131096, 70, 0, 131097, 71, 0, 131098, 72, 0, 131099, 70, 0, 131100, 20, 0, 131101, 23, 0, 131102, 70, 0, 131103, 71, 0, 131106, 70, 0, 131107, 71, 0, 131108, 72, 0, 131109, 70, 0, 131112, 70, 0, 131113, 71, 0, 131115, 70, 0, 131116, 71, 0, 131118, 70, 0, 131119, 71, 0, 131121, 70, 0, 131122, 71, 0, 131124, 70, 0, 131125, 71, 0, 131127, 70, 0, 131128, 71, 0, 131130, 70, 0, 131131, 71, 0, 131134, 24, 0, 131135, 24, 0, 131136, 24, 0, 131137, 24, 0, 131138, 24, 0, 131139, 24, 0, 131151, 24, 0, 196608, 16, 0, 196609, 27, 0, 196610, 28, 0, 196611, 32, 0, 196612, 37, 0, 196613, 30, 0, 196636, 15, 0, 196637, 18, 0, 196670, 24, 0, 196671, 24, 0, 196672, 24, 0, 196673, 24, 0, 196674, 24, 0, 196675, 24, 0, 262144, 23, 0, 262145, 37, 0, 262146, 32, 0, 262147, 37, 0, 262148, 32, 0, 262149, 35, 0, 262172, 20, 0, 262173, 23, 0, 262210, 24, 0, 262211, 24, 0, 327680, 18, 0, 327681, 32, 0, 327682, 37, 0, 327683, 32, 0, 327684, 37, 0, 327685, 30, 0, 327708, 25, 0, 327709, 28, 0, 327746, 24, 0, 327747, 24, 0, 327758, 24, 0, 327759, 24, 0, 393216, 23, 0, 393217, 37, 0, 393218, 32, 0, 393219, 37, 0, 393220, 32, 0, 393221, 37, 0, 393222, 56, 0, 393266, 24, 0, 393267, 24, 0, 393294, 24, 0, 393295, 24, 0, 458752, 18, 0, 458753, 32, 0, 458754, 37, 0, 458755, 32, 0, 458756, 49, 0, 458757, 32, 0, 458758, 32, 0, 458802, 24, 0, 458803, 24, 0, 458830, 24, 0, 458831, 24, 0, 524288, 21, 0, 524289, 12, 0, 524290, 11, 0, 524291, 12, 0, 524292, 11, 0, 524293, 12, 0, 524294, 13, 0, 524328, 24, 0, 524329, 24, 0, 524338, 24, 0, 524339, 24, 0, 524366, 24, 0, 524367, 24, 0, 589824, 16, 0, 589825, 17, 0, 589826, 16, 0, 589827, 17, 0, 589828, 16, 0, 589829, 17, 0, 589830, 18, 0, 589864, 24, 0, 589865, 24, 0, 589874, 24, 0, 589875, 24, 0, 589884, 24, 0, 589885, 24, 0, 589886, 24, 0, 589887, 24, 0, 589888, 24, 0, 589889, 24, 0, 589902, 24, 0, 589903, 24, 0, 655360, 21, 0, 655361, 22, 0, 655362, 21, 0, 655363, 22, 0, 655364, 21, 0, 655365, 22, 0, 655366, 21, 0, 655367, 12, 0, 655368, 13, 0, 655376, 24, 0, 655377, 24, 0, 655380, 24, 0, 655381, 24, 0, 655388, 24, 0, 655389, 24, 0, 655390, 24, 0, 655391, 24, 0, 655396, 24, 0, 655397, 24, 0, 655400, 24, 0, 655401, 24, 0, 655404, 24, 0, 655405, 24, 0, 655410, 24, 0, 655411, 24, 0, 655420, 24, 0, 655421, 24, 0, 655422, 24, 0, 655423, 24, 0, 655424, 24, 0, 655425, 24, 0, 655438, 24, 0, 655439, 24, 0, 720896, 16, 0, 720897, 17, 0, 720898, 16, 0, 720899, 17, 0, 720900, 16, 0, 720901, 17, 0, 720902, 16, 0, 720903, 17, 0, 720904, 18, 0, 720912, 24, 0, 720913, 24, 0, 720916, 24, 0, 720917, 24, 0, 720924, 24, 0, 720925, 24, 0, 720926, 24, 0, 720927, 24, 0, 720932, 24, 0, 720933, 24, 0, 720936, 24, 0, 720937, 24, 0, 720940, 24, 0, 720941, 24, 0, 720946, 24, 0, 720947, 24, 0, 720952, 24, 0, 720953, 24, 0, 720956, 24, 0, 720957, 24, 0, 720958, 24, 0, 720959, 24, 0, 720960, 24, 0, 720961, 24, 0, 720974, 24, 0, 720975, 24, 0, 786432, 21, 0, 786433, 22, 0, 786434, 21, 0, 786435, 22, 0, 786436, 21, 0, 786437, 22, 0, 786438, 21, 0, 786439, 22, 0, 786440, 23, 0, 786441, 5, 0, 786442, 5, 0, 786443, 5, 0, 786444, 5, 0, 786445, 5, 0, 786446, 5, 0, 786447, 5, 0, 786448, 24, 0, 786449, 24, 0, 786450, 5, 0, 786451, 5, 0, 786452, 24, 0, 786453, 24, 0, 786454, 5, 0, 786455, 5, 0, 786456, 5, 0, 786457, 5, 0, 786458, 5, 0, 786459, 5, 0, 786460, 24, 0, 786461, 24, 0, 786462, 24, 0, 786463, 24, 0, 786464, 5, 0, 786465, 5, 0, 786466, 5, 0, 786467, 5, 0, 786468, 24, 0, 786469, 24, 0, 786470, 5, 0, 786471, 5, 0, 786472, 24, 0, 786473, 24, 0, 786474, 5, 0, 786475, 5, 0, 786476, 24, 0, 786477, 24, 0, 786478, 5, 0, 786479, 5, 0, 786480, 5, 0, 786481, 5, 0, 786482, 24, 0, 786483, 24, 0, 786484, 5, 0, 786485, 5, 0, 786486, 5, 0, 786487, 5, 0, 786488, 24, 0, 786489, 24, 0, 786490, 5, 0, 786491, 5, 0, 786492, 24, 0, 786493, 24, 0, 786494, 24, 0, 786495, 24, 0, 786496, 24, 0, 786497, 24, 0, 786510, 24, 0, 786511, 24, 0, 851968, 16, 0, 851969, 17, 0, 851970, 16, 0, 851971, 17, 0, 851972, 16, 0, 851973, 17, 0, 851974, 16, 0, 851975, 17, 0, 851976, 18, 0, 851977, 9, 0, 851978, 9, 0, 851979, 9, 0, 851980, 9, 0, 851981, 9, 0, 851982, 9, 0, 851983, 9, 0, 851984, 24, 0, 851985, 24, 0, 851986, 9, 0, 851987, 9, 0, 851988, 24, 0, 851989, 24, 0, 851990, 9, 0, 851991, 9, 0, 851992, 9, 0, 851993, 9, 0, 851994, 9, 0, 851995, 9, 0, 851996, 24, 0, 851997, 24, 0, 851998, 24, 0, 851999, 24, 0, 852000, 9, 0, 852001, 9, 0, 852002, 9, 0, 852003, 9, 0, 852004, 24, 0, 852005, 24, 0, 852006, 9, 0, 852007, 9, 0, 852008, 24, 0, 852009, 24, 0, 852010, 9, 0, 852011, 9, 0, 852012, 24, 0, 852013, 24, 0, 852014, 9, 0, 852015, 9, 0, 852016, 9, 0, 852017, 9, 0, 852018, 24, 0, 852019, 24, 0, 852020, 9, 0, 852021, 9, 0, 852022, 9, 0, 852023, 9, 0, 852024, 24, 0, 852025, 24, 0, 852026, 9, 0, 852027, 9, 0, 852028, 24, 0, 852029, 24, 0, 852030, 24, 0, 852031, 24, 0, 852032, 24, 0, 852033, 24, 0, 852046, 24, 0, 852047, 24, 0 )
+
+[node name="DeathSpike20" parent="TileMap/AddDeathSpikeHere" index="0" instance=ExtResource( 7 )]
+position = Vector2( 168, -152 )
+is_lava = true
+
+[node name="DeathSpike21" parent="TileMap/AddDeathSpikeHere" index="1" instance=ExtResource( 7 )]
+position = Vector2( 184, -152 )
+is_lava = true
+
+[node name="DeathSpike22" parent="TileMap/AddDeathSpikeHere" index="2" instance=ExtResource( 7 )]
+position = Vector2( 200, -152 )
+is_lava = true
+
+[node name="DeathSpike23" parent="TileMap/AddDeathSpikeHere" index="3" instance=ExtResource( 7 )]
+position = Vector2( 216, -152 )
+is_lava = true
+
+[node name="DeathSpike24" parent="TileMap/AddDeathSpikeHere" index="4" instance=ExtResource( 7 )]
+position = Vector2( 232, -152 )
+is_lava = true
+
+[node name="DeathSpike" parent="TileMap/AddDeathSpikeHere" index="5" instance=ExtResource( 7 )]
+position = Vector2( 152, 216 )
+is_lava = true
+
+[node name="DeathSpike2" parent="TileMap/AddDeathSpikeHere" index="6" instance=ExtResource( 7 )]
+position = Vector2( 168, 216 )
+is_lava = true
+
+[node name="DeathSpike3" parent="TileMap/AddDeathSpikeHere" index="7" instance=ExtResource( 7 )]
+position = Vector2( 184, 216 )
+is_lava = true
+
+[node name="DeathSpike4" parent="TileMap/AddDeathSpikeHere" index="8" instance=ExtResource( 7 )]
+position = Vector2( 200, 216 )
+is_lava = true
+
+[node name="DeathSpike5" parent="TileMap/AddDeathSpikeHere" index="9" instance=ExtResource( 7 )]
+position = Vector2( 216, 216 )
+is_lava = true
+
+[node name="DeathSpike6" parent="TileMap/AddDeathSpikeHere" index="10" instance=ExtResource( 7 )]
+position = Vector2( 232, 216 )
+is_lava = true
+
+[node name="DeathSpike7" parent="TileMap/AddDeathSpikeHere" index="11" instance=ExtResource( 7 )]
+position = Vector2( 248, 216 )
+is_lava = true
+
+[node name="DeathSpike10" parent="TileMap/AddDeathSpikeHere" index="12" instance=ExtResource( 7 )]
+position = Vector2( 296, 216 )
+is_lava = true
+
+[node name="DeathSpike11" parent="TileMap/AddDeathSpikeHere" index="13" instance=ExtResource( 7 )]
+position = Vector2( 312, 216 )
+is_lava = true
+
+[node name="DeathSpike14" parent="TileMap/AddDeathSpikeHere" index="14" instance=ExtResource( 7 )]
+position = Vector2( 360, 216 )
+is_lava = true
+
+[node name="DeathSpike15" parent="TileMap/AddDeathSpikeHere" index="15" instance=ExtResource( 7 )]
+position = Vector2( 376, 216 )
+is_lava = true
+
+[node name="DeathSpike16" parent="TileMap/AddDeathSpikeHere" index="16" instance=ExtResource( 7 )]
+position = Vector2( 392, 216 )
+is_lava = true
+
+[node name="DeathSpike17" parent="TileMap/AddDeathSpikeHere" index="17" instance=ExtResource( 7 )]
+position = Vector2( 408, 216 )
+is_lava = true
+
+[node name="DeathSpike18" parent="TileMap/AddDeathSpikeHere" index="18" instance=ExtResource( 7 )]
+position = Vector2( 424, 216 )
+is_lava = true
+
+[node name="DeathSpike19" parent="TileMap/AddDeathSpikeHere" index="19" instance=ExtResource( 7 )]
+position = Vector2( 440, 216 )
+is_lava = true
+
+[node name="DeathSpike25" parent="TileMap/AddDeathSpikeHere" index="20" instance=ExtResource( 7 )]
+position = Vector2( 744, 216 )
+is_lava = true
+
+[node name="DeathSpike26" parent="TileMap/AddDeathSpikeHere" index="21" instance=ExtResource( 7 )]
+position = Vector2( 760, 216 )
+is_lava = true
+
+[node name="DeathSpike27" parent="TileMap/AddDeathSpikeHere" index="22" instance=ExtResource( 7 )]
+position = Vector2( 776, 216 )
+is_lava = true
+
+[node name="DeathSpike28" parent="TileMap/AddDeathSpikeHere" index="23" instance=ExtResource( 7 )]
+position = Vector2( 792, 216 )
+is_lava = true
+
+[node name="DeathSpike29" parent="TileMap/AddDeathSpikeHere" index="24" instance=ExtResource( 7 )]
+position = Vector2( 520, 216 )
+is_lava = true
+
+[node name="DeathSpike30" parent="TileMap/AddDeathSpikeHere" index="25" instance=ExtResource( 7 )]
+position = Vector2( 536, 216 )
+is_lava = true
+
+[node name="DeathSpike31" parent="TileMap/AddDeathSpikeHere" index="26" instance=ExtResource( 7 )]
+position = Vector2( 552, 216 )
+is_lava = true
+
+[node name="DeathSpike32" parent="TileMap/AddDeathSpikeHere" index="27" instance=ExtResource( 7 )]
+position = Vector2( 568, 216 )
+is_lava = true
+
+[node name="DeathSpike33" parent="TileMap/AddDeathSpikeHere" index="28" instance=ExtResource( 7 )]
+position = Vector2( 840, 216 )
+is_lava = true
+
+[node name="DeathSpike34" parent="TileMap/AddDeathSpikeHere" index="29" instance=ExtResource( 7 )]
+position = Vector2( 856, 216 )
+is_lava = true
+
+[node name="DeathSpike35" parent="TileMap/AddDeathSpikeHere" index="30" instance=ExtResource( 7 )]
+position = Vector2( 616, 216 )
+is_lava = true
+
+[node name="DeathSpike36" parent="TileMap/AddDeathSpikeHere" index="31" instance=ExtResource( 7 )]
+position = Vector2( 632, 216 )
+is_lava = true
+
+[node name="DeathSpike37" parent="TileMap/AddDeathSpikeHere" index="32" instance=ExtResource( 7 )]
+position = Vector2( 872, 216 )
+is_lava = true
+
+[node name="DeathSpike38" parent="TileMap/AddDeathSpikeHere" index="33" instance=ExtResource( 7 )]
+position = Vector2( 888, 216 )
+is_lava = true
+
+[node name="DeathSpike41" parent="TileMap/AddDeathSpikeHere" index="34" instance=ExtResource( 7 )]
+position = Vector2( 936, 216 )
+is_lava = true
+
+[node name="DeathSpike42" parent="TileMap/AddDeathSpikeHere" index="35" instance=ExtResource( 7 )]
+position = Vector2( 952, 216 )
+is_lava = true
+
+[node name="DeathSpike39" parent="TileMap/AddDeathSpikeHere" index="36" instance=ExtResource( 7 )]
+position = Vector2( 680, 216 )
+is_lava = true
+
+[node name="DeathSpike40" parent="TileMap/AddDeathSpikeHere" index="37" instance=ExtResource( 7 )]
+position = Vector2( 696, 216 )
+is_lava = true
+
+[node name="Spawner" type="Node2D" parent="." index="1"]
+
+[node name="FallSpikeSpawn7" parent="Spawner" index="0" instance=ExtResource( 4 )]
+position = Vector2( 56, -168 )
+obj_spawn = ExtResource( 3 )
+spawn_target_node = NodePath("../../Iterable")
+custom_parameters = {
+"permanent_death": false
+}
+
+[node name="FallSpikeSpawn8" parent="Spawner" index="1" instance=ExtResource( 4 )]
+position = Vector2( 72, -168 )
+obj_spawn = ExtResource( 3 )
+spawn_target_node = NodePath("../../Iterable")
+custom_parameters = {
+"permanent_death": false
+}
+
+[node name="FallSpikeSpawn9" parent="Spawner" index="2" instance=ExtResource( 4 )]
+position = Vector2( 88, -168 )
+obj_spawn = ExtResource( 3 )
+spawn_target_node = NodePath("../../Iterable")
+custom_parameters = {
+"permanent_death": false
+}
+
+[node name="LifeLarge" parent="Spawner" index="3" instance=ExtResource( 4 )]
+position = Vector2( 24, 120 )
+obj_spawn = ExtResource( 8 )
+spawn_target_node = NodePath("../../Iterable")
+custom_parameters = {
+"can_disappear": false
+}
+obj_deletion_by_signals = [ "collected" ]
+
+[node name="EnLarge" parent="Spawner" index="4" instance=ExtResource( 4 )]
+position = Vector2( 40, 120 )
+obj_spawn = ExtResource( 9 )
+spawn_target_node = NodePath("../../Iterable")
+custom_parameters = {
+"can_disappear": false
+}
+obj_deletion_by_signals = [ "collected" ]
+
+[node name="FallSpikeSpawn" parent="Spawner" index="5" instance=ExtResource( 4 )]
+position = Vector2( 120, 88 )
+obj_spawn = ExtResource( 3 )
+spawn_target_node = NodePath("../../Iterable")
+custom_parameters = {
+"permanent_death": false
+}
+
+[node name="FallSpikeSpawn2" parent="Spawner" index="6" instance=ExtResource( 4 )]
+position = Vector2( 136, 88 )
+obj_spawn = ExtResource( 3 )
+spawn_target_node = NodePath("../../Iterable")
+custom_parameters = {
+"permanent_death": false
+}
+
+[node name="FallSpikeSpawn3" parent="Spawner" index="7" instance=ExtResource( 4 )]
+position = Vector2( 200, 104 )
+obj_spawn = ExtResource( 3 )
+spawn_target_node = NodePath("../../Iterable")
+custom_parameters = {
+"permanent_death": false
+}
+
+[node name="FallSpikeSpawn4" parent="Spawner" index="8" instance=ExtResource( 4 )]
+position = Vector2( 216, 104 )
+obj_spawn = ExtResource( 3 )
+spawn_target_node = NodePath("../../Iterable")
+custom_parameters = {
+"permanent_death": false
+}
+
+[node name="Podoboo3" parent="Spawner" index="9" instance=ExtResource( 4 )]
+position = Vector2( 304, 232 )
+obj_spawn = ExtResource( 6 )
+spawn_on = 1
+spawn_interval = 0.25
+autostart = true
+spawn_target_node = NodePath("../../Iterable")
+custom_parameters = {
+
+}
+
+[node name="Podoboo4" parent="Spawner" index="10" instance=ExtResource( 4 )]
+position = Vector2( 400, 232 )
+obj_spawn = ExtResource( 6 )
+spawn_on = 1
+spawn_interval = 0.25
+autostart = true
+spawn_target_node = NodePath("../../Iterable")
+custom_parameters = {
+
+}
+
+[node name="FallSpikeSpawn5" parent="Spawner" index="11" instance=ExtResource( 4 )]
+position = Vector2( 360, 168 )
+obj_spawn = ExtResource( 3 )
+spawn_target_node = NodePath("../../Iterable")
+custom_parameters = {
+"permanent_death": false
+}
+
+[node name="FallSpikeSpawn6" parent="Spawner" index="12" instance=ExtResource( 4 )]
+position = Vector2( 376, 168 )
+obj_spawn = ExtResource( 3 )
+spawn_target_node = NodePath("../../Iterable")
+custom_parameters = {
+"permanent_death": false
+}
+
+[node name="FallSpikeSpawn12" parent="Spawner" index="13" instance=ExtResource( 4 )]
+position = Vector2( 424, 136 )
+obj_spawn = ExtResource( 3 )
+spawn_target_node = NodePath("../../Iterable")
+custom_parameters = {
+"permanent_death": false
+}
+
+[node name="FallSpikeSpawn13" parent="Spawner" index="14" instance=ExtResource( 4 )]
+position = Vector2( 440, 136 )
+obj_spawn = ExtResource( 3 )
+spawn_target_node = NodePath("../../Iterable")
+custom_parameters = {
+"permanent_death": false
+}
+
+[node name="FallSpikeSpawn14" parent="Spawner" index="15" instance=ExtResource( 4 )]
+position = Vector2( 744, 168 )
+obj_spawn = ExtResource( 3 )
+spawn_target_node = NodePath("../../Iterable")
+custom_parameters = {
+
+}
+
+[node name="FallSpikeSpawn15" parent="Spawner" index="16" instance=ExtResource( 4 )]
+position = Vector2( 760, 168 )
+obj_spawn = ExtResource( 3 )
+spawn_target_node = NodePath("../../Iterable")
+custom_parameters = {
+
+}
+
+[node name="FallSpikeSpawn16" parent="Spawner" index="17" instance=ExtResource( 4 )]
+position = Vector2( 776, 136 )
+obj_spawn = ExtResource( 3 )
+spawn_target_node = NodePath("../../Iterable")
+custom_parameters = {
+
+}
+
+[node name="FallSpikeSpawn17" parent="Spawner" index="18" instance=ExtResource( 4 )]
+position = Vector2( 792, 136 )
+obj_spawn = ExtResource( 3 )
+spawn_target_node = NodePath("../../Iterable")
+custom_parameters = {
+"permanent_death": false
+}
+
+[node name="FallSpikeSpawn18" parent="Spawner" index="19" instance=ExtResource( 4 )]
+position = Vector2( 840, 152 )
+obj_spawn = ExtResource( 3 )
+spawn_target_node = NodePath("../../Iterable")
+custom_parameters = {
+"permanent_death": false
+}
+
+[node name="FallSpikeSpawn19" parent="Spawner" index="20" instance=ExtResource( 4 )]
+position = Vector2( 856, 152 )
+obj_spawn = ExtResource( 3 )
+spawn_target_node = NodePath("../../Iterable")
+custom_parameters = {
+"permanent_death": false
+}
+
+[node name="FallSpikeSpawn10" parent="Spawner" index="21" instance=ExtResource( 4 )]
+position = Vector2( 552, 168 )
+obj_spawn = ExtResource( 3 )
+spawn_target_node = NodePath("../../Iterable")
+custom_parameters = {
+"permanent_death": false
+}
+
+[node name="FallSpikeSpawn11" parent="Spawner" index="22" instance=ExtResource( 4 )]
+position = Vector2( 568, 168 )
+obj_spawn = ExtResource( 3 )
+spawn_target_node = NodePath("../../Iterable")
+custom_parameters = {
+"permanent_death": false
+}
+
+[node name="BoulderSp" parent="Spawner" index="23" instance=ExtResource( 4 )]
+position = Vector2( 528, 0 )
+obj_spawn = ExtResource( 10 )
+spawn_on = 1
+spawn_interval = 0.7
+autostart = true
+obj_exist_limit = 2
+spawn_target_node = NodePath("../../Iterable")
+custom_parameters = {
+"speed": 0.0
+}
+
+[node name="BoulderSp2" parent="Spawner" index="24" instance=ExtResource( 4 )]
+position = Vector2( 624, 0 )
+obj_spawn = ExtResource( 10 )
+spawn_on = 1
+spawn_interval = 0.67
+autostart = true
+obj_exist_limit = 2
+spawn_target_node = NodePath("../../Iterable")
+custom_parameters = {
+"speed": 0.0
+}
+
+[node name="Boulder" parent="Spawner" index="25" instance=ExtResource( 4 )]
+position = Vector2( 816, 80 )
+obj_spawn = ExtResource( 10 )
+spawn_target_node = NodePath("../../Iterable")
+custom_parameters = {
+
+}
+
+[node name="BatUpDown" parent="Spawner" index="26" instance=ExtResource( 4 )]
+position = Vector2( 656, 88 )
+obj_spawn = ExtResource( 13 )
+spawn_target_node = NodePath("../../Iterable")
+custom_parameters = {
+
+}
+
+[node name="BatUpDown3" parent="Spawner" index="27" instance=ExtResource( 4 )]
+position = Vector2( 816, 56 )
+obj_spawn = ExtResource( 13 )
+spawn_target_node = NodePath("../../Iterable")
+custom_parameters = {
+
+}
+
+[node name="BatUpDown2" parent="Spawner" index="28" instance=ExtResource( 4 )]
+position = Vector2( 912, 144 )
+obj_spawn = ExtResource( 13 )
+spawn_target_node = NodePath("../../Iterable")
+custom_parameters = {
+
+}
+
+[node name="FallSpikeSpawn20" parent="Spawner" index="29" instance=ExtResource( 4 )]
+position = Vector2( 1096, 184 )
+obj_spawn = ExtResource( 3 )
+spawn_target_node = NodePath("../../Iterable")
+custom_parameters = {
+
+}
+
+[node name="FallSpikeSpawn21" parent="Spawner" index="30" instance=ExtResource( 4 )]
+position = Vector2( 1112, 184 )
+obj_spawn = ExtResource( 3 )
+spawn_target_node = NodePath("../../Iterable")
+custom_parameters = {
+
+}
+
+[node name="FallSpikeSpawn22" parent="Spawner" index="31" instance=ExtResource( 4 )]
+position = Vector2( 1128, 184 )
+obj_spawn = ExtResource( 3 )
+spawn_target_node = NodePath("../../Iterable")
+custom_parameters = {
+
+}
+
+[node name="FallSpikeSpawn23" parent="Spawner" index="32" instance=ExtResource( 4 )]
+position = Vector2( 1144, 184 )
+obj_spawn = ExtResource( 3 )
+spawn_target_node = NodePath("../../Iterable")
+custom_parameters = {
+
+}
+
+[node name="FallSpikeSpawn24" parent="Spawner" index="33" instance=ExtResource( 4 )]
+position = Vector2( 1160, 184 )
+obj_spawn = ExtResource( 3 )
+spawn_target_node = NodePath("../../Iterable")
+custom_parameters = {
+
+}
+
+[node name="FallSpikeSpawn25" parent="Spawner" index="34" instance=ExtResource( 4 )]
+position = Vector2( 1176, 184 )
+obj_spawn = ExtResource( 3 )
+spawn_target_node = NodePath("../../Iterable")
+custom_parameters = {
+
+}
+
+[node name="FallSpikeSpawn26" parent="Spawner" index="35" instance=ExtResource( 4 )]
+position = Vector2( 1192, 184 )
+obj_spawn = ExtResource( 3 )
+spawn_target_node = NodePath("../../Iterable")
+custom_parameters = {
+
+}
+
+[node name="FallSpikeSpawn27" parent="Spawner" index="36" instance=ExtResource( 4 )]
+position = Vector2( 1208, 184 )
+obj_spawn = ExtResource( 3 )
+spawn_target_node = NodePath("../../Iterable")
+custom_parameters = {
+
+}
+
+[node name="FallSpikeSpawn28" parent="Spawner" index="37" instance=ExtResource( 4 )]
+position = Vector2( 1224, 184 )
+obj_spawn = ExtResource( 3 )
+spawn_target_node = NodePath("../../Iterable")
+custom_parameters = {
+
+}
+
+[node name="FallSpikeSpawn29" parent="Spawner" index="38" instance=ExtResource( 4 )]
+position = Vector2( 1240, 184 )
+obj_spawn = ExtResource( 3 )
+spawn_target_node = NodePath("../../Iterable")
+custom_parameters = {
+
+}
+
+[node name="FallSpikeSpawn30" parent="Spawner" index="39" instance=ExtResource( 4 )]
+position = Vector2( 1208, 136 )
+obj_spawn = ExtResource( 3 )
+spawn_target_node = NodePath("../../Iterable")
+custom_parameters = {
+
+}
+
+[node name="FallSpikeSpawn31" parent="Spawner" index="40" instance=ExtResource( 4 )]
+position = Vector2( 1192, 136 )
+obj_spawn = ExtResource( 3 )
+spawn_target_node = NodePath("../../Iterable")
+custom_parameters = {
+
+}
+
+[node name="FallSpikeSpawn32" parent="Spawner" index="41" instance=ExtResource( 4 )]
+position = Vector2( 1176, 136 )
+obj_spawn = ExtResource( 3 )
+spawn_target_node = NodePath("../../Iterable")
+custom_parameters = {
+
+}
+
+[node name="FallSpikeSpawn33" parent="Spawner" index="42" instance=ExtResource( 4 )]
+position = Vector2( 1160, 136 )
+obj_spawn = ExtResource( 3 )
+spawn_target_node = NodePath("../../Iterable")
+custom_parameters = {
+
+}
+
+[node name="FallSpikeSpawn34" parent="Spawner" index="43" instance=ExtResource( 4 )]
+position = Vector2( 1144, 136 )
+obj_spawn = ExtResource( 3 )
+spawn_target_node = NodePath("../../Iterable")
+custom_parameters = {
+
+}
+
+[node name="FallSpikeSpawn35" parent="Spawner" index="44" instance=ExtResource( 4 )]
+position = Vector2( 1128, 136 )
+obj_spawn = ExtResource( 3 )
+spawn_target_node = NodePath("../../Iterable")
+custom_parameters = {
+
+}
+
+[node name="FallSpikeSpawn36" parent="Spawner" index="45" instance=ExtResource( 4 )]
+position = Vector2( 1112, 104 )
+obj_spawn = ExtResource( 3 )
+spawn_target_node = NodePath("../../Iterable")
+custom_parameters = {
+
+}
+
+[node name="FallSpikeSpawn37" parent="Spawner" index="46" instance=ExtResource( 4 )]
+position = Vector2( 1096, 104 )
+obj_spawn = ExtResource( 3 )
+spawn_target_node = NodePath("../../Iterable")
+custom_parameters = {
+
+}
+
+[node name="FallSpikeSpawn38" parent="Spawner" index="47" instance=ExtResource( 4 )]
+position = Vector2( 1160, 88 )
+obj_spawn = ExtResource( 3 )
+spawn_target_node = NodePath("../../Iterable")
+custom_parameters = {
+
+}
+
+[node name="FallSpikeSpawn39" parent="Spawner" index="48" instance=ExtResource( 4 )]
+position = Vector2( 1176, 88 )
+obj_spawn = ExtResource( 3 )
+spawn_target_node = NodePath("../../Iterable")
+custom_parameters = {
+
+}
+
+[node name="FallSpikeSpawn40" parent="Spawner" index="49" instance=ExtResource( 4 )]
+position = Vector2( 1192, 88 )
+obj_spawn = ExtResource( 3 )
+spawn_target_node = NodePath("../../Iterable")
+custom_parameters = {
+
+}
+
+[node name="FallSpikeSpawn41" parent="Spawner" index="50" instance=ExtResource( 4 )]
+position = Vector2( 1208, 88 )
+obj_spawn = ExtResource( 3 )
+spawn_target_node = NodePath("../../Iterable")
+custom_parameters = {
+
+}
+
+[node name="FallSpikeSpawn42" parent="Spawner" index="51" instance=ExtResource( 4 )]
+position = Vector2( 1224, 88 )
+obj_spawn = ExtResource( 3 )
+spawn_target_node = NodePath("../../Iterable")
+custom_parameters = {
+
+}
+
+[node name="FallSpikeSpawn43" parent="Spawner" index="52" instance=ExtResource( 4 )]
+position = Vector2( 1240, 88 )
+obj_spawn = ExtResource( 3 )
+spawn_target_node = NodePath("../../Iterable")
+custom_parameters = {
+
+}
+
+[node name="FallSpikeSpawn48" parent="Spawner" index="53" instance=ExtResource( 4 )]
+position = Vector2( 1128, 88 )
+obj_spawn = ExtResource( 3 )
+spawn_target_node = NodePath("../../Iterable")
+custom_parameters = {
+
+}
+
+[node name="FallSpikeSpawn49" parent="Spawner" index="54" instance=ExtResource( 4 )]
+position = Vector2( 1144, 88 )
+obj_spawn = ExtResource( 3 )
+spawn_target_node = NodePath("../../Iterable")
+custom_parameters = {
+
+}
+
+[node name="BoulderSp3" parent="Spawner" index="55" instance=ExtResource( 4 )]
+position = Vector2( 1248, -8 )
+obj_spawn = ExtResource( 10 )
+spawn_target_node = NodePath("../../Iterable")
+custom_parameters = {
+
+}
+
+[node name="Player" parent="Iterable" index="1"]
+position = Vector2( 128, -320 )
+
+[node name="View" parent="ViewContainer" index="0"]
+margin_top = -448.0
+margin_right = 256.0
+margin_bottom = 3.05176e-05
+
+[node name="ScreenTransitor" parent="ViewContainer/View" index="2" instance=ExtResource( 12 )]
+margin_left = 48.0
+margin_top = 448.0
+margin_right = 256.0
+margin_bottom = 464.0
+target_view = NodePath("../../View2")
+active_view = NodePath("..")
+direction = 3
+
+[node name="View2" parent="ViewContainer" index="1" instance=ExtResource( 11 )]
+margin_right = 1024.0
+margin_bottom = 224.0
+WARPS_PLAYER_AROUND_UP_DOWN = false
+WARPS_PLAYER_LEFT_RIGHT_SIDE = false
+
+[node name="ScreenTransitor2" parent="ViewContainer/View2" index="2" instance=ExtResource( 12 )]
+margin_left = 1024.0
+margin_top = 64.0
+margin_right = 1040.0
+margin_bottom = 144.0
+target_view = NodePath("../../View3")
+active_view = NodePath("..")
+direction = 1
+
+[node name="View3" parent="ViewContainer" index="2" instance=ExtResource( 11 )]
+margin_left = 1024.0
+margin_right = 1280.0
+margin_bottom = 224.0
+WARPS_PLAYER_AROUND_UP_DOWN = false
+WARPS_PLAYER_LEFT_RIGHT_SIDE = false
+
+[node name="ScreenTransitor3" parent="ViewContainer/View3" index="2" instance=ExtResource( 12 )]
+margin_left = -16.0
+margin_top = 64.0
+margin_right = 0.0
+margin_bottom = 144.0
+target_view = NodePath("../../View2")
+active_view = NodePath("..")
+
+[editable path="Camera2D"]

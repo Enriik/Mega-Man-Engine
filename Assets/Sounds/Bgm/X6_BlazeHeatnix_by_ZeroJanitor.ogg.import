@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/X6_BlazeHeatnix_by_ZeroJanitor.ogg-030b9baedb2a93b6dc5a724e472b3705.oggstr"
+
+[deps]
+
+source_file="res://Assets/Sounds/Bgm/X6_BlazeHeatnix_by_ZeroJanitor.ogg"
+dest_files=[ "res://.import/X6_BlazeHeatnix_by_ZeroJanitor.ogg-030b9baedb2a93b6dc5a724e472b3705.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0
