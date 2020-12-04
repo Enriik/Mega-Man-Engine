@@ -25,18 +25,18 @@ tracks/0/keys = {
 [sub_resource type="RectangleShape2D" id=2]
 extents = Vector2( 5, 5 )
 
-[node name="FreezeDebris" index="0" instance=ExtResource( 1 )]
+[node name="FreezeDebris" instance=ExtResource( 1 )]
 damage_area_nodes = [ NodePath("Area2D") ]
 pickups_drop_enabled = false
 
 [node name="BulletBehavior" parent="." index="0"]
 speed = 240.0
+gravity = 900.0
 
 [node name="Sprite" parent="SpriteMain" index="0"]
 texture = ExtResource( 2 )
 vframes = 3
 hframes = 4
-frame = 2
 
 [node name="FreezeDebrisAnim" type="AnimationPlayer" parent="SpriteMain/Sprite" index="0"]
 autoplay = "New Anim"
@@ -46,7 +46,7 @@ autoplay = "New Anim"
 activation_mode = 1
 
 [node name="Timer" type="Timer" parent="AutoQueueFree" index="0"]
-wait_time = 0.3
+wait_time = 2.0
 one_shot = true
 autostart = true
 

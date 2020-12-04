@@ -4,7 +4,7 @@ const DIRECTION_LEFT = -1
 const DIRECTION_RIGHT = 1
 
 export var speed = 60
-export var bounce_set_vel_y = -120
+export var bounce_set_vel_y = -300
 
 onready var pf_bhv = $PlatformBehavior
 

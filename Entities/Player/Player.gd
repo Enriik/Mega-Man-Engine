@@ -201,14 +201,14 @@ func press_attack_check(delta : float):
 	if is_attack_ready:
 		if attack_type == 0:
 			if Input.is_action_just_pressed(ATTACK_HOTKEY):
-				if not can_spawn_projectile() or is_sliding:
+				if not can_spawn_projectile():
 					return
 				start_launching_attack(proj_megabuster)
 				FJ_AudioManager.sfx_combat_buster.play()
 	
 	#Check if releasing attack button or holding either way
 	if not Input.is_action_pressed(ATTACK_HOTKEY):
-		if not can_spawn_projectile() or is_sliding:
+		if not can_spawn_projectile():
 			return
 		
 		if attack_hold_time > FULLY_CHARGE_MEGABUSTER_STARTING_TIME:
@@ -391,7 +391,7 @@ func check_sliding(delta : float):
 	
 	check_canceling_slide()
 	
-	if is_sliding and (!pf_bhv.on_floor or pf_bhv.on_wall):
+	if is_sliding and (pf_bhv.on_wall):
 		if pf_bhv.on_wall:
 			if not test_normal_check_collision():
 				pf_bhv.left_right_key_press_time = 0
@@ -407,16 +407,16 @@ func check_sliding(delta : float):
 	#Decrease slide remaining
 	if slide_remaining > 0:
 		slide_remaining -= 60 * delta
-	elif slide_remaining < 0 and slide_remaining > -10:
+	elif slide_remaining < 0 and slide_remaining > -10 and pf_bhv.on_floor:
 		stop_sliding()
 
 func check_canceling_slide():
 	if is_sliding:
-		if Input.is_action_just_pressed("game_left"):
+		if Input.is_action_just_pressed("game_left") and pf_bhv.on_floor:
 			if slide_direction_x == 1: #Right
 				pf_bhv.left_right_key_press_time = 0
 				stop_sliding()
-		if Input.is_action_just_pressed("game_right"):
+		if Input.is_action_just_pressed("game_right") and pf_bhv.on_floor:
 			if slide_direction_x == -1:
 				pf_bhv.left_right_key_press_time = 0
 				stop_sliding()
@@ -563,7 +563,10 @@ func set_player_disappear(var set : bool) -> void:
 	set_process(!set)
 	pf_bhv.INITIAL_STATE = !set #Platformer's Behaviour.
 	invis_timer.paused = set
-	visible = !set
+	if set:
+		modulate.a = 0
+	else:
+		modulate.a = 1
 	collision_shape.call_deferred("set_disabled", set)
 	area_collision.call_deferred("set_disabled", set)
 
@@ -627,7 +630,8 @@ func _on_PlatformBehavior_jumped_by_keypress() -> void:
 
 
 func _on_PlatformBehavior_landed() -> void:
-	FJ_AudioManager.sfx_character_land.play()
+	if not current_hp <= 0 and not is_taking_damage:
+		FJ_AudioManager.sfx_character_land.play()
 	is_cancel_holding_jump_allowed = true
 
 #Regains control when timer of being knocked back is out.
@@ -636,6 +640,9 @@ func _on_TakingDamageTimer_timeout() -> void:
 	platformer_sprite.is_taking_damage = false
 	taking_damage_slide_pos = 0 #Reset
 	is_taking_damage = false
+	
+	if Input.is_action_pressed("game_left") or Input.is_action_pressed("game_right"):
+		pf_bhv.left_right_key_press_time = 10
 	
 	#Stops flashing animation.
 	damage_sprite_ani.play("StopFlashin")
@@ -752,3 +759,7 @@ func play_teleport_in_sound():
 func play_teleport_out_sound():
 	FJ_AudioManager.sfx_character_teleport_out.play()
 
+
+
+func _on_TeleportPlayer_animation_finished(anim_name: String) -> void:
+	GameHUD.player_vital_bar.show()

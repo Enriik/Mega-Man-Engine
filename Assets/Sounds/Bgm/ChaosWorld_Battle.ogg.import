@@ -12,4 +12,4 @@ dest_files=[ "res://.import/ChaosWorld_Battle.ogg-7309b256b86142e8b14ddb409bdab7
 [params]
 
 loop=true
-loop_offset=3.732
+loop_offset=5.33

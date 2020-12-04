@@ -6,8 +6,6 @@
 [ext_resource path="res://Assets/Sprites/ClassicThemeV2/ButtonPanelFocus4.png" type="Texture" id=4]
 [ext_resource path="res://Assets/Sprites/ClassicThemeV2/ButtonPanelFocus5.png" type="Texture" id=5]
 
-
-
 [resource]
 frames = 8
 fps = 20.0

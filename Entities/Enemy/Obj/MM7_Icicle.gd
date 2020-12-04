@@ -10,6 +10,14 @@ onready var delay_start_timer = $DelayStartTimer
 var is_destroyed = false
 
 var ice_shard_effect = preload("res://Entities/Effects/IceCrackEffect/IceShardEffect.tscn")
+var time : float
+var timeout : float = 3
+
+func _process(delta: float) -> void:
+	time += delta
+	
+	if time > timeout:
+		queue_free()
 
 func _ready() -> void:
 	if delay == 0:

@@ -23,8 +23,11 @@ tracks/0/keys = {
 [sub_resource type="RectangleShape2D" id=2]
 extents = Vector2( 4, 4 )
 
-[node name="Adv3Bullet" index="0" instance=ExtResource( 1 )]
+[node name="Adv3Bullet" instance=ExtResource( 1 )]
 damage_area_nodes = [ NodePath("DamageArea2D") ]
+can_hit = true
+eat_player_projectile = true
+pickups_drop_enabled = false
 
 [node name="BulletBehavior" parent="." index="0"]
 speed = 350.0

@@ -16,6 +16,7 @@ size = 8
 font_data = ExtResource( 6 )
 
 [sub_resource type="Animation" id=2]
+step = 0.05
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:visible")
 tracks/0/interp = 1
@@ -23,10 +24,10 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1 ),
 "update": 1,
-"values": [ false, true, false, true, false, true, false, true, false ]
+"values": [ false, true, false, true, false, true, false ]
 }
 
 [node name="Level" type="Node"]
@@ -63,7 +64,7 @@ tilemap_path = NodePath("../../TileMap")
 create_target = NodePath("../..")
 
 [node name="DeathTimer" type="Timer" parent="."]
-wait_time = 3.0
+wait_time = 2.2
 one_shot = true
 
 [node name="FadeScreen" parent="." instance=ExtResource( 5 )]
@@ -86,13 +87,16 @@ custom_constants/shadow_offset_x = 1
 custom_constants/shadow_offset_y = 1
 text = "READY"
 align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="ReadyGUI/Label"]
 autoplay = "New Anim"
+playback_speed = 0.4
 "anims/New Anim" = SubResource( 2 )
 
 [node name="Camera2D" parent="." instance=ExtResource( 7 )]
-editor/display_folded = true
 
 [node name="Sprite" type="Sprite" parent="Camera2D"]
 visible = false
@@ -104,8 +108,6 @@ script = ExtResource( 9 )
 default_view = NodePath("View")
 
 [node name="View" parent="ViewContainer" instance=ExtResource( 10 )]
-WARPS_PLAYER_AROUND_UP_DOWN = false
-WARPS_PLAYER_LEFT_RIGHT_SIDE = false
 [connection signal="player_die_normally" from="Iterable/Player" to="Iterable/Player/ThiunEffectCreator" method="create"]
 [connection signal="tween_all_completed" from="Camera2D/TransitionTween" to="Iterable/Player" method="_on_TransitionTween_tween_all_completed"]
 [connection signal="tween_all_completed" from="Camera2D/TransitionTween" to="." method="_on_TransitionTween_tween_all_completed"]

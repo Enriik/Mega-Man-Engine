@@ -231,6 +231,7 @@ texture = ExtResource( 1 )
 offset = Vector2( 1, 1 )
 vframes = 16
 hframes = 116
+frame = 13
 script = ExtResource( 2 )
 
 [node name="CharacterPlatformerAnimation" type="AnimationPlayer" parent="."]

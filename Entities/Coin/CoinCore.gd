@@ -248,7 +248,7 @@ func play_collect_sfx(var what):
 	if what == preset_collect_sfxes.COIN:
 		FJ_AudioManager.sfx_collectibles_coin.play()
 	if what == preset_collect_sfxes.ITEM:
-		FJ_AudioManager.sfx_collectibles_item.play()
+		FJ_AudioManager.play_bgm(preload("res://Assets/Sounds/Bgm/BeatBoss.ogg"))
 	if what == preset_collect_sfxes.DIAMOND:
 		FJ_AudioManager.sfx_collectibles_diamond.play()
 

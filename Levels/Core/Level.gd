@@ -38,7 +38,7 @@ func _ready():
 	if !Engine.is_editor_hint():
 		FJ_AudioManager.play_bgm(MUSIC)
 	
-	GameHUD.player_vital_bar.set_visible(true)
+	GameHUD.player_vital_bar.set_visible(false)
 	GameHUD.boss_vital_bar.set_visible(false)
 
 func shake_camera(duration, frequency, amplitude):

@@ -80,6 +80,8 @@ color = Color( 0, 0, 0, 1 )
 [node name="FadePlayer" type="AnimationPlayer" parent="Control"]
 pause_mode = 2
 autoplay = "Fade In"
+playback_speed = 4.0
+method_call_mode = 1
 "anims/Fade In" = SubResource( 1 )
 "anims/Fade Out" = SubResource( 2 )
 [connection signal="animation_finished" from="Control/FadePlayer" to="." method="_on_AnimationPlayer_animation_finished"]

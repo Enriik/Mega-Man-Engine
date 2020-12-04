@@ -55,7 +55,7 @@ tracks/0/keys = {
 "values": [ Vector2( -2, 0 ), Vector2( 2, 0 ) ]
 }
 
-[node name="SpikePlatformFall" index="0" instance=ExtResource( 1 )]
+[node name="SpikePlatformFall" instance=ExtResource( 1 )]
 script = ExtResource( 2 )
 pickups_drop_enabled = false
 
@@ -74,7 +74,7 @@ visible = false
 visible = false
 
 [node name="FallDelayTimer" type="Timer" parent="." index="11"]
-wait_time = 0.4
+wait_time = 0.1
 one_shot = true
 
 [node name="RespawnTimer" type="Timer" parent="." index="12"]

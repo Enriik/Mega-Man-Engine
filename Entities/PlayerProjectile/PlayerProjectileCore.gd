@@ -78,6 +78,8 @@ func reflected():
 	reflected_destroy_timer.start()
 	
 	is_reflected = true
+	
+	remove_from_group("PlayerProjectile")
 
 #Can override this method.
 func queue_free_start(var play_destroy_effect : bool = true):

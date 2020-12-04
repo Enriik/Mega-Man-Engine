@@ -8,7 +8,7 @@
 [sub_resource type="Curve" id=1]
 _data = [ Vector2( 0, 1 ), 0.0, 0.0, 0, 0, Vector2( 0.501791, 0 ), 0.0, 0.0, 0, 0, Vector2( 1, 1 ), 0.0, 0.0, 0, 0 ]
 
-[node name="Basser" index="0" instance=ExtResource( 1 )]
+[node name="Basser" instance=ExtResource( 1 )]
 script = ExtResource( 2 )
 RANGE_CHECKING_MODE = 1
 

@@ -64,7 +64,7 @@ func respawn_start():
 	sprite_main.visible = false
 	platform_collision_shape.disabled = true
 	is_respawning = true
-	respawn_timer.start()
+	respawn_timer.start(respawn_timer.wait_time)
 
 func _on_FallDelayTimer_timeout():
 	pf_bhv.INITIAL_STATE = true

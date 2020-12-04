@@ -1,0 +1,205 @@
+[gd_scene load_steps=12 format=2]
+
+[ext_resource path="res://Levels/Core/Lv_Core.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Assets/Tilesets/CastleTileset.tres" type="TileSet" id=2]
+[ext_resource path="res://Levels/Views/View.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Entities/ScreenTransitor/ScreenTransitor.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Entities/Pickups/LifeEnergyLarge.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Assets/Tilesets/CastleParallaxTileset.tres" type="TileSet" id=6]
+[ext_resource path="res://Entities/Enemy/Obj/MM4_ShieldAttacker.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Misc/ObjSpawner/ObjSpawner.tscn" type="PackedScene" id=8]
+[ext_resource path="res://Entities/Pickups/WeaponEnergyLarge.tscn" type="PackedScene" id=9]
+[ext_resource path="res://Assets/Sounds/Bgm/It_Is_MMC5_NOT_ACTUALLY_MM6.ogg" type="AudioStream" id=10]
+[ext_resource path="res://Entities/Enemy/Obj/MM9_HooHoo.tscn" type="PackedScene" id=11]
+
+[node name="Level" instance=ExtResource( 1 )]
+BG_COLOR = Color( 0, 0, 0, 1 )
+MUSIC = ExtResource( 10 )
+
+[node name="TileMap" parent="." index="0"]
+tile_set = ExtResource( 2 )
+tile_data = PoolIntArray( 78, 1, 131072, 79, 1, 131073, 65614, 1, 65536, 65615, 1, 65537, 131148, 2, 262144, 131149, 2, 262145, 131150, 2, 262146, 131151, 2, 262145, 196686, 1, 0, 196687, 1, 1, 262222, 1, 65536, 262223, 1, 65537, 327758, 1, 131072, 327759, 1, 131073, 393293, 8, 0, 393294, 1, 65536, 393295, 1, 65537, 458828, 8, 0, 458829, 8, 65536, 458830, 1, 0, 458831, 1, 1, 524363, 8, 0, 524364, 8, 65536, 524365, 8, 65536, 524366, 1, 65536, 524367, 1, 65537, 589848, 3, 0, 589849, 3, 1, 589896, 2, 0, 589897, 2, 1, 589898, 8, 0, 589899, 8, 65536, 589900, 8, 65536, 589901, 8, 65536, 589902, 1, 131072, 589903, 1, 131073, 655360, 1, 0, 655361, 1, 1, 655376, 3, 0, 655377, 3, 1, 655384, 3, 131072, 655385, 3, 131073, 655386, 1, 2, 655387, 1, 2, 655388, 1, 0, 655389, 1, 1, 655398, 3, 0, 655399, 3, 1, 655410, 2, 0, 655411, 2, 1, 655414, 3, 0, 655415, 3, 1, 655430, 1, 0, 655431, 1, 1, 655432, 2, 65536, 655433, 2, 65537, 655434, 8, 65536, 655435, 8, 65536, 655436, 8, 65536, 655437, 8, 65536, 655438, 1, 65536, 655439, 1, 65537, 720896, 1, 65536, 720897, 1, 65537, 720902, 1, 0, 720903, 1, 1, 720904, 1, 0, 720905, 1, 1, 720912, 3, 131072, 720913, 3, 131073, 720914, 1, 0, 720915, 1, 1, 720920, 3, 65536, 720921, 3, 65537, 720922, 1, 65538, 720923, 1, 65538, 720924, 1, 65536, 720925, 1, 65537, 720934, 3, 65536, 720935, 3, 65537, 720936, 2, 0, 720937, 2, 1, 720938, 2, 262144, 720939, 2, 262145, 720940, 2, 262146, 720941, 2, 262147, 720944, 3, 0, 720945, 3, 1, 720946, 2, 65536, 720947, 2, 65537, 720950, 3, 65536, 720951, 3, 65537, 720952, 3, 0, 720953, 3, 1, 720966, 1, 65536, 720967, 1, 65537, 720968, 2, 65536, 720969, 2, 65537, 720970, 8, 65536, 720971, 8, 65536, 720972, 8, 0, 720973, 8, 65536, 720974, 1, 0, 720975, 1, 1, 786432, 1, 65536, 786433, 1, 65537, 786434, 1, 2, 786435, 1, 2, 786436, 1, 2, 786437, 1, 2, 786438, 1, 65536, 786439, 1, 65537, 786440, 1, 65536, 786441, 1, 65537, 786442, 1, 2, 786443, 1, 2, 786444, 1, 2, 786445, 1, 2, 786446, 1, 0, 786447, 1, 1, 786448, 3, 65536, 786449, 3, 65537, 786450, 1, 65536, 786451, 1, 65537, 786452, 1, 2, 786453, 1, 2, 786454, 1, 2, 786455, 1, 2, 786456, 3, 65536, 786457, 3, 65537, 786458, 1, 131074, 786459, 1, 131074, 786460, 1, 65536, 786461, 1, 65537, 786464, 1, 0, 786465, 1, 1, 786466, 1, 2, 786467, 1, 2, 786468, 1, 2, 786469, 1, 2, 786470, 3, 65536, 786471, 3, 65537, 786472, 2, 65536, 786473, 2, 65537, 786474, 2, 0, 786475, 2, 1, 786480, 3, 65536, 786481, 3, 65537, 786482, 2, 65536, 786483, 2, 65537, 786486, 3, 131072, 786487, 3, 131073, 786488, 3, 65536, 786489, 3, 65537, 786490, 1, 0, 786491, 1, 1, 786492, 1, 2, 786493, 1, 2, 786494, 1, 2, 786495, 1, 2, 786496, 1, 2, 786497, 1, 2, 786498, 1, 0, 786499, 1, 1, 786500, 1, 2, 786501, 1, 2, 786502, 1, 65536, 786503, 1, 65537, 786504, 2, 65536, 786505, 2, 65537, 786506, 8, 65536, 786507, 8, 131073, 786508, 8, 131072, 786509, 8, 65536, 786510, 1, 65536, 786511, 1, 65537, 851968, 1, 65536, 851969, 1, 65537, 851970, 1, 65538, 851971, 1, 65538, 851972, 1, 65538, 851973, 1, 65538, 851974, 1, 65536, 851975, 1, 65537, 851976, 1, 65536, 851977, 1, 65537, 851978, 1, 65538, 851979, 1, 65538, 851980, 1, 65538, 851981, 1, 65538, 851982, 1, 65536, 851983, 1, 65537, 851984, 3, 65536, 851985, 3, 65537, 851986, 1, 65536, 851987, 1, 65537, 851988, 1, 65538, 851989, 1, 65538, 851990, 1, 65538, 851991, 1, 65538, 851992, 3, 65536, 851993, 3, 65537, 851994, 1, 131074, 851995, 1, 131074, 851996, 1, 65536, 851997, 1, 65537, 852000, 1, 65536, 852001, 1, 65537, 852002, 1, 65538, 852003, 1, 65538, 852004, 1, 65538, 852005, 1, 65538, 852006, 3, 131072, 852007, 3, 131073, 852008, 2, 65536, 852009, 2, 65537, 852010, 2, 65536, 852011, 2, 65537, 852016, 3, 65536, 852017, 3, 65537, 852018, 2, 65536, 852019, 2, 65537, 852022, 3, 65536, 852023, 3, 65537, 852024, 3, 131072, 852025, 3, 131073, 852026, 1, 65536, 852027, 1, 65537, 852028, 1, 65538, 852029, 1, 65538, 852030, 1, 65538, 852031, 1, 65538, 852032, 1, 65538, 852033, 1, 65538, 852034, 1, 65536, 852035, 1, 65537, 852036, 1, 65538, 852037, 1, 65538, 852038, 1, 65536, 852039, 1, 65537, 852040, 2, 131072, 852041, 2, 131073, 852042, 8, 131072, 852043, 8, 65536, 852044, 8, 65536, 852045, 8, 65536, 852046, 1, 131072, 852047, 1, 131073, 917568, 1, 131074, 917569, 1, 131074, 917570, 1, 65536, 917571, 1, 65537, 917572, 1, 131074, 917573, 1, 131074, 917574, 2, 262144, 917575, 2, 262145, 917576, 2, 262146, 917577, 2, 262147, 917578, 8, 65536, 917579, 8, 65536, 917580, 8, 65536, 917581, 8, 65536, 917582, 1, 65536, 917583, 1, 65537, 983104, 1, 131074, 983105, 1, 131074, 983106, 1, 131072, 983107, 1, 131073, 983108, 1, 131074, 983109, 1, 131074, 983110, 1, 0, 983111, 1, 1, 983112, 2, 0, 983113, 2, 1, 983114, 8, 131072, 983115, 8, 65536, 983116, 8, 65536, 983117, 8, 65536, 983118, 1, 0, 983119, 1, 1, 1048640, 1, 196610, 1048641, 1, 196610, 1048642, 1, 65536, 1048643, 1, 65537, 1048644, 1, 196610, 1048645, 1, 196610, 1048646, 1, 65536, 1048647, 1, 65537, 1048648, 2, 65536, 1048649, 2, 65537, 1048650, 8, 65536, 1048651, 8, 65536, 1048652, 8, 65536, 1048653, 8, 131073, 1048654, 1, 65536, 1048655, 1, 65537, 1114176, 1, 2, 1114177, 1, 2, 1114178, 1, 65536, 1114179, 1, 65537, 1114180, 1, 2, 1114181, 1, 2, 1114182, 1, 65536, 1114183, 1, 65537, 1114184, 2, 65536, 1114185, 2, 65537, 1114186, 8, 131072, 1114187, 8, 65536, 1114188, 8, 65536, 1114189, 8, 65536, 1114190, 1, 65536, 1114191, 1, 65537, 1179712, 3, 1, 1179715, 8, 0, 1179716, 8, 0, 1179717, 8, 0, 1179718, 8, 0, 1179719, 8, 0, 1179720, 2, 131072, 1179721, 2, 131073, 1179722, 8, 65536, 1179723, 8, 65536, 1179724, 8, 65536, 1179725, 8, 131073, 1179726, 1, 65536, 1179727, 1, 65537, 1245248, 3, 65537, 1245249, 8, 131072, 1245250, 8, 0, 1245251, 8, 65538, 1245252, 8, 65536, 1245253, 8, 65536, 1245254, 8, 131073, 1245255, 8, 65536, 1245256, 8, 0, 1245257, 8, 0, 1245258, 8, 65536, 1245259, 8, 65536, 1245260, 8, 65536, 1245261, 8, 65536, 1245262, 8, 0, 1245263, 3, 0, 1310784, 3, 131073, 1310785, 8, 0, 1310786, 8, 131073, 1310787, 8, 65538, 1310788, 8, 65536, 1310789, 8, 65536, 1310790, 8, 65536, 1310791, 8, 65536, 1310792, 8, 1, 1310793, 8, 2, 1310794, 8, 65536, 1310795, 8, 65536, 1310796, 8, 65536, 1310797, 8, 65536, 1310798, 8, 65536, 1310799, 3, 131072, 1376320, 3, 65537, 1376321, 8, 65536, 1376322, 8, 65536, 1376323, 8, 65538, 1376324, 1, 0, 1376325, 1, 1, 1376326, 8, 65536, 1376327, 8, 65536, 1376328, 8, 65537, 1376329, 8, 65538, 1376330, 8, 65536, 1376331, 8, 65536, 1376332, 8, 65536, 1376333, 8, 65536, 1376334, 8, 131073, 1376335, 3, 65536, 1441856, 3, 65537, 1441857, 8, 65538, 1441858, 8, 65536, 1441859, 8, 65538, 1441860, 1, 65536, 1441861, 1, 65537, 1441862, 8, 65536, 1441863, 8, 65536, 1441864, 8, 65536, 1441865, 8, 65536, 1441866, 8, 65536, 1441867, 8, 65536, 1441868, 8, 65536, 1441869, 8, 65536, 1441870, 8, 65536, 1441871, 3, 65536, 1507392, 3, 196609, 1507393, 8, 65538, 1507394, 8, 65536, 1507395, 8, 131073, 1507396, 1, 65536, 1507397, 1, 65537, 1507398, 1, 0, 1507399, 1, 1, 1507400, 8, 65536, 1507401, 8, 65536, 1507402, 8, 65536, 1507403, 8, 65536, 1507404, 8, 131073, 1507407, 3, 65536, 1572928, 1, 1, 1572929, 8, 65538, 1572930, 8, 65536, 1572931, 8, 65536, 1572932, 1, 65536, 1572933, 1, 65537, 1572934, 1, 65536, 1572935, 1, 65537, 1572936, 8, 65536, 1572937, 8, 131072, 1572938, 8, 65536, 1572939, 8, 131073, 1572943, 3, 196608, 1638464, 1, 65537, 1638465, 8, 65536, 1638466, 8, 65536, 1638467, 8, 131073, 1638468, 1, 131072, 1638469, 1, 131073, 1638470, 1, 65536, 1638471, 1, 65537, 1638472, 8, 65536, 1638473, 8, 65536, 1638474, 8, 131073, 1638476, 3, 0, 1638477, 3, 1, 1638478, 1, 2, 1638479, 1, 2, 1704000, 1, 131073, 1704001, 8, 65536, 1704002, 8, 131073, 1704004, 1, 65536, 1704005, 1, 65537, 1704006, 1, 131072, 1704007, 1, 131073, 1704008, 1, 2, 1704009, 1, 2, 1704010, 1, 2, 1704011, 1, 2, 1704012, 3, 131072, 1704013, 3, 131073, 1704014, 1, 65538, 1704015, 1, 65538, 1769536, 1, 65537, 1769537, 8, 131073, 1769540, 1, 65536, 1769541, 1, 65537, 1769542, 1, 65536, 1769543, 1, 65537, 1769544, 1, 65538, 1769545, 1, 65538, 1769546, 1, 65538, 1769547, 1, 65538, 1769548, 3, 65536, 1769549, 3, 65537, 1769550, 1, 131074, 1769551, 1, 131074 )
+
+[node name="IntroParallax" type="ParallaxBackground" parent="." index="1"]
+
+[node name="Layer1" type="ParallaxLayer" parent="IntroParallax" index="0"]
+motion_scale = Vector2( 0.5, 1 )
+motion_mirroring = Vector2( 256, 0 )
+
+[node name="TileMap" type="TileMap" parent="IntroParallax/Layer1" index="0"]
+tile_set = ExtResource( 6 )
+cell_size = Vector2( 16, 16 )
+format = 1
+tile_data = PoolIntArray( 0, 0, 0, 1, 0, 1, 2, 0, 0, 3, 0, 1, 4, 0, 0, 5, 0, 1, 6, 0, 0, 7, 0, 1, 8, 0, 0, 9, 0, 1, 10, 0, 0, 11, 0, 1, 12, 0, 0, 13, 0, 1, 14, 0, 0, 15, 0, 1 )
+
+[node name="Layer2" type="ParallaxLayer" parent="IntroParallax" index="1"]
+motion_scale = Vector2( 0.4, 1 )
+motion_mirroring = Vector2( 256, 0 )
+
+[node name="TileMap" type="TileMap" parent="IntroParallax/Layer2" index="0"]
+tile_set = ExtResource( 6 )
+cell_size = Vector2( 16, 16 )
+format = 1
+tile_data = PoolIntArray( 65536, 0, 65536, 65537, 0, 65537, 65538, 0, 65536, 65539, 0, 65537, 65540, 0, 65536, 65541, 0, 65537, 65542, 0, 65536, 65543, 0, 65537, 65544, 0, 65536, 65545, 0, 65537, 65546, 0, 65536, 65547, 0, 65537, 65548, 0, 65536, 65549, 0, 65537, 65550, 0, 65536, 65551, 0, 65537 )
+
+[node name="Layer3" type="ParallaxLayer" parent="IntroParallax" index="2"]
+motion_scale = Vector2( 0.3, 1 )
+motion_mirroring = Vector2( 256, 0 )
+
+[node name="TileMap" type="TileMap" parent="IntroParallax/Layer3" index="0"]
+tile_set = ExtResource( 6 )
+cell_size = Vector2( 16, 16 )
+format = 1
+tile_data = PoolIntArray( 131072, 0, 131072, 131073, 0, 131073, 131074, 0, 131072, 131075, 0, 131073, 131076, 0, 131072, 131077, 0, 131073, 131078, 0, 131072, 131079, 0, 131073, 131080, 0, 131072, 131081, 0, 131073, 131082, 0, 131072, 131083, 0, 131073, 131084, 0, 131072, 131085, 0, 131073, 131086, 0, 131072, 131087, 0, 131073 )
+
+[node name="Layer4" type="ParallaxLayer" parent="IntroParallax" index="3"]
+motion_scale = Vector2( 0.21, 1 )
+motion_mirroring = Vector2( 256, 0 )
+
+[node name="TileMap" type="TileMap" parent="IntroParallax/Layer4" index="0"]
+tile_set = ExtResource( 6 )
+cell_size = Vector2( 16, 16 )
+format = 1
+tile_data = PoolIntArray( 196608, 0, 196608, 196609, 0, 196609, 196610, 0, 196608, 196611, 0, 196609, 196612, 0, 196608, 196613, 0, 196609, 196614, 0, 196608, 196615, 0, 196609, 196616, 0, 196608, 196617, 0, 196609, 196618, 0, 196608, 196619, 0, 196609, 196620, 0, 196608, 196621, 0, 196609, 196622, 0, 196608, 196623, 0, 196609 )
+
+[node name="Layer5" type="ParallaxLayer" parent="IntroParallax" index="4"]
+motion_scale = Vector2( 0.2, 1 )
+motion_mirroring = Vector2( 256, 0 )
+
+[node name="TileMap" type="TileMap" parent="IntroParallax/Layer5" index="0"]
+tile_set = ExtResource( 6 )
+cell_size = Vector2( 16, 16 )
+format = 1
+tile_data = PoolIntArray( 262144, 0, 262144, 262145, 0, 262145, 262146, 0, 262144, 262147, 0, 262145, 262148, 0, 262144, 262149, 0, 262145, 262150, 0, 262144, 262151, 0, 262145, 262152, 0, 262144, 262153, 0, 262145, 262154, 0, 262144, 262155, 0, 262145, 262156, 0, 262144, 262157, 0, 262145, 262158, 0, 262144, 262159, 0, 262145 )
+
+[node name="Layer6" type="ParallaxLayer" parent="IntroParallax" index="5"]
+motion_scale = Vector2( 0.18, 1 )
+motion_mirroring = Vector2( 256, 0 )
+
+[node name="TileMap" type="TileMap" parent="IntroParallax/Layer6" index="0"]
+tile_set = ExtResource( 6 )
+cell_size = Vector2( 16, 16 )
+format = 1
+tile_data = PoolIntArray( 327680, 0, 262145, 327681, 0, 262144, 327684, 0, 262145, 327685, 0, 262144, 327690, 0, 262145, 327691, 0, 262144 )
+
+[node name="Player" parent="Iterable" index="1"]
+position = Vector2( 128, 163 )
+
+[node name="Spawners" type="Node2D" parent="." index="3"]
+
+[node name="HooHoo" parent="Spawners" index="0" instance=ExtResource( 8 )]
+position = Vector2( 320, 40 )
+obj_spawn = ExtResource( 11 )
+spawn_target_node = NodePath("../../Iterable")
+custom_parameters = {
+
+}
+
+[node name="HooHoo2" parent="Spawners" index="1" instance=ExtResource( 8 )]
+position = Vector2( 432, 80 )
+obj_spawn = ExtResource( 11 )
+spawn_target_node = NodePath("../../Iterable")
+custom_parameters = {
+
+}
+
+[node name="HooHoo3" parent="Spawners" index="2" instance=ExtResource( 8 )]
+position = Vector2( 608, 112 )
+obj_spawn = ExtResource( 11 )
+spawn_target_node = NodePath("../../Iterable")
+custom_parameters = {
+
+}
+
+[node name="HooHoo4" parent="Spawners" index="3" instance=ExtResource( 8 )]
+position = Vector2( 800, 96 )
+obj_spawn = ExtResource( 11 )
+spawn_target_node = NodePath("../../Iterable")
+custom_parameters = {
+
+}
+
+[node name="HooHoo5" parent="Spawners" index="4" instance=ExtResource( 8 )]
+position = Vector2( 832, 72 )
+obj_spawn = ExtResource( 11 )
+spawn_target_node = NodePath("../../Iterable")
+custom_parameters = {
+
+}
+
+[node name="HooHoo6" parent="Spawners" index="5" instance=ExtResource( 8 )]
+position = Vector2( 944, 104 )
+obj_spawn = ExtResource( 11 )
+spawn_target_node = NodePath("../../Iterable")
+custom_parameters = {
+
+}
+
+[node name="ShieldAtk" parent="Spawners" index="6" instance=ExtResource( 8 )]
+position = Vector2( 1184, 352 )
+obj_spawn = ExtResource( 7 )
+spawn_target_node = NodePath("../../Iterable")
+custom_parameters = {
+
+}
+
+[node name="Pickups" type="Node2D" parent="." index="4"]
+
+[node name="Life" parent="Pickups" index="0" instance=ExtResource( 8 )]
+position = Vector2( 1224, 24 )
+obj_spawn = ExtResource( 5 )
+spawn_target_node = NodePath("../../Iterable")
+custom_parameters = {
+"can_disappear": false
+}
+obj_deletion_by_signals = [ "collected" ]
+
+[node name="Ammo" parent="Pickups" index="1" instance=ExtResource( 8 )]
+position = Vector2( 1240, 24 )
+obj_spawn = ExtResource( 9 )
+spawn_target_node = NodePath("../../Iterable")
+custom_parameters = {
+"can_disappear": false
+}
+obj_deletion_by_signals = [ "collected" ]
+
+[node name="View" parent="ViewContainer" index="0"]
+margin_right = 1024.0
+margin_bottom = 224.0
+
+[node name="ScreenTransitor" parent="ViewContainer/View" index="2" instance=ExtResource( 4 )]
+margin_left = 1024.0
+margin_top = 64.0
+margin_right = 1040.0
+margin_bottom = 192.0
+target_view = NodePath("../../View2")
+active_view = NodePath("..")
+direction = 1
+
+[node name="View2" parent="ViewContainer" index="1" instance=ExtResource( 3 )]
+margin_left = 1024.0
+margin_right = 1280.0
+margin_bottom = 224.0
+
+[node name="ScreenTransitor2" parent="ViewContainer/View2" index="2" instance=ExtResource( 4 )]
+margin_left = 160.0
+margin_top = 224.0
+margin_right = 224.0
+margin_bottom = 240.0
+target_view = NodePath("../../View3")
+active_view = NodePath("..")
+direction = 3
+
+[node name="View3" parent="ViewContainer" index="2" instance=ExtResource( 3 )]
+margin_left = 1024.0
+margin_top = 224.0
+margin_right = 1280.0
+margin_bottom = 448.0
+
+[node name="View4" parent="ViewContainer" index="3" instance=ExtResource( 3 )]
+margin_left = 1024.0
+margin_top = 448.0
+margin_right = 1792.0
+margin_bottom = 672.0
+
+[editable path="Camera2D"]

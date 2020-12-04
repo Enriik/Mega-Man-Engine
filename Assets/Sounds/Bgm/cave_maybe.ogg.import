@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/cave_maybe.ogg-acfff591faec553cd79dfd6bed5d3150.oggstr"
+
+[deps]
+
+source_file="res://Assets/Sounds/Bgm/cave_maybe.ogg"
+dest_files=[ "res://.import/cave_maybe.ogg-acfff591faec553cd79dfd6bed5d3150.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

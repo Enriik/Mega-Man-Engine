@@ -47,7 +47,7 @@ func _process(delta):
 				RANGE_CHECKING_MODE = preset_range_checking_mode.Vertical
 			elif RANGE_CHECKING_MODE == preset_range_checking_mode.Vertical:
 				RANGE_CHECKING_MODE = preset_range_checking_mode.Horizontal
-			if within_player_range(approrach_range):
+			if within_player_range(approrach_range - 32):
 				#Change state
 				sine_bhv.active_on_start = true
 				sine_bhv._init_position = get_position()

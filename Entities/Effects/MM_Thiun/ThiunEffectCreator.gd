@@ -9,7 +9,7 @@ func create() -> void:
 		printerr('create target is null. Returned 0.')
 		return
 	
-	var speed = [60,120]
+	var speed = [240, 120]
 	var degrees_increment = 45
 	var create_count = 8
 	

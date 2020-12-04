@@ -9,6 +9,7 @@ signal dropped_diamond
 signal damage_counter_released(value, target)
 signal slain(target)
 signal despawned(by_dying)
+signal dying
 
 enum preset_range_checking_mode {
 	Radius, Horizontal, Vertical
@@ -248,6 +249,8 @@ func calculate_damage_output(var raw_damage : float) -> float:
 	#Ex: If damage is -25, it's finalized as 1 by default.
 	if damage_result < damage_taken_minimum:
 		damage_result = damage_taken_minimum
+		
+		
 	
 	return damage_result
 
@@ -289,12 +292,16 @@ func check_for_death():
 		FJ_AudioManager.sfx_combat_buster_fullycharged.call_deferred("stop")
 	
 	if !death_immunity && current_hp <= 0:
-		if FJ_AudioManager.sfx_character_enemy_damage.is_playing():
-			FJ_AudioManager.sfx_character_enemy_damage.call_deferred("stop")
-		play_death_sfx()
+#		if FJ_AudioManager.sfx_character_enemy_damage.is_playing():
+#			FJ_AudioManager.sfx_character_enemy_damage.call_deferred("stop")
+#		play_death_sfx()
+		emit_signal("dying")
 		die()
-	else:
-		FJ_AudioManager.sfx_character_enemy_damage.play()
+#	else:
+#		FJ_AudioManager.sfx_character_enemy_damage.play()
+	
+	FJ_AudioManager.sfx_character_enemy_damage.play()
+	
 
 func die():
 	#Create death animation effect
@@ -377,6 +384,7 @@ func spawn_items_by_amount(var item_path : String, var quantity : int = 1):
 		item_inst.item_data_file = item_path #File
 		item_inst.ITEM_TYPE = 1 #Item
 		item_inst.global_position = self.global_position
+		item_inst.visible = false
 	
 	emit_signal("dropped_item", item_path, quantity)
 

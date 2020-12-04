@@ -18,7 +18,7 @@ onready var flood_floor_shoot_pos = $Flip/FloodFloorShootPos
 onready var freeze_cracker_shoot_pos = $Flip/FreezeCrackerShootPos
 onready var launch_icicle_pos = $Flip/LaunchIciclePos
 
-onready var PHASE_2_AT_HP = hit_points_base / 3
+onready var PHASE_2_AT_HP = hit_points_base
 
 var is_provoked = false
 var current_atk_pattern : int = 0
@@ -180,23 +180,25 @@ func stop_moving():
 	pf_bhv.simulate_walk_right = false
 
 func fire_freeze_cracker():
-	var proj = freeze_cracker_proj.instance()
-	get_parent().add_child(proj)
-	proj.global_position = freeze_cracker_shoot_pos.global_position
-	if flip.scale.x == 1:
-		proj.bullet_behavior.angle_in_degrees = 180
+	
 	
 	if current_hp < PHASE_2_AT_HP:
-		var directions_left = [195, 210, 225, 240]
-		var directions_right = [-15, -30, -45, -60]
+		var directions_left = [-120]
+		var directions_right = [-60]
 		for i in directions_left.size():
-			proj = freeze_cracker_proj.instance()
+			var proj = freeze_cracker_proj.instance()
 			get_parent().add_child(proj)
 			proj.global_position = freeze_cracker_shoot_pos.global_position
 			if flip.scale.x == 1:
 				proj.bullet_behavior.angle_in_degrees = directions_left[i]
 			else:
 				proj.bullet_behavior.angle_in_degrees = directions_right[i]
+	else:
+		var proj = freeze_cracker_proj.instance()
+		get_parent().add_child(proj)
+		proj.global_position = freeze_cracker_shoot_pos.global_position
+		if flip.scale.x == 1:
+			proj.bullet_behavior.angle_in_degrees = 180
 
 func fire_flood_icy_floor():
 	var proj_count = 3 if current_hp < PHASE_2_AT_HP else 1

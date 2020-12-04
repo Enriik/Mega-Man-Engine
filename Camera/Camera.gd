@@ -78,6 +78,7 @@ func _move_to_target_paths_positions():
 		all_global_positions.push_front(g_pos)
 	
 	self.global_position = all_global_positions[0]
+	
 
 # Kick off a new screenshake effect.
 func shake_camera(duration, frequency, amplitude):

@@ -109,6 +109,7 @@ onready var sfx_collectibles_diamond : AudioStreamPlayer = $SFX/Collectibles/Sfx
 onready var sfx_collectibles_item : AudioStreamPlayer = $SFX/Collectibles/Sfx_Item
 
 onready var sfx_combat_ballade_cracker_bomb : AudioStreamPlayer = $SFX/Combat/Sfx_BalladeCrackerBomb
+onready var sfx_combat_blues_charging : AudioStreamPlayer = $SFX/Combat/Sfx_BluesCharging
 onready var sfx_combat_blues_shot : AudioStreamPlayer = $SFX/Combat/Sfx_BluesShot
 onready var sfx_combat_boulder : AudioStreamPlayer = $SFX/Combat/Sfx_Boulder
 onready var sfx_combat_buster : AudioStreamPlayer = $SFX/Combat/Sfx_Buster
@@ -160,6 +161,7 @@ func play_bgm(var what_bgm : AudioStreamOGGVorbis):
 		bgm_core.volume_db = 0
 		bgm_core.set_stream(what_bgm)
 		bgm_core.play()
+		bgm_core.pitch_scale
 		current_bgm = new_bgm_path
 		emit_signal("bgm_just_started", what_bgm.get_path().replace("res://Audio/Bgm/", "").replace(".ogg", ""))
 

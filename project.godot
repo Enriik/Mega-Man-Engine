@@ -452,6 +452,7 @@ GameHUD="*res://GUI/GameHUD/GameHUD.tscn"
 
 [debug]
 
+settings/fps/force_fps=60
 gdscript/completion/autocomplete_setters_and_getters=true
 gdscript/warnings/unassigned_variable=false
 gdscript/warnings/unassigned_variable_op_assign=false
