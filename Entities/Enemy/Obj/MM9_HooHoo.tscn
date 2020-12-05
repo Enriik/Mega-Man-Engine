@@ -11,11 +11,10 @@
 atlas = ExtResource( 3 )
 region = Rect2( 0, 0, 32, 32 )
 
-[sub_resource type="Curve" id=3]
+[sub_resource type="Curve" id=2]
 _data = [ Vector2( 0, 0 ), 0.0, 0.0, 0, 0, Vector2( 0.498442, 0.715517 ), 0.0, 0.0, 0, 0, Vector2( 1, 0 ), 0.0, 0.0, 0, 0 ]
 
-[sub_resource type="Animation" id=2]
-resource_name = "Flying"
+[sub_resource type="Animation" id=3]
 length = 0.4
 loop = true
 tracks/0/type = "value"
@@ -46,7 +45,7 @@ angle_in_degrees = -180.0
 
 [node name="SineBehavior" parent="." index="1" instance=ExtResource( 4 )]
 movement = 1
-wave = SubResource( 3 )
+wave = SubResource( 2 )
 period = 0.6
 magnitude = 16.0
 
@@ -59,7 +58,7 @@ hframes = 2
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="SpriteMain/Sprite" index="0"]
 autoplay = "Flying"
-anims/Flying = SubResource( 2 )
+anims/Flying = SubResource( 3 )
 
 [node name="DamageArea" type="Area2D" parent="." index="8"]
 collision_layer = 8

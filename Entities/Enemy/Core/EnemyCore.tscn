@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=2]
+[gd_scene load_steps=25 format=2]
 
 [ext_resource path="res://Entities/Enemy/Core/EnemyCore.gd" type="Script" id=1]
 [ext_resource path="res://Entities/Effects/Explosion/Explosion.tscn" type="PackedScene" id=2]
@@ -11,6 +11,7 @@
 [ext_resource path="res://Lib/FJ_LibHelper/ItemTable/ItemSet/ItemSetData/ItemSetData.gd" type="Script" id=9]
 [ext_resource path="res://Assets/Sprites/Effects/Damage.png" type="Texture" id=10]
 [ext_resource path="res://Lib/FJ_LibHelper/ItemTable/ItemTable.tscn" type="PackedScene" id=11]
+[ext_resource path="res://Lib/FJ_LibHelper/PreciseVisibilityNotifier2D/PreciseVisibilityNotifier2D.tscn" type="PackedScene" id=12]
 
 [sub_resource type="Animation" id=1]
 length = 0.12
@@ -157,11 +158,7 @@ visible = false
 shape = SubResource( 4 )
 disabled = true
 
-[node name="ActiveVisNotifier" type="VisibilityNotifier2D" parent="."]
-visible = false
-position = Vector2( -4.76837e-07, -0.999999 )
-scale = Vector2( 3.2, 3.1 )
-rect = Rect2( -8, -8, 16, 16 )
+[node name="PreciseVisibilityNotifier2D" parent="." instance=ExtResource( 12 )]
 
 [node name="VisibilityEnabler2D" type="VisibilityEnabler2D" parent="."]
 visible = false
@@ -187,5 +184,5 @@ anims/StopFlashing = SubResource( 12 )
 
 [node name="ItemTable" parent="." instance=ExtResource( 11 )]
 enabled = true
-[connection signal="screen_exited" from="ActiveVisNotifier" to="." method="_on_ActiveVisNotifier_screen_exited"]
+[connection signal="visibility_exited" from="PreciseVisibilityNotifier2D" to="." method="_on_PreciseVisibilityNotifier2D_visibility_exited"]
 [connection signal="timeout" from="InvisTimer" to="." method="_on_InvisTimer_timeout"]

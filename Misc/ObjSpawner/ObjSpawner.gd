@@ -76,7 +76,7 @@ export (Array, String) var obj_deletion_by_signals : Array
 ### Child Nodes ###
 ###################
 
-onready var spawn_range_vis = $SpawnRange as VisibilityNotifier2D
+onready var spawn_range_vis = $PreciseVisibilityNotifier2D
 onready var spawn_timer = $SpawnTimer as Timer
 onready var sprite_preview = $SpritePreview as Sprite
 
@@ -139,6 +139,7 @@ func set_spawn_range(var new_value):
 
 #Ready
 func _ready():
+	spawn_range_vis.detection_box_size = Vector2(spawn_range, spawn_range)
 	_update_sprite_preview()
 
 #Update sprite texture preview.
@@ -166,7 +167,7 @@ func spawn_object(var check : bool = true):
 	
 	#If the object can only spawn on active screen,
 	#checks whether this spawner is on screen.
-	if activate_only_on_screen and !spawn_range_vis.is_on_screen():
+	if activate_only_on_screen and !spawn_range_vis.is_inside_visible_viewport_rect():
 		check_passed = false
 	#If the obj is being spawned, check if it exceeds limit.
 	if obj_exist_limit != -1 and my_obj_count >= obj_exist_limit:
@@ -228,7 +229,7 @@ func is_my_obj_exist() -> bool:
 func _on_SpawnTimer_timeout():
 	if get_node("/root/BitFlagsComparator").is_bit_enabled(spawn_on, 0):
 		spawn_object()
-func _on_SpawnRange_screen_entered() -> void:
+func _on_PreciseVisibilityNotifier2D_visibility_entered() -> void:
 	if get_node("/root/BitFlagsComparator").is_bit_enabled(spawn_on, 1):
 		spawn_object()
 func _on_my_spawned_obj_exited():

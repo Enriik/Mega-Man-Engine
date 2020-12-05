@@ -24,7 +24,7 @@ current_palette_state = 0
 palette_states = [  ]
 
 [node name="DelayTimer" type="Timer" parent="PlayerVitalBar"]
-wait_time = 0.06
+wait_time = 0.065
 one_shot = true
 
 [node name="PlayerWeaponBar" type="Sprite" parent="."]
@@ -44,7 +44,7 @@ current_palette_state = 0
 palette_states = [  ]
 
 [node name="DelayTimer" type="Timer" parent="PlayerWeaponBar"]
-wait_time = 0.06
+wait_time = 0.065
 one_shot = true
 
 [node name="BossVitalBar" type="Sprite" parent="."]
@@ -63,7 +63,7 @@ current_palette_state = 0
 palette_states = [  ]
 
 [node name="DelayTimer" type="Timer" parent="BossVitalBar"]
-wait_time = 0.06
+wait_time = 0.065
 one_shot = true
 [connection signal="timeout" from="PlayerVitalBar/DelayTimer" to="." method="_on_PlayerVitalBar_DelayTimer_timeout"]
 [connection signal="timeout" from="PlayerWeaponBar/DelayTimer" to="." method="_on_PlayerWeaponBar_DelayTimer_timeout"]

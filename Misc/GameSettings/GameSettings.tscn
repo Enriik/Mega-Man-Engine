@@ -15,6 +15,6 @@ damage_popup_enemy = false
 
 [node name="Audio" type="Node" parent="."]
 script = ExtResource( 3 )
-sfx_volume = -5.0
+sfx_volume = -4.0
 
 [node name="Control" type="Node" parent="."]

@@ -92,7 +92,7 @@ func _on_TransitionTween_tween_all_completed() -> void:
 	emit_signal("transit_completed")
 	
 	#Call all on-screen ObjSpawner to spawn obj right away (OnScreen enabled only).
-	get_tree().call_group("ObjSpawner", "_on_SpawnRange_screen_entered")
+	get_tree().call_group("ObjSpawner", "spawn_object")
 
 func init_screen_transition(direction : Vector2, duration : float, target_view, reset_vel_x : bool, reset_vel_y : bool, start_delay : float, finish_delay : float, transit_distance : float) -> void:
 	start_screen_transition()

@@ -85,6 +85,7 @@ export(String) var DEFAULT_CONTROL_JUMP = 'game_jump'
 export (bool) var WARPS_AROUND_UP_DOWN = true
 export (bool) var WARPS_LEFT_RIGHT_SIDE = true
 export (Vector2) var WARP_OFFSET := Vector2(8, 24)
+export (Vector2) var snap_floor_pixel = Vector2(0, 5)
 
 #Define NodePath.
 #If not defined, some features will not be used.
@@ -255,7 +256,12 @@ func _physics_process(delta):
 #Sets velocity after move_and_slide() on parent node is called.
 func custom_move_and_slide(custom_velocity, custom_floor_normal) -> Vector2:
 	if parent is KinematicBody2D:
-		var vel = parent.move_and_slide(custom_velocity, custom_floor_normal)
+		var vel : Vector2
+		
+		if jump and on_floor:
+			vel = parent.move_and_slide(custom_velocity, custom_floor_normal)
+		else:
+			vel = parent.move_and_slide_with_snap(custom_velocity, snap_floor_pixel, custom_floor_normal)
 		
 		if parent.get_slide_count() > 0:
 			for i in parent.get_slide_count():

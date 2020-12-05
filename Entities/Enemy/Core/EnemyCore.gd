@@ -84,7 +84,6 @@ onready var flicker_anim = $SpriteMain/FlickerAnimationPlayer
 onready var sprite_main = $SpriteMain
 onready var sprite = $SpriteMain/Sprite
 onready var platform_collision_shape = $PlatformCollisionShape2D as CollisionShape2D
-onready var active_vis_notifier = $ActiveVisNotifier
 onready var level_camera = get_node("/root/Level/Camera2D")
 onready var pickups_drop_set = $PickupsDropSet as ItemSet
 onready var damage_sprite_ani = $DamageSprite/Ani
@@ -419,7 +418,7 @@ func is_at_full_health():
 	return current_hp >= hit_points_base
 
 #When enemy leaves the screen, the enemy disappear.
-func _on_ActiveVisNotifier_screen_exited():
+func _on_PreciseVisibilityNotifier2D_visibility_exited():
 	if DESTROY_OUTSIDE_SCREEN:
 		#Reset to initial state for respawning
 		queue_free_start(false)
@@ -466,9 +465,9 @@ func get_player_distance() -> float:
 		preset_range_checking_mode.Radius:
 			return self.global_position.distance_to(actual_player.global_position)
 		preset_range_checking_mode.Horizontal:
-			return abs(self.global_position.x - actual_player.global_position.x)
+			return self.global_position.x - actual_player.global_position.x
 		preset_range_checking_mode.Vertical:
-			return abs(self.global_position.y - actual_player.global_position.y)
+			return self.global_position.y - actual_player.global_position.y
 	
 	assert(false) #Mode error!
 	return 0.0
@@ -480,3 +479,4 @@ func _on_InvisTimer_timeout() -> void:
 	is_invincible = false
 	damage_sprite_ani.play("StopFlashing")
 	flicker_anim.play("NoLongerDamage")
+

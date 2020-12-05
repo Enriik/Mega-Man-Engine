@@ -12,7 +12,7 @@ func _ready() -> void:
 		bullet_bhv.angle_in_degrees -= 180
 
 func _physics_process(delta: float) -> void:
-	if get_player_distance() < 32:
+	if abs(get_player_distance()) < 32:
 		detach_bomb()
 		detected = true
 

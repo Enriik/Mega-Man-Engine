@@ -133,6 +133,11 @@ onready var sfx_combat_wheel_cutter_wall : AudioStreamPlayer = $SFX/Combat/Sfx_W
 
 onready var sfx_env_boss_door : AudioStreamPlayer = $SFX/Environments/Sfx_BossDoor
 onready var sfx_env_coin_landing : AudioStreamPlayer = $SFX/Environments/Sfx_CoinLanding
+onready var sfx_env_chain_end : AudioStreamPlayer = $SFX/Environments/Sfx_ChainEnd
+onready var sfx_env_chain_loop : AudioStreamPlayer = $SFX/Environments/Sfx_ChainLoop
+onready var sfx_env_chain_raise : AudioStreamPlayer = $SFX/Environments/Sfx_ChainRaise
+onready var sfx_env_concrete_down : AudioStreamPlayer = $SFX/Environments/Sfx_ConcreteDown
+onready var sfx_env_concrete_up : AudioStreamPlayer = $SFX/Environments/Sfx_ConcreteUp
 onready var sfx_env_diamond_landing : AudioStreamPlayer = $SFX/Environments/Sfx_DiamondLanding
 onready var sfx_env_enter_door : AudioStreamPlayer = $SFX/Environments/Sfx_EnterDoor
 onready var sfx_env_fan : AudioStreamPlayer = $SFX/Environments/Sfx_Fan

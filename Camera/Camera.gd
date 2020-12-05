@@ -176,3 +176,12 @@ func start_screen_transition(normalized_direction : Vector2, duration : float, s
 	)
 	
 	transition_tween.start()
+
+# Returns current screen rectangle referenced by current camera's
+# center position.
+func get_current_screen_rect() -> Rect2:
+	var cam_pos : Vector2 = get_camera_screen_center()
+	var vp_rect_size = get_viewport_rect().size
+	var vp_rect_half_size = Vector2(int(vp_rect_size.x) >> 1, int(vp_rect_size.y) >> 1)
+	
+	return Rect2(cam_pos - vp_rect_half_size, vp_rect_size)

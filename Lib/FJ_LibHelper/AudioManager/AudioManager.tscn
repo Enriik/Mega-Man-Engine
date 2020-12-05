@@ -1,4 +1,4 @@
-[gd_scene load_steps=52 format=2]
+[gd_scene load_steps=57 format=2]
 
 [ext_resource path="res://Lib/FJ_LibHelper/AudioManager/AudioManager.gd" type="Script" id=1]
 [ext_resource path="res://Assets/Sounds/Sfx/Character/Collapse6.wav" type="AudioStream" id=2]
@@ -46,6 +46,11 @@
 [ext_resource path="res://Assets/Sounds/Sfx/UI/OneUp.wav" type="AudioStream" id=44]
 [ext_resource path="res://Assets/Sounds/Sfx/Uncategorized/MAGMML2_SeriousDamage.wav" type="AudioStream" id=45]
 [ext_resource path="res://Assets/Sounds/Sfx/Combat/BusterCharging.wav" type="AudioStream" id=46]
+[ext_resource path="res://Assets/Sounds/Sfx/Environments/ChainEnd.wav" type="AudioStream" id=47]
+[ext_resource path="res://Assets/Sounds/Sfx/Environments/ChainLoop.wav" type="AudioStream" id=48]
+[ext_resource path="res://Assets/Sounds/Sfx/Environments/ChainRaise.wav" type="AudioStream" id=49]
+[ext_resource path="res://Assets/Sounds/Sfx/Environments/ConcreteUp.wav" type="AudioStream" id=50]
+[ext_resource path="res://Assets/Sounds/Sfx/Environments/ConcreteDown.wav" type="AudioStream" id=51]
 
 [sub_resource type="Animation" id=1]
 resource_name = "Dim"
@@ -317,12 +322,35 @@ bus = "SFX"
 
 [node name="Sfx_BossDoor" type="AudioStreamPlayer" parent="SFX/Environments"]
 stream = ExtResource( 33 )
-volume_db = -6.0
+volume_db = -3.0
 bus = "SFX"
 
 [node name="Sfx_CoinLanding" type="AudioStreamPlayer" parent="SFX/Environments"]
 stream = ExtResource( 34 )
 volume_db = -12.0
+bus = "SFX"
+
+[node name="Sfx_ChainEnd" type="AudioStreamPlayer" parent="SFX/Environments"]
+stream = ExtResource( 47 )
+volume_db = 5.0
+bus = "SFX"
+
+[node name="Sfx_ChainLoop" type="AudioStreamPlayer" parent="SFX/Environments"]
+stream = ExtResource( 48 )
+volume_db = 3.0
+bus = "SFX"
+
+[node name="Sfx_ChainRaise" type="AudioStreamPlayer" parent="SFX/Environments"]
+stream = ExtResource( 49 )
+volume_db = 3.0
+bus = "SFX"
+
+[node name="Sfx_ConcreteDown" type="AudioStreamPlayer" parent="SFX/Environments"]
+stream = ExtResource( 51 )
+bus = "SFX"
+
+[node name="Sfx_ConcreteUp" type="AudioStreamPlayer" parent="SFX/Environments"]
+stream = ExtResource( 50 )
 bus = "SFX"
 
 [node name="Sfx_DiamondLanding" type="AudioStreamPlayer" parent="SFX/Environments"]
@@ -357,7 +385,6 @@ bus = "SFX"
 
 [node name="Sfx_BossFillHp" type="AudioStreamPlayer" parent="SFX/UI"]
 stream = ExtResource( 41 )
-volume_db = -3.0
 bus = "SFX"
 
 [node name="Sfx_GameStart" type="AudioStreamPlayer" parent="SFX/UI"]

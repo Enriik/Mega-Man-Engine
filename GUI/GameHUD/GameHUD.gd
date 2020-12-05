@@ -74,18 +74,21 @@ func _fill_process_start():
 	if remaining_player_vital_fill > 0 and player_vital_bar.frame < 28:
 		player_vital_bar_delay_timer.start()
 		get_tree().set_pause(true)
-		FJ_AudioManager.sfx_ui_boss_fill_hp.play()
+		if not FJ_AudioManager.sfx_ui_boss_fill_hp.playing:
+			FJ_AudioManager.sfx_ui_boss_fill_hp.play()
 		is_filling = true
 		return
 	if remaining_player_weapon_fill > 0 and player_weapon_bar.frame < 28:
 		get_tree().set_pause(true)
 		player_weapon_bar_delay_timer.start()
-		FJ_AudioManager.sfx_ui_boss_fill_hp.play()
+		if not FJ_AudioManager.sfx_ui_boss_fill_hp.playing:
+			FJ_AudioManager.sfx_ui_boss_fill_hp.play()
 		is_filling = true
 		return
 	if remaining_boss_vital_fill > 0 and boss_vital_bar.frame < 28:
 		boss_vital_bar_delay_timer.start()
-		FJ_AudioManager.sfx_ui_boss_fill_hp.play()
+		if not FJ_AudioManager.sfx_ui_boss_fill_hp.playing:
+			FJ_AudioManager.sfx_ui_boss_fill_hp.play()
 		is_filling = true
 		return
 	

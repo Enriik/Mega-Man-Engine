@@ -53,7 +53,7 @@ z_index = 999
 z_as_relative = false
 
 [node name="SpriteCycling" parent="Iterable" instance=ExtResource( 2 )]
-frames_per_iterate = [ 0, 1 ]
+frames_per_iterate = [ 0 ]
 
 [node name="Player" parent="Iterable" instance=ExtResource( 3 )]
 position = Vector2( 166.438, 80.0763 )
@@ -109,7 +109,7 @@ default_view = NodePath("View")
 
 [node name="View" parent="ViewContainer" instance=ExtResource( 10 )]
 [connection signal="player_die_normally" from="Iterable/Player" to="Iterable/Player/ThiunEffectCreator" method="create"]
-[connection signal="tween_all_completed" from="Camera2D/TransitionTween" to="Iterable/Player" method="_on_TransitionTween_tween_all_completed"]
 [connection signal="tween_all_completed" from="Camera2D/TransitionTween" to="." method="_on_TransitionTween_tween_all_completed"]
+[connection signal="tween_all_completed" from="Camera2D/TransitionTween" to="Iterable/Player" method="_on_TransitionTween_tween_all_completed"]
 
 [editable path="Camera2D"]

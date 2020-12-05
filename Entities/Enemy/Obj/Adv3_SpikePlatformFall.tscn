@@ -57,6 +57,23 @@ tracks/0/keys = {
 
 [node name="SpikePlatformFall" instance=ExtResource( 1 )]
 script = ExtResource( 2 )
+death_sound = 0
+death_immunity = false
+damage_taken_minimum = 0
+can_damage = true
+damage_custom_invis_enabled = false
+damage_custom_invis_timer = 0.1
+hit_points_base = 40
+repel_player_enabled = true
+repel_power = 300
+DEATH_SHAKE_STRENGTH = 3
+RANGE_CHECKING_MODE = 0
+ACTIVE_ON_SCREEN = Vector2( 32, 32 )
+DESTROY_OUTSIDE_SCREEN = true
+PERMA_DEATH_SCENE = true
+PERMA_DEATH_LEVEL = false
+IS_A_CLONE = false
+invincible_enabled = false
 pickups_drop_enabled = false
 
 [node name="PlatformBehavior" parent="." index="0" instance=ExtResource( 3 )]
