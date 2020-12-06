@@ -1,4 +1,4 @@
-[gd_scene load_steps=57 format=2]
+[gd_scene load_steps=58 format=2]
 
 [ext_resource path="res://Lib/FJ_LibHelper/AudioManager/AudioManager.gd" type="Script" id=1]
 [ext_resource path="res://Assets/Sounds/Sfx/Character/Collapse6.wav" type="AudioStream" id=2]
@@ -51,6 +51,7 @@
 [ext_resource path="res://Assets/Sounds/Sfx/Environments/ChainRaise.wav" type="AudioStream" id=49]
 [ext_resource path="res://Assets/Sounds/Sfx/Environments/ConcreteUp.wav" type="AudioStream" id=50]
 [ext_resource path="res://Assets/Sounds/Sfx/Environments/ConcreteDown.wav" type="AudioStream" id=51]
+[ext_resource path="res://Assets/Sounds/Sfx/Combat/MM3_ShadowBlade.wav" type="AudioStream" id=52]
 
 [sub_resource type="Animation" id=1]
 resource_name = "Dim"
@@ -303,9 +304,13 @@ bus = "SFX"
 stream = ExtResource( 29 )
 bus = "SFX"
 
+[node name="Sfx_ShadowBlade" type="AudioStreamPlayer" parent="SFX/Combat"]
+stream = ExtResource( 52 )
+volume_db = 3.0
+bus = "SFX"
+
 [node name="Sfx_Shot" type="AudioStreamPlayer" parent="SFX/Combat"]
 stream = ExtResource( 30 )
-volume_db = -3.0
 bus = "SFX"
 
 [node name="Sfx_WheelCutter" type="AudioStreamPlayer" parent="SFX/Combat"]
@@ -322,7 +327,7 @@ bus = "SFX"
 
 [node name="Sfx_BossDoor" type="AudioStreamPlayer" parent="SFX/Environments"]
 stream = ExtResource( 33 )
-volume_db = -3.0
+volume_db = 1.0
 bus = "SFX"
 
 [node name="Sfx_CoinLanding" type="AudioStreamPlayer" parent="SFX/Environments"]
@@ -342,7 +347,7 @@ bus = "SFX"
 
 [node name="Sfx_ChainRaise" type="AudioStreamPlayer" parent="SFX/Environments"]
 stream = ExtResource( 49 )
-volume_db = 3.0
+volume_db = 5.0
 bus = "SFX"
 
 [node name="Sfx_ConcreteDown" type="AudioStreamPlayer" parent="SFX/Environments"]

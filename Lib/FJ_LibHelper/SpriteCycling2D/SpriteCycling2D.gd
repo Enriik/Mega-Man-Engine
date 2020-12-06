@@ -86,16 +86,16 @@ func _process(delta : float) -> void:
 #
 #	for i in drawable_children.size():
 #		var wraped_draw_idx = wrapi(i + draw_idx, 0, drawable_children.size())
-#
+#		
 #		if not is_instance_valid(drawable_children[wraped_draw_idx]):
 #			continue
 #		if sprite_drawn >= MAX_SPRITE_DRAW_COUNT:
 #			continue
-#
+#		
 #		drawable_children[wraped_draw_idx].visible = true
 #		sprite_drawn += 1
-#
-#	draw_idx += sprite_drawn
+#		
+#		draw_idx += sprite_drawn
 	
 #	if children != null:
 #		if swap_mode == 0:
@@ -114,7 +114,7 @@ func _process(delta : float) -> void:
 #					else:
 #						children[i].visible = false
 #					current_loop += 1
-	
+#	
 #	if current_loop >= MAX_LOOPABLE * 1.5:
 #		Engine.set_time_scale(0.6)
 #	else:

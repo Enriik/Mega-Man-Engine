@@ -373,6 +373,7 @@ one_shot = true
 [connection signal="input_event" from="." to="." method="_on_Player_input_event"]
 [connection signal="launched_attack" from="." to="PlatformerSprite" method="start_normal_attack_animation"]
 [connection signal="collided" from="PlatformBehavior" to="." method="_on_PlatformerBehavior_collided"]
+[connection signal="crushed" from="PlatformBehavior" to="." method="_on_PlatformBehavior_crushed"]
 [connection signal="fell_into_pit" from="PlatformBehavior" to="." method="_on_PlatformerBehavior_fell_into_pit"]
 [connection signal="jumped_by_keypress" from="PlatformBehavior" to="." method="_on_PlatformBehavior_jumped_by_keypress"]
 [connection signal="landed" from="PlatformBehavior" to="." method="_on_PlatformBehavior_landed"]

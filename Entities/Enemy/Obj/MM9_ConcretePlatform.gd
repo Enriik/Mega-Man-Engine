@@ -10,7 +10,6 @@ const ACTIVATE_SHIFT = Vector2(0, 2)
 
 export (bool) var down
 export (float) var shift_time = 0.08
-export (float) var gravity = 500
 
 onready var initial_gpos : Vector2 = global_position
 
@@ -33,9 +32,9 @@ func activate():
 	
 	$BulletBehavior.active = true
 	if down:
-		$BulletBehavior.gravity = gravity
+		$BulletBehavior.angle_in_degrees = 90
 	else:
-		$BulletBehavior.gravity = -gravity
+		$BulletBehavior.angle_in_degrees = -90
 
 func _on_DetectArea2D_area_entered(area: Area2D) -> void:
 	if not state == State.INITIAL:

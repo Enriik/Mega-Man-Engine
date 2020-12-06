@@ -52,7 +52,7 @@ func start_attack():
 	state = State.FALLING
 
 func fire():
-	var directions = [0, -180]
+	var directions = [-10, 10, -170, -190]
 	
 	for i in directions:
 		var blt = BULLET.instance()

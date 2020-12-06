@@ -1,0 +1,264 @@
+[gd_scene load_steps=17 format=2]
+
+[ext_resource path="res://Entities/Enemy/Core/BossCore.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Entities/Enemy/Obj/MM3_ShadowMan.gd" type="Script" id=2]
+[ext_resource path="res://Assets/Sprites/Enemies/MM3_ShadowMan.png" type="Texture" id=3]
+[ext_resource path="res://Lib/FJ_LibHelper/PlatformBehavior2D/PlatformBehavior2D.tscn" type="PackedScene" id=4]
+
+[sub_resource type="AtlasTexture" id=3]
+atlas = ExtResource( 3 )
+region = Rect2( 0, 0, 32, 48 )
+
+[sub_resource type="Animation" id=6]
+resource_name = "Dash"
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 9 ]
+}
+
+[sub_resource type="Animation" id=12]
+resource_name = "Flee"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 5 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("..:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 0.5, 0.5 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ), Vector2( 0, -256 ) ]
+}
+
+[sub_resource type="Animation" id=5]
+resource_name = "Idle"
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 0 ]
+}
+
+[sub_resource type="Animation" id=7]
+resource_name = "Jump"
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 4 ]
+}
+
+[sub_resource type="Animation" id=8]
+resource_name = "JumpAttack"
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 5 ]
+}
+
+[sub_resource type="Animation" id=1]
+resource_name = "Pose"
+length = 0.5
+step = 0.01
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.3 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ 1, 2, 3 ]
+}
+
+[sub_resource type="Animation" id=2]
+resource_name = "PoseAppear"
+step = 0.01
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5, 0.68 ),
+"transitions": PoolRealArray( 0.5, 2, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 128 ), Vector2( 0, -32 ), Vector2( 0, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.68 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ 4, 1 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("../..:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+
+[sub_resource type="Animation" id=9]
+resource_name = "Throw"
+length = 0.3
+step = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 8 ]
+}
+
+[sub_resource type="Animation" id=10]
+resource_name = "Throwing"
+step = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5, 0.6, 0.7 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 6, 7 ]
+}
+
+[sub_resource type="RectangleShape2D" id=11]
+extents = Vector2( 16, 8 )
+
+[sub_resource type="RectangleShape2D" id=4]
+extents = Vector2( 8, 12 )
+
+[node name="MM3_ShadowMan" instance=ExtResource( 1 )]
+script = ExtResource( 2 )
+sprite_preview_texture = SubResource( 3 )
+damage_area_nodes = [ NodePath("DamageArea2D") ]
+contact_damage = 4.0
+start_music_on_spawn = false
+
+[node name="PlatformBehavior" parent="." index="0" instance=ExtResource( 4 )]
+GRAVITY_VEC = Vector2( 0, 1200 )
+VELOCITY_X_DAMPING = 1.0
+snap_floor_pixel = Vector2( 0, 0 )
+
+[node name="Sprite" parent="SpriteMain" index="0"]
+texture = ExtResource( 3 )
+hframes = 10
+frame = 5
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="SpriteMain/Sprite" index="0"]
+anims/Dash = SubResource( 6 )
+anims/Flee = SubResource( 12 )
+anims/Idle = SubResource( 5 )
+anims/Jump = SubResource( 7 )
+anims/JumpAttack = SubResource( 8 )
+anims/Pose = SubResource( 1 )
+anims/PoseAppear = SubResource( 2 )
+anims/Throw = SubResource( 9 )
+anims/Throwing = SubResource( 10 )
+
+[node name="PlatformCollisionShape2D" parent="." index="2"]
+visible = true
+position = Vector2( 0, 8 )
+shape = SubResource( 11 )
+disabled = false
+
+[node name="PreciseVisibilityNotifier2D" parent="." index="3"]
+visible = false
+
+[node name="InvisTimer" parent="." index="6"]
+wait_time = 0.3
+
+[node name="DamageArea2D" type="Area2D" parent="." index="7"]
+visible = false
+position = Vector2( 0, 4 )
+collision_layer = 8
+collision_mask = 6
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DamageArea2D" index="0"]
+shape = SubResource( 4 )
+
+[node name="FireBladesDelayTimer" type="Timer" parent="." index="8"]
+wait_time = 0.15
+one_shot = true
+
+[node name="Phase1RestartTimer" type="Timer" parent="." index="9"]
+wait_time = 0.03
+one_shot = true
+
+[node name="DashTimer" type="Timer" parent="." index="10"]
+wait_time = 0.03
+one_shot = true
+
+[node name="FireBladeDirectDelayTimer" type="Timer" parent="." index="11"]
+wait_time = 0.3
+one_shot = true
+[connection signal="taken_damage" from="." to="." method="_on_MM3_ShadowMan_taken_damage"]
+[connection signal="by_wall" from="PlatformBehavior" to="." method="_on_PlatformBehavior_by_wall"]
+[connection signal="timeout" from="FireBladesDelayTimer" to="." method="_on_FireBladesDelayTimer_timeout"]
+[connection signal="timeout" from="Phase1RestartTimer" to="." method="_on_Phase1RestartTimer_timeout"]
+[connection signal="timeout" from="FireBladeDirectDelayTimer" to="." method="_on_FireBladeDirectDelayTimer_timeout"]

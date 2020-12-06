@@ -759,7 +759,10 @@ func play_teleport_in_sound():
 func play_teleport_out_sound():
 	FJ_AudioManager.sfx_character_teleport_out.play()
 
-
-
 func _on_TeleportPlayer_animation_finished(anim_name: String) -> void:
 	GameHUD.player_vital_bar.show()
+
+func _on_PlatformBehavior_crushed() -> void:
+	current_hp = 0
+	GameHUD.update_player_vital_bar(0)
+	player_death()

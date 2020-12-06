@@ -53,6 +53,7 @@ signal by_wall
 signal warped_updown
 signal warped_leftright
 signal fell_into_pit
+signal crushed
 signal collided(kinematic_collision_2d)
 
 enum MOVE_TYPE_PRESET {
@@ -266,6 +267,16 @@ func custom_move_and_slide(custom_velocity, custom_floor_normal) -> Vector2:
 		if parent.get_slide_count() > 0:
 			for i in parent.get_slide_count():
 				emit_signal("collided", parent.get_slide_collision(i))
+		
+		# test collision space if it is crushed
+		if (
+			parent.test_move(parent.get_transform(), Vector2.UP) and
+			parent.test_move(parent.get_transform(), Vector2.DOWN) and
+			parent.test_move(parent.get_transform(), Vector2.LEFT) and
+			parent.test_move(parent.get_transform(), Vector2.RIGHT)
+		):
+			emit_signal("crushed")
+		
 		
 		return vel
 	

@@ -11,8 +11,8 @@ var is_debugging = OS.is_debug_build()
 
 func _ready():
 	if is_debugging:
-		OS.window_size.x *= 3
-		OS.window_size.y *= 3
+		OS.window_size.x *= 4
+		OS.window_size.y *= 4
 		OS.center_window()
 		Engine.time_scale = 1
 
@@ -27,4 +27,7 @@ func _input(event):
 				OS.center_window()
 			KEY_F3:
 				OS.window_size = get_viewport().size * 3
+				OS.center_window()
+			KEY_F4:
+				OS.window_size = get_viewport().size * 4
 				OS.center_window()

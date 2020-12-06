@@ -31,6 +31,7 @@ func _physics_process(delta: float) -> void:
 		if position.y > Vector2.ZERO.y:
 			position.y = Vector2.ZERO.y
 			state = State.DISABLED
+			FJ_AudioManager.sfx_env_chain_loop.stop()
 			FJ_AudioManager.sfx_env_chain_end.play()
 
 func start():
@@ -39,7 +40,6 @@ func start():
 	state = State.RAISING
 
 func stop():
-	FJ_AudioManager.sfx_env_chain_loop.stop()
 	state = State.FALL_ENDING
 
 func _exit_tree() -> void:
