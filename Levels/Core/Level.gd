@@ -35,11 +35,13 @@ func _ready():
 		view_container.CAMERA_LIMIT_BOTTOM
 	)
 	
-	if !Engine.is_editor_hint():
-		FJ_AudioManager.play_bgm(MUSIC)
-	
 	GameHUD.player_vital_bar.set_visible(false)
 	GameHUD.boss_vital_bar.set_visible(false)
+
+func _input(event: InputEvent) -> void:
+	if event is InputEventKey:
+		if event.is_pressed() and event.scancode == KEY_E:
+			fade_screen.go_to_scene("res://Levels/StageSelection.tscn")
 
 func shake_camera(duration, frequency, amplitude):
 	camera.shake_camera(duration, frequency, amplitude)
@@ -103,3 +105,9 @@ func init_screen_transition(direction : Vector2, duration : float, target_view, 
 func delete_all_objects_by_group_name(group_name : String):
 	for i in get_tree().get_nodes_in_group(group_name):
 		i.queue_free()
+
+func _on_AnimationPlayer_animation_finished(anim_name: String) -> void:
+	if Engine.is_editor_hint():
+		return
+	
+	FJ_AudioManager.play_bgm(MUSIC)

@@ -118,7 +118,7 @@ damage_area_nodes = [ NodePath("DamageArea") ]
 explosion_effect = ExtResource( 3 )
 death_sound = 1
 contact_damage = 4.0
-hit_points_base = 4
+hit_points_base = 6
 large_explosion = ExtResource( 4 )
 metall = ExtResource( 5 )
 

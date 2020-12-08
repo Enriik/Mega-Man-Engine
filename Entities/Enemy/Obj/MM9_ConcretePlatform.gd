@@ -39,8 +39,6 @@ func activate():
 func _on_DetectArea2D_area_entered(area: Area2D) -> void:
 	if not state == State.INITIAL:
 		return
-	if not area.get_owner() is Player:
-		return
 	
 	activate()
 

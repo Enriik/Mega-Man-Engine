@@ -246,19 +246,17 @@ region = Rect2( 0, 0, 32, 32 )
 [sub_resource type="RectangleShape2D" id=8]
 extents = Vector2( 8, 8 )
 
-[node name="Metall" index="0" instance=ExtResource( 1 )]
+[node name="Metall" instance=ExtResource( 1 )]
 script = ExtResource( 2 )
 damage_area_nodes = [ NodePath("DamageArea") ]
 contact_damage = 3.0
-hit_points_base = 3
+hit_points_base = 12
 generelea = ExtResource( 3 )
 
 [node name="PlatformBehavior" parent="." index="0" instance=ExtResource( 4 )]
 WALK_SPEED = 60.0
 JUMP_SPEED = 300.0
 VELOCITY_X_DAMPING = 1.0
-CONTROL_ENABLE = false
-IS_PREVENT_OUTSIDE_SCREEN = false
 
 [node name="Sprite" parent="SpriteMain" index="0"]
 texture = ExtResource( 5 )

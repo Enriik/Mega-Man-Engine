@@ -1,6 +1,6 @@
 extends Pickups
 
-const HLTH = 28
+const HLTH = 0
 
 onready var sprite = $SpriteMain/Sprite
 onready var palette_sprite := $SpriteMain/Sprite/PaletteSprite

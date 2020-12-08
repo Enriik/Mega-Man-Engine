@@ -9,12 +9,12 @@ extends Node
 
 var is_debugging = OS.is_debug_build()
 
-func _ready():
-	if is_debugging:
-		OS.window_size.x *= 4
-		OS.window_size.y *= 4
-		OS.center_window()
-		Engine.time_scale = 1
+#func _ready():
+#	if is_debugging:
+#		OS.window_size.x *= 4
+#		OS.window_size.y *= 4
+#		OS.center_window()
+#		Engine.time_scale = 1
 
 func _input(event):
 	if event is InputEventKey:

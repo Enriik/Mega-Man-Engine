@@ -204,7 +204,9 @@ func press_attack_check(delta : float):
 				if not can_spawn_projectile():
 					return
 				start_launching_attack(proj_megabuster)
-				FJ_AudioManager.sfx_combat_buster.play()
+				
+				if not FJ_AudioManager.sfx_character_enemy_damage.is_playing():
+					FJ_AudioManager.sfx_combat_buster.play()
 	
 	#Check if releasing attack button or holding either way
 	if not Input.is_action_pressed(ATTACK_HOTKEY):
@@ -308,7 +310,7 @@ func player_take_damage(damage_amount : int, repel_player : bool = false, repel_
 		return
 	
 	#Subtracting health from damage taken.
-	current_hp -= damage_amount
+	current_hp -= int(damage_amount * 1.5)
 	#Repel player to the opposite direction the player is facing.
 	if repel_player:
 		repel_player()

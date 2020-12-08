@@ -434,11 +434,8 @@ _global_script_class_icons={
 
 [application]
 
-config/name="Not Megamix Engine!"
-run/main_scene="res://Splash/SplashScreen.tscn"
-boot_splash/image="res://Assets/Sprites/SplashScreen/SplashBlack.png"
-boot_splash/bg_color=Color( 0, 0, 0, 1 )
-config/icon="res://Assets/Sprites/GUI/Icons/MiniMega.png"
+config/name="Untitled Project"
+run/main_scene="res://Levels/StageSelection.tscn"
 config/quit_on_go_back=false
 
 [autoload]
@@ -471,6 +468,8 @@ gdscript/warnings/return_value_discarded=false
 
 window/size/width=256
 window/size/height=224
+window/size/test_width=1024
+window/size/test_height=896
 window/energy_saving/keep_screen_on=false
 window/handheld/orientation="sensor_landscape"
 window/stretch/mode="viewport"

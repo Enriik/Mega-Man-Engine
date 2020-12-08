@@ -30,6 +30,20 @@ script = ExtResource( 1 )
 DAMAGE_POWER = 2
 
 [node name="BulletBehavior" parent="." instance=ExtResource( 2 )]
+root_node = NodePath("./..")
+active = true
+process_mode = 1
+speed = 120.0
+speed_limit = false
+min_speed = 0.0
+max_speed = 150.0
+acceleration = 0.0
+gravity = 0.0
+max_fall_speed = 900.0
+angle_in_degrees = 0.0
+kbody_move_and_collide = false
+allow_negative_speed = false
+signal_on_distance_travelled = 500.0
 
 [node name="Sprite" type="Sprite" parent="."]
 
@@ -40,7 +54,7 @@ visible = false
 rect = Rect2( -16, -16, 32, 32 )
 
 [node name="ReflectedDestroyTimer" type="Timer" parent="."]
-wait_time = 0.5
+wait_time = 0.001
 one_shot = true
 
 [node name="ReflectAnimation" type="AnimationPlayer" parent="."]

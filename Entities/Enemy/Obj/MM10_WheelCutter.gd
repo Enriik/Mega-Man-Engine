@@ -23,7 +23,7 @@ func set_move_direction(dir : int):
 
 func _on_InitialStateStartTimer_timeout():
 	pf_bhv.INITIAL_STATE = true
-	projectile_reflector.enabled = false
+#	projectile_reflector.enabled = false
 
 func _on_PlatformBehavior_by_wall():
 	FJ_AudioManager.sfx_combat_wheel_cutter_wall.play()

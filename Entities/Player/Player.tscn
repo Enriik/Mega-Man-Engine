@@ -368,7 +368,7 @@ anims/StopFlashin = SubResource( 15 )
 
 [node name="DeathFreezeTimer" type="Timer" parent="."]
 pause_mode = 2
-wait_time = 0.001
+wait_time = 0.4
 one_shot = true
 [connection signal="input_event" from="." to="." method="_on_Player_input_event"]
 [connection signal="launched_attack" from="." to="PlatformerSprite" method="start_normal_attack_animation"]

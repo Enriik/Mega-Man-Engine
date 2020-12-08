@@ -1,7 +1,7 @@
 extends EnemyCore
 
 const BULLET_DAMAGE = 2
-const BULLET = preload("res://Entities/Enemy/Obj/MM2_Bullet.tscn")
+const BULLET = preload("res://Entities/Enemy/Obj/MM3_ShadowBladeSmall.tscn")
 
 export (PackedScene) var enemy_explosion
 
@@ -39,5 +39,6 @@ func split_bullets():
 		blt.contact_damage = BULLET_DAMAGE
 		blt.bullet_behavior.angle_in_degrees = i
 		blt.bullet_behavior.gravity = 600
+		blt.bullet_behavior.max_fall_speed = 450
 		blt.bullet_behavior.speed = 240
 		blt.bullet_behavior.acceleration = -120

@@ -63,7 +63,7 @@ current_palette_state = 0
 palette_states = [  ]
 
 [node name="DelayTimer" type="Timer" parent="BossVitalBar"]
-wait_time = 0.065
+wait_time = 0.02
 one_shot = true
 [connection signal="timeout" from="PlayerVitalBar/DelayTimer" to="." method="_on_PlayerVitalBar_DelayTimer_timeout"]
 [connection signal="timeout" from="PlayerWeaponBar/DelayTimer" to="." method="_on_PlayerWeaponBar_DelayTimer_timeout"]

@@ -1,0 +1,355 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://Assets/Fonts/Font.tres" type="DynamicFont" id=1]
+[ext_resource path="res://Assets/Sprites/GUI/Cursor.png" type="Texture" id=2]
+[ext_resource path="res://Assets/Sounds/Sfx/UI/GameStart.wav" type="AudioStream" id=3]
+[ext_resource path="res://Assets/Sounds/Sfx/UI/select.wav" type="AudioStream" id=4]
+[ext_resource path="res://Levels/StageSelection.gd" type="Script" id=5]
+[ext_resource path="res://GUI/FadeScreen/FadeScreen.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Assets/Sounds/Bgm/Editor.ogg" type="AudioStream" id=7]
+
+[node name="StageSelection" type="CanvasLayer"]
+script = ExtResource( 5 )
+
+[node name="ColorRect" type="ColorRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0, 0, 0, 1 )
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="."]
+margin_left = 24.0
+margin_top = 16.0
+margin_right = 232.0
+margin_bottom = 30.0
+custom_fonts/font = ExtResource( 1 )
+text = "debug - stage select"
+align = 1
+uppercase = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+margin_left = 40.0
+margin_top = 32.0
+margin_right = 136.0
+margin_bottom = 211.0
+custom_constants/separation = -3
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label3" type="Label" parent="VBoxContainer"]
+self_modulate = Color( 1, 1, 1, 0.231373 )
+margin_right = 96.0
+margin_bottom = 11.0
+custom_fonts/font = ExtResource( 1 )
+text = "BLIZZARD MAN"
+uppercase = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label4" type="Label" parent="VBoxContainer"]
+self_modulate = Color( 1, 1, 1, 0.231373 )
+margin_top = 8.0
+margin_right = 96.0
+margin_bottom = 19.0
+custom_fonts/font = ExtResource( 1 )
+text = "WIND MAN"
+uppercase = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label6" type="Label" parent="VBoxContainer"]
+self_modulate = Color( 1, 1, 1, 0.231373 )
+margin_top = 16.0
+margin_right = 96.0
+margin_bottom = 27.0
+custom_fonts/font = ExtResource( 1 )
+text = "FLAME MAN"
+uppercase = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label7" type="Label" parent="VBoxContainer"]
+margin_top = 24.0
+margin_right = 96.0
+margin_bottom = 35.0
+custom_fonts/font = ExtResource( 1 )
+text = "PLANT MAN"
+uppercase = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label8" type="Label" parent="VBoxContainer"]
+self_modulate = Color( 1, 1, 1, 0.231373 )
+margin_top = 32.0
+margin_right = 96.0
+margin_bottom = 43.0
+custom_fonts/font = ExtResource( 1 )
+text = "TOMAHAWK MAN"
+uppercase = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label9" type="Label" parent="VBoxContainer"]
+self_modulate = Color( 1, 1, 1, 0.231373 )
+margin_top = 40.0
+margin_right = 96.0
+margin_bottom = 51.0
+custom_fonts/font = ExtResource( 1 )
+text = "YAMATO MAN"
+uppercase = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label5" type="Label" parent="VBoxContainer"]
+margin_top = 48.0
+margin_right = 96.0
+margin_bottom = 59.0
+custom_fonts/font = ExtResource( 1 )
+text = "KNIGHT MAN"
+uppercase = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label10" type="Label" parent="VBoxContainer"]
+self_modulate = Color( 1, 1, 1, 0.231373 )
+margin_top = 56.0
+margin_right = 96.0
+margin_bottom = 67.0
+custom_fonts/font = ExtResource( 1 )
+text = "CENTAUR MAN"
+uppercase = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label17" type="Label" parent="VBoxContainer"]
+self_modulate = Color( 1, 1, 1, 0.231373 )
+margin_top = 64.0
+margin_right = 96.0
+margin_bottom = 75.0
+custom_fonts/font = ExtResource( 1 )
+custom_colors/font_color = Color( 0.984314, 0.34902, 0.603922, 1 )
+text = "mr-x 1"
+uppercase = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label18" type="Label" parent="VBoxContainer"]
+self_modulate = Color( 1, 1, 1, 0.231373 )
+margin_top = 72.0
+margin_right = 96.0
+margin_bottom = 83.0
+custom_fonts/font = ExtResource( 1 )
+custom_colors/font_color = Color( 0.984314, 0.34902, 0.603922, 1 )
+text = "mr-x 2"
+uppercase = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label19" type="Label" parent="VBoxContainer"]
+self_modulate = Color( 1, 1, 1, 0.231373 )
+margin_top = 80.0
+margin_right = 96.0
+margin_bottom = 91.0
+custom_fonts/font = ExtResource( 1 )
+custom_colors/font_color = Color( 0.984314, 0.34902, 0.603922, 1 )
+text = "mr-x 3"
+uppercase = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label24" type="Label" parent="VBoxContainer"]
+self_modulate = Color( 1, 1, 1, 0.231373 )
+margin_top = 88.0
+margin_right = 96.0
+margin_bottom = 99.0
+custom_fonts/font = ExtResource( 1 )
+custom_colors/font_color = Color( 0.984314, 0.34902, 0.603922, 1 )
+text = "mr-x 4"
+uppercase = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label11" type="Label" parent="VBoxContainer"]
+self_modulate = Color( 1, 1, 1, 0.231373 )
+margin_top = 96.0
+margin_right = 96.0
+margin_bottom = 107.0
+custom_fonts/font = ExtResource( 1 )
+custom_colors/font_color = Color( 1, 0.635294, 0.270588, 1 )
+text = "wily-1"
+uppercase = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label12" type="Label" parent="VBoxContainer"]
+self_modulate = Color( 1, 1, 1, 0.231373 )
+margin_top = 104.0
+margin_right = 96.0
+margin_bottom = 115.0
+custom_fonts/font = ExtResource( 1 )
+custom_colors/font_color = Color( 1, 0.635294, 0.270588, 1 )
+text = "wily-2"
+uppercase = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label13" type="Label" parent="VBoxContainer"]
+self_modulate = Color( 1, 1, 1, 0.231373 )
+margin_top = 112.0
+margin_right = 96.0
+margin_bottom = 123.0
+custom_fonts/font = ExtResource( 1 )
+custom_colors/font_color = Color( 1, 0.635294, 0.270588, 1 )
+text = "wily-3"
+uppercase = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label14" type="Label" parent="VBoxContainer"]
+self_modulate = Color( 1, 1, 1, 0.231373 )
+margin_top = 120.0
+margin_right = 96.0
+margin_bottom = 131.0
+custom_fonts/font = ExtResource( 1 )
+custom_colors/font_color = Color( 1, 0.635294, 0.270588, 1 )
+text = "wily-4"
+uppercase = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label15" type="Label" parent="VBoxContainer"]
+self_modulate = Color( 1, 1, 1, 0.231373 )
+margin_top = 128.0
+margin_right = 96.0
+margin_bottom = 139.0
+custom_fonts/font = ExtResource( 1 )
+custom_colors/font_color = Color( 1, 0.635294, 0.270588, 1 )
+text = "wily-5"
+uppercase = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label20" type="Label" parent="VBoxContainer"]
+self_modulate = Color( 1, 1, 1, 0.231373 )
+margin_top = 136.0
+margin_right = 96.0
+margin_bottom = 147.0
+custom_fonts/font = ExtResource( 1 )
+custom_colors/font_color = Color( 0, 0.921569, 0.858824, 1 )
+text = "endless room"
+uppercase = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label21" type="Label" parent="VBoxContainer"]
+margin_top = 144.0
+margin_right = 96.0
+margin_bottom = 155.0
+custom_fonts/font = ExtResource( 1 )
+uppercase = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label23" type="Label" parent="VBoxContainer"]
+margin_top = 152.0
+margin_right = 96.0
+margin_bottom = 163.0
+custom_fonts/font = ExtResource( 1 )
+uppercase = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label22" type="Label" parent="VBoxContainer"]
+margin_top = 160.0
+margin_right = 96.0
+margin_bottom = 171.0
+custom_fonts/font = ExtResource( 1 )
+text = "back"
+uppercase = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Cursor" type="TextureRect" parent="."]
+margin_left = 24.0
+margin_top = 32.0
+margin_right = 32.0
+margin_bottom = 40.0
+texture = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
+position = Vector2( 256, 120 )
+amount = 32
+lifetime = 8.0
+preprocess = 8.0
+emission_shape = 2
+emission_rect_extents = Vector2( 1, 128 )
+direction = Vector2( -1, 0 )
+spread = 0.0
+gravity = Vector2( 0, 0 )
+initial_velocity = 60.0
+color = Color( 0.447059, 0.792157, 1, 1 )
+
+[node name="CPUParticles2D2" type="CPUParticles2D" parent="."]
+position = Vector2( 256, 120 )
+amount = 32
+lifetime = 8.0
+preprocess = 8.0
+emission_shape = 2
+emission_rect_extents = Vector2( 1, 128 )
+direction = Vector2( -1, 0 )
+spread = 0.0
+gravity = Vector2( 0, 0 )
+initial_velocity = 120.0
+scale_amount = 2.0
+
+[node name="Start" type="AudioStreamPlayer" parent="."]
+pause_mode = 2
+stream = ExtResource( 3 )
+bus = "SFX"
+
+[node name="Select" type="AudioStreamPlayer" parent="."]
+pause_mode = 2
+stream = ExtResource( 4 )
+volume_db = 3.0
+bus = "SFX"
+
+[node name="FadeScreen" parent="." instance=ExtResource( 6 )]
+pause_mode = 2
+
+[node name="BGM" type="AudioStreamPlayer" parent="."]
+pause_mode = 2
+stream = ExtResource( 7 )
+volume_db = 3.0
+autoplay = true
+bus = "BGM"
