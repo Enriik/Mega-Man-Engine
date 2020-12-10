@@ -59,8 +59,8 @@ func reset_all_bars_to_default_color():
 	player_vital_bar_palette.primary_sprite.modulate = NESColorPalette.WHITE4
 	player_vital_bar_palette.second_sprite.modulate = NESColorPalette.LIGHTSALMON4
 	player_vital_bar_palette.outline_sprite.modulate = NESColorPalette.BLACK1
-	player_weapon_bar_palette.primary_sprite.modulate = NESColorPalette.WHITE4
-	player_weapon_bar_palette.second_sprite.modulate = NESColorPalette.TORQUOISE2
+	player_weapon_bar_palette.primary_sprite.modulate = Color("ffe0a8")
+	player_weapon_bar_palette.second_sprite.modulate = Color("887000")
 	player_weapon_bar_palette.outline_sprite.modulate = NESColorPalette.BLACK1
 	boss_vital_bar_palette.primary_sprite.modulate = NESColorPalette.WHITE4
 	boss_vital_bar_palette.second_sprite.modulate = NESColorPalette.TOMATO2

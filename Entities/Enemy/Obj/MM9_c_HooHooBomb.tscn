@@ -17,23 +17,14 @@ hit_points_base = 1
 enemy_explosion = ExtResource( 3 )
 
 [node name="BulletBehavior" parent="." index="0" instance=ExtResource( 4 )]
-root_node = NodePath("./..")
 active = false
-process_mode = 1
 speed = 0.0
-speed_limit = false
-min_speed = 0.0
-max_speed = 150.0
-acceleration = 0.0
 gravity = 900.0
-max_fall_speed = 900.0
 angle_in_degrees = 180.0
-kbody_move_and_collide = false
-allow_negative_speed = false
-signal_on_distance_travelled = 500.0
 
 [node name="Sprite" parent="SpriteMain" index="0"]
 texture = ExtResource( 5 )
+hframes = 2
 
 [node name="DamageArea" type="Area2D" parent="." index="7"]
 collision_layer = 8

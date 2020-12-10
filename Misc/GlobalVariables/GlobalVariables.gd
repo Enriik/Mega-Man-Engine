@@ -15,6 +15,8 @@ var current_player_primary_color : Color
 var current_player_secondary_color : Color
 var current_player_outline_color : Color
 
+var touhou : bool
+
 #Obsolete!
 func add_to_dead_enemies(obj : DeadEnemyInfo):
 	saved_dead_enemies.push_back(obj)

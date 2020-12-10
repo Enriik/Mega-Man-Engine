@@ -116,6 +116,7 @@ onready var sfx_combat_buster : AudioStreamPlayer = $SFX/Combat/Sfx_Buster
 onready var sfx_combat_buster_fullycharged : AudioStreamPlayer = $SFX/Combat/Sfx_BusterFullyCharged
 onready var sfx_combat_buster_minicharged : AudioStreamPlayer = $SFX/Combat/Sfx_BusterMiniCharged
 onready var sfx_combat_buster_charging : AudioStreamPlayer = $SFX/Combat/Sfx_BusterCharging
+onready var sfx_combat_crash_bomb : AudioStreamPlayer = $SFX/Combat/Sfx_CrashBomb
 onready var sfx_combat_diarn_sp_shot : AudioStreamPlayer = $SFX/Combat/Sfx_DiarnSPShot
 onready var sfx_combat_fireball : AudioStreamPlayer = $SFX/Combat/Sfx_Fireball
 onready var sfx_combat_flame_burst : AudioStreamPlayer = $SFX/Combat/Sfx_FlameBurst
@@ -127,6 +128,7 @@ onready var sfx_combat_power_fall : AudioStreamPlayer = $SFX/Combat/Sfx_PowerFal
 onready var sfx_combat_power_landing : AudioStreamPlayer = $SFX/Combat/Sfx_PowerLanding
 onready var sfx_combat_power_launch : AudioStreamPlayer = $SFX/Combat/Sfx_PowerLaunch
 onready var sfx_combat_reflect : AudioStreamPlayer = $SFX/Combat/Sfx_Reflect
+onready var sfx_combat_ring_boomerang : AudioStreamPlayer = $SFX/Combat/Sfx_RingBoomerang
 onready var sfx_combat_shadow_blade : AudioStreamPlayer = $SFX/Combat/Sfx_ShadowBlade
 onready var sfx_combat_shot : AudioStreamPlayer = $SFX/Combat/Sfx_Shot
 onready var sfx_combat_wheel_cutter : AudioStreamPlayer = $SFX/Combat/Sfx_WheelCutter
@@ -150,6 +152,7 @@ onready var sfx_ui_boss_fill_hp : AudioStreamPlayer = $SFX/UI/Sfx_BossFillHp
 onready var sfx_ui_game_start : AudioStreamPlayer = $SFX/UI/Sfx_GameStart
 onready var sfx_ui_level_up : AudioStreamPlayer = $SFX/UI/Sfx_LevelUp
 onready var sfx_ui_one_up : AudioStreamPlayer = $SFX/UI/Sfx_OneUp
+onready var sfx_ui_weapon_switch : AudioStreamPlayer = $SFX/UI/Sfx_WeaponSwitch
 
 onready var sfx_unc_serious_damage : AudioStreamPlayer = $SFX/Uncategorized/Sfx_SeriousDamage
 
@@ -186,3 +189,52 @@ func fade_out_bgm(var stop_bgm_after_faded : bool = false):
 		bgm_property_setter_player.play("FadeOutStop")
 	else:
 		bgm_property_setter_player.play("FadeOutNoStop")
+
+# -- - - - - - - 
+
+var a : bool
+var d : bool
+
+func _process(delta: float) -> void:
+	var t := ""
+	
+	if Input.is_action_pressed("game_left"):
+		t += "←"
+	else:
+		t += "."
+	if Input.is_action_pressed("game_right"):
+		t += "→"
+	else:
+		t += "."
+	if Input.is_action_pressed("game_up"):
+		t += "↑"
+	else:
+		t += "."
+	if Input.is_action_pressed("game_down") or d:
+		t += "↓"
+	else:
+		t += "."
+	if Input.is_action_pressed("game_tl"):
+		t += "L"
+	else:
+		t += "."
+	if Input.is_action_pressed("game_tr"):
+		t += "R"
+	else:
+		t += "."
+	if Input.is_action_pressed("game_action"):
+		t += "B"
+	else:
+		t += "."
+	if Input.is_action_pressed("game_jump") or a:
+		t += "A"
+	else:
+		t += "."
+	
+	$CanvasLayer/KeypressLabel.text = t
+	
+	a = false
+	d = false
+
+func _on_FpsTimer_timeout() -> void:
+	$CanvasLayer/Fps.text = str(Engine.get_frames_per_second())

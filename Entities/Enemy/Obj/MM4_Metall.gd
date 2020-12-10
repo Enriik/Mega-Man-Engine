@@ -64,12 +64,16 @@ func set_reflect_enabled(var set : bool):
 	damage_area_reflector.enabled = set
 
 func shoot_straight():
-	var bullet = generelea.instance()
-	get_parent().add_child(bullet)
-	bullet.global_position = self.global_position
-	bullet.bullet_behavior.speed = 120
-	if sprite_main.scale.x == 1:
-		bullet.bullet_behavior.angle_in_degrees += 180
+	var count = 15
+	
+	for c in count:
+		var bullet = generelea.instance()
+		get_parent().add_child(bullet)
+		bullet.global_position = self.global_position
+		bullet.bullet_behavior.speed = rand_range(60, 180)
+		bullet.bullet_behavior.angle_in_degrees += rand_range(-75, 75)
+		if sprite_main.scale.x == 1:
+			bullet.bullet_behavior.angle_in_degrees += 180
 
 #While attacking and when landed
 func _on_PlatformerBehavior_landed() -> void:

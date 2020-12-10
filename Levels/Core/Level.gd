@@ -40,7 +40,7 @@ func _ready():
 
 func _input(event: InputEvent) -> void:
 	if event is InputEventKey:
-		if event.is_pressed() and event.scancode == KEY_E:
+		if event.is_pressed() and event.scancode == KEY_ESCAPE:
 			fade_screen.go_to_scene("res://Levels/StageSelection.tscn")
 
 func shake_camera(duration, frequency, amplitude):

@@ -20,6 +20,7 @@ export(int, FLAGS, "ENEMY", "TILE") var DESTROY_ON_COLLIDE_TYPE = 3
 
 export(bool) var DESTROY_OUTSIDE_SCREEN = true
 export(bool) var HIT_ONCE_PER_FRAME = true #If true, bullet can hit multiple enemies at the same time.
+export (float) var invis_time_apply
 
 export(REFLECT_TYPE_PRESET) var reflect_type = 1
 export (float) var projectile_limit_cost = 1

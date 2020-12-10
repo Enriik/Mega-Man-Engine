@@ -23,7 +23,7 @@ func _process(delta: float) -> void:
 		var actual_player = player as Player
 		
 		if within_player_range(attack_range) && is_attack_ready:
-			if randi() % 3 + 1 == 1:
+			if randi() % 10 < 4:
 				joe_animation.play("Jump")
 				platformer_behavior.jump_start()
 			else:
@@ -32,13 +32,30 @@ func _process(delta: float) -> void:
 			is_attacking = true
 
 func fire():
-	var bullet = shoot_projectile.instance()
-	get_parent().add_child(bullet)
-	bullet.global_position = fire_bullet.global_position
-	if bullet.has_node("BulletBehavior"):
-		bullet.bullet_behavior.angle_in_degrees = 0 if sprite_main.scale.x == -1 else 180
-	
-	FJ_AudioManager.sfx_combat_shot.play()
+	if GlobalVariables.touhou:
+		var angles = [75, 70, 65, 60, 55, 50, 45, 40, 35, 30, 25, -75, -70, -65, -60, -55, -50, -45, -40, -35, -30, -25]
+		var speeds = [240, 300]
+		
+		for s in speeds:
+			for a in angles:
+				var bullet = shoot_projectile.instance()
+				get_parent().add_child(bullet)
+				bullet.global_position = fire_bullet.global_position
+				if bullet.has_node("BulletBehavior"):
+					bullet.bullet_behavior.angle_in_degrees = 0 if sprite_main.scale.x == -1 else 180
+				
+				bullet.bullet_behavior.angle_in_degrees += a
+				bullet.bullet_behavior.speed = s
+		
+		FJ_AudioManager.sfx_combat_blues_shot.play()
+	else:
+		var bullet = shoot_projectile.instance()
+		get_parent().add_child(bullet)
+		bullet.global_position = fire_bullet.global_position
+		if bullet.has_node("BulletBehavior"):
+			bullet.bullet_behavior.angle_in_degrees = 0 if sprite_main.scale.x == -1 else 180
+		
+		FJ_AudioManager.sfx_combat_shot.play()
 
 func _on_AttackedCooldownTimer_timeout() -> void:
 	is_attack_ready = true

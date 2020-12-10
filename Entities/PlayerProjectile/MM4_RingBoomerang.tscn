@@ -1,0 +1,57 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://Entities/PlayerProjectile/PlayerProjectileCore.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Entities/PlayerProjectile/MM4_RingBoomerang.gd" type="Script" id=2]
+[ext_resource path="res://Assets/Sprites/Projectiles/MM4_RingBoomerang.png" type="Texture" id=3]
+
+[sub_resource type="Animation" id=1]
+resource_name = "New Anim"
+length = 0.32
+loop = true
+step = 0.08
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.08, 0.16, 0.24 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2, 3 ]
+}
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 8, 8 )
+
+[node name="MM4_RingBoomerang" instance=ExtResource( 1 )]
+script = ExtResource( 2 )
+DAMAGE_POWER = -1
+DESTROY_ON_COLLIDE_TYPE = 0
+invis_time_apply = 0.08
+destroy_on_overkill = false
+
+[node name="BulletBehavior" parent="." index="0"]
+speed = 420.0
+
+[node name="Sprite" parent="." index="1"]
+texture = ExtResource( 3 )
+hframes = 4
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Sprite" index="0"]
+autoplay = "New Anim"
+"anims/New Anim" = SubResource( 1 )
+
+[node name="CollisionShape2D" parent="." index="2"]
+shape = SubResource( 2 )
+
+[node name="FireDurationTimer" type="Timer" parent="." index="6"]
+wait_time = 0.12
+one_shot = true
+autostart = true
+
+[node name="HoldAmmoConsumeInterval" type="Timer" parent="." index="7"]
+wait_time = 0.3
+[connection signal="timeout" from="FireDurationTimer" to="." method="_on_FireDurationTimer_timeout"]
+[connection signal="timeout" from="HoldAmmoConsumeInterval" to="." method="_on_HoldAmmoConsumeInterval_timeout"]

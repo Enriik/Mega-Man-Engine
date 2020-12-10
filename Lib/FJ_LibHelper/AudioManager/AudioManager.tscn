@@ -1,4 +1,4 @@
-[gd_scene load_steps=58 format=2]
+[gd_scene load_steps=62 format=2]
 
 [ext_resource path="res://Lib/FJ_LibHelper/AudioManager/AudioManager.gd" type="Script" id=1]
 [ext_resource path="res://Assets/Sounds/Sfx/Character/Collapse6.wav" type="AudioStream" id=2]
@@ -52,6 +52,10 @@
 [ext_resource path="res://Assets/Sounds/Sfx/Environments/ConcreteUp.wav" type="AudioStream" id=50]
 [ext_resource path="res://Assets/Sounds/Sfx/Environments/ConcreteDown.wav" type="AudioStream" id=51]
 [ext_resource path="res://Assets/Sounds/Sfx/Combat/MM3_ShadowBlade.wav" type="AudioStream" id=52]
+[ext_resource path="res://Assets/Sounds/Sfx/Combat/MM2_CrashBomb.wav" type="AudioStream" id=53]
+[ext_resource path="res://Assets/Sounds/Sfx/UI/WeaponSwitch.wav" type="AudioStream" id=54]
+[ext_resource path="res://Assets/Sounds/Sfx/Combat/MM4_RingBoomerang.wav" type="AudioStream" id=55]
+[ext_resource path="res://Assets/Fonts/Font.tres" type="DynamicFont" id=56]
 
 [sub_resource type="Animation" id=1]
 resource_name = "Dim"
@@ -251,6 +255,11 @@ stream = ExtResource( 46 )
 volume_db = -6.0
 bus = "SFX"
 
+[node name="Sfx_CrashBomb" type="AudioStreamPlayer" parent="SFX/Combat"]
+stream = ExtResource( 53 )
+volume_db = 3.0
+bus = "SFX"
+
 [node name="Sfx_DiarnSPShot" type="AudioStreamPlayer" parent="SFX/Combat"]
 stream = ExtResource( 19 )
 bus = "SFX"
@@ -302,6 +311,10 @@ bus = "SFX"
 
 [node name="Sfx_Reflect" type="AudioStreamPlayer" parent="SFX/Combat"]
 stream = ExtResource( 29 )
+bus = "SFX"
+
+[node name="Sfx_RingBoomerang" type="AudioStreamPlayer" parent="SFX/Combat"]
+stream = ExtResource( 55 )
 bus = "SFX"
 
 [node name="Sfx_ShadowBlade" type="AudioStreamPlayer" parent="SFX/Combat"]
@@ -406,8 +419,46 @@ stream = ExtResource( 44 )
 volume_db = -9.0
 bus = "SFX"
 
+[node name="Sfx_WeaponSwitch" type="AudioStreamPlayer" parent="SFX/UI"]
+stream = ExtResource( 54 )
+bus = "SFX"
+
 [node name="Uncategorized" type="Node" parent="SFX"]
 
 [node name="Sfx_SeriousDamage" type="AudioStreamPlayer" parent="SFX/Uncategorized"]
 stream = ExtResource( 45 )
 bus = "SFX"
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = 19
+
+[node name="Fps" type="Label" parent="CanvasLayer"]
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -24.0
+margin_top = -8.0
+margin_right = -8.0
+margin_bottom = 3.0
+custom_fonts/font = ExtResource( 56 )
+text = "60"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="FpsTimer" type="Timer" parent="CanvasLayer"]
+autostart = true
+
+[node name="KeypressLabel" type="Label" parent="CanvasLayer"]
+margin_left = 160.0
+margin_top = 216.0
+margin_right = 224.0
+margin_bottom = 227.0
+custom_fonts/font = ExtResource( 56 )
+text = "----"
+align = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+[connection signal="timeout" from="CanvasLayer/FpsTimer" to="." method="_on_FpsTimer_timeout"]

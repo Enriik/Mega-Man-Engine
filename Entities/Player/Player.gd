@@ -57,6 +57,10 @@ var is_sliding = false
 var slide_remaining : float
 var slide_direction_x : float = 0 #-1 and 1 value are used.
 
+var curr_weapon_idx : int
+var weapons_ammo : Array = [-1, 28]
+var ammo_cost : Array = [0, 1]
+
 
 #Player's child nodes
 onready var pf_bhv := $PlatformBehavior as FJ_PlatformBehavior2D
@@ -90,6 +94,7 @@ onready var player_stats = get_node("/root/PlayerStats")
 var proj_megabuster = preload("res://Entities/PlayerProjectile/PlayerProjectile_MegaBuster.tscn")
 var proj_chargedmegabuster1 = preload("res://Entities/PlayerProjectile/PlayerProjectile_ChargedMegaBuster1.tscn")
 var proj_chargedmegabuster2 = preload("res://Entities/PlayerProjectile/PlayerProjectile_ChargedMegaBuster2.tscn")
+var proj_ring_boomerang = preload("res://Entities/PlayerProjectile/MM4_RingBoomerang.tscn")
 var dmg_counter = preload("res://GUI/DamageCounter.tscn")
 var explosion_effect = preload("res://Entities/Effects/Explosion/Explosion.tscn")
 var coin_particles = preload("res://Entities/Effects/Particles/CoinParticles.tscn")
@@ -107,13 +112,15 @@ func _ready():
 	attack_cooldown_timer.connect("timeout", self, '_on_attack_cooldown_timer_timeout')
 	invis_timer.connect('timeout', self, '_on_invis_timer_timeout')
 	self.connect('tree_exiting', self, '_on_tree_exiting')
-	player_stats.connect("leveled_up", self, "_on_leveled_up")
+	player_stats.connect("leveled_up", self, "_on_leveled_up")	
 	
 	#Let's the entire scene know that the player is alive.
 	player_stats.is_died = false
 	
 	update_player_sprite_texture()
 	_update_current_character_palette_state(true)
+	
+	GameHUD.player_weapon_bar.hide()
 
 func _process(delta):
 	set_vflip_by_keypress()
@@ -124,10 +131,14 @@ func _process(delta):
 	check_holding_jump_key()
 	check_taking_damage()
 	update_platformer_sprite_color_palettes()
+	weapon_process()
 
 func _input(event):
 	if event is InputEventKey:
-		if event.get_scancode() == SUICIDE_KEY and event.is_pressed():
+		if not event.is_pressed():
+			return
+		
+		if event.get_scancode() == SUICIDE_KEY:
 			if !pf_bhv.INITIAL_STATE:
 				return
 			if !pf_bhv.CONTROL_ENABLE:
@@ -136,6 +147,8 @@ func _input(event):
 				return
 			player_death()
 			GameHUD.update_player_vital_bar(0)
+		if event.get_scancode() == KEY_SHIFT:
+			pf_bhv.CONTROL_ENABLE = !pf_bhv.CONTROL_ENABLE
 
 #Check if jump key is holding while in the air.
 #Otherwise, resets velocity y
@@ -203,10 +216,24 @@ func press_attack_check(delta : float):
 			if Input.is_action_just_pressed(ATTACK_HOTKEY):
 				if not can_spawn_projectile():
 					return
-				start_launching_attack(proj_megabuster)
 				
-				if not FJ_AudioManager.sfx_character_enemy_damage.is_playing():
-					FJ_AudioManager.sfx_combat_buster.play()
+				if curr_weapon_idx == 0:
+					start_launching_attack(proj_megabuster)
+					if not FJ_AudioManager.sfx_character_enemy_damage.is_playing():
+						FJ_AudioManager.sfx_combat_buster.play()
+				if curr_weapon_idx == 1:
+					if GameHUD.player_weapon_bar.frame < ammo_cost[curr_weapon_idx]:
+						return
+					
+					GameHUD.player_weapon_bar.frame -= ammo_cost[curr_weapon_idx]
+					
+					var proj = start_launching_attack(proj_ring_boomerang)
+					proj.projectile_owner = self
+					if not FJ_AudioManager.sfx_character_enemy_damage.is_playing():
+						FJ_AudioManager.sfx_combat_ring_boomerang.play()
+	
+	if curr_weapon_idx != 0:
+		return
 	
 	#Check if releasing attack button or holding either way
 	if not Input.is_action_pressed(ATTACK_HOTKEY):
@@ -244,7 +271,7 @@ func press_attack_check(delta : float):
 				mega_buster_charge_lv = 2
 				palette_ani_player_changer.play("FullyCharged")
 
-func start_launching_attack(packed_scene : PackedScene) -> void:
+func start_launching_attack(packed_scene : PackedScene):
 	var bullet = packed_scene.instance()
 	get_parent().add_child(bullet) #Deploy projectile from player.
 	
@@ -259,6 +286,8 @@ func start_launching_attack(packed_scene : PackedScene) -> void:
 	
 	#Emit signal
 	emit_signal("launched_attack")
+	
+	return bullet
 
 #Check if the projectile is not above limit
 func can_spawn_projectile() -> bool:
@@ -309,8 +338,10 @@ func player_take_damage(damage_amount : int, repel_player : bool = false, repel_
 	if is_invincible or is_cutscene_mode:
 		return
 	
+	damage_amount = int(damage_amount * 1.5)
+	
 	#Subtracting health from damage taken.
-	current_hp -= int(damage_amount * 1.5)
+	current_hp -= damage_amount
 	#Repel player to the opposite direction the player is facing.
 	if repel_player:
 		repel_player()
@@ -442,6 +473,9 @@ func heal(var amount : int):
 		current_hp = max_hp
 	GameHUD.fill_player_vital_bar(amount)
 
+func recover_ammo(amount : int):
+	GameHUD.fill_player_weapon_bar(amount)
+
 #When the invincible's timer runs out, player will be able to get hurt again.
 func _on_invis_timer_timeout():
 	is_invincible = false
@@ -464,7 +498,7 @@ func spawn_damage_counter(damage, var spawn_offset : Vector2 = Vector2(0,0)):
 	dmg_text.label.text = str(damage) #Set child node's text
 	dmg_text.global_position = self.global_position #Set position to player
 	dmg_text.global_position += spawn_offset #Spawn offset
-	dmg_text.get_node('Label').add_color_override("font_color", Color(1,0,0,1))
+	dmg_text.get_node('Label').add_color_override("font_color", Color(1,1,1,1))
 
 func spawn_vulnerable_effect():
 	if current_hp <= 0:
@@ -718,35 +752,40 @@ func update_platformer_sprite_color_palettes(force_update : bool = false):
 func _update_current_character_palette_state(force_update : bool = false):
 	if player_character_data_res == null:
 		return
-	if (!pf_bhv.INITIAL_STATE or !pf_bhv.CONTROL_ENABLE) and !force_update:
-		return
+#	if (!pf_bhv.INITIAL_STATE or !pf_bhv.CONTROL_ENABLE) and !force_update:
+#		return
 	
-	if player_character_data_res is CharacterData:
-		match CURRENT_PALETTE_STATE:
-			0:
-				global_var.current_player_primary_color = Color(player_character_data_res.primary_color)
-				global_var.current_player_secondary_color = Color(player_character_data_res.secondary_color)
-				global_var.current_player_outline_color = Color(player_character_data_res.outline_color)
-			1:
-				global_var.current_player_primary_color = Color(player_character_data_res.primary_color)
-				global_var.current_player_secondary_color = Color(player_character_data_res.secondary_color)
-				global_var.current_player_outline_color = Color(player_character_data_res.outline_color_charge1)
-			2:
-				global_var.current_player_primary_color = Color(player_character_data_res.primary_color)
-				global_var.current_player_secondary_color = Color(player_character_data_res.secondary_color)
-				global_var.current_player_outline_color = Color(player_character_data_res.outline_color_charge2)
-			3:
-				global_var.current_player_primary_color = Color(player_character_data_res.primary_color)
-				global_var.current_player_secondary_color = Color(player_character_data_res.secondary_color)
-				global_var.current_player_outline_color = Color(player_character_data_res.outline_color_charge3)
-			4:
-				global_var.current_player_primary_color = Color(player_character_data_res.secondary_color)
-				global_var.current_player_secondary_color = Color(player_character_data_res.outline_color)
-				global_var.current_player_outline_color = Color(player_character_data_res.primary_color)
-			5:
-				global_var.current_player_primary_color = Color(player_character_data_res.outline_color)
-				global_var.current_player_secondary_color = Color(player_character_data_res.primary_color)
-				global_var.current_player_outline_color = Color(player_character_data_res.secondary_color)
+	if curr_weapon_idx == 0:
+		if player_character_data_res is CharacterData:
+			match CURRENT_PALETTE_STATE:
+				0:
+					global_var.current_player_primary_color = Color(player_character_data_res.primary_color)
+					global_var.current_player_secondary_color = Color(player_character_data_res.secondary_color)
+					global_var.current_player_outline_color = Color(player_character_data_res.outline_color)
+				1:
+					global_var.current_player_primary_color = Color(player_character_data_res.primary_color)
+					global_var.current_player_secondary_color = Color(player_character_data_res.secondary_color)
+					global_var.current_player_outline_color = Color(player_character_data_res.outline_color_charge1)
+				2:
+					global_var.current_player_primary_color = Color(player_character_data_res.primary_color)
+					global_var.current_player_secondary_color = Color(player_character_data_res.secondary_color)
+					global_var.current_player_outline_color = Color(player_character_data_res.outline_color_charge2)
+				3:
+					global_var.current_player_primary_color = Color(player_character_data_res.primary_color)
+					global_var.current_player_secondary_color = Color(player_character_data_res.secondary_color)
+					global_var.current_player_outline_color = Color(player_character_data_res.outline_color_charge3)
+				4:
+					global_var.current_player_primary_color = Color(player_character_data_res.secondary_color)
+					global_var.current_player_secondary_color = Color(player_character_data_res.outline_color)
+					global_var.current_player_outline_color = Color(player_character_data_res.primary_color)
+				5:
+					global_var.current_player_primary_color = Color(player_character_data_res.outline_color)
+					global_var.current_player_secondary_color = Color(player_character_data_res.primary_color)
+					global_var.current_player_outline_color = Color(player_character_data_res.secondary_color)
+	if curr_weapon_idx == 1:
+		global_var.current_player_primary_color = Color("887000")
+		global_var.current_player_secondary_color = Color("ffe0a8")
+		global_var.current_player_outline_color = Color("000000")
 
 func update_player_sprite_texture():
 	if player_character_data_res == null:
@@ -768,3 +807,45 @@ func _on_PlatformBehavior_crushed() -> void:
 	current_hp = 0
 	GameHUD.update_player_vital_bar(0)
 	player_death()
+
+func weapon_process():
+	# Switch curr weapon
+	if Input.is_action_just_pressed("game_tl"):
+		curr_weapon_idx += 1
+		if curr_weapon_idx >= weapons_ammo.size():
+			curr_weapon_idx = 0
+		if Input.is_action_pressed("game_tr"):
+			curr_weapon_idx = 0
+		_weapon_switched()
+	if Input.is_action_just_pressed("game_tr"):
+		curr_weapon_idx -= 1
+		if curr_weapon_idx < 0:
+			curr_weapon_idx = weapons_ammo.size() - 1
+		if Input.is_action_pressed("game_tl"):
+			curr_weapon_idx = 0
+		_weapon_switched()
+	
+
+func _weapon_switched():
+	FJ_AudioManager.sfx_ui_weapon_switch.play()
+	FJ_AudioManager.sfx_combat_buster_charging.stop()
+	FJ_AudioManager.sfx_combat_buster_fullycharged.stop()
+	attack_hold_time = 0
+	
+	get_tree().call_group("PlayerProjectile", "queue_free")
+	mega_buster_charge_lv = 0
+	palette_ani_player.play("Init")
+	palette_ani_player_changer.stop()
+	
+	# Make weapon bar visible/invisible
+	GameHUD.player_weapon_bar.visible = curr_weapon_idx != 0
+	
+	# Weapon HUD update
+	if curr_weapon_idx == 0:
+		$WeaponHUD.frame = 0
+	if curr_weapon_idx == 1:
+		$WeaponHUD.frame = 1
+	
+	$WeaponHUD/AnimationPlayer.stop()
+	$WeaponHUD/AnimationPlayer.play("Show")
+	

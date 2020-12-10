@@ -79,6 +79,7 @@ func phase_1_process():
 	
 	if current_hp <= PHASE_2_HP:
 		curr_phase = 2
+		get_tree().current_scene.touhou_screen_toggle()
 
 func phase_2_process():
 	if phase_2_state == Phase2State.DASHING:
@@ -119,6 +120,7 @@ func phase_3_process():
 		$DashTimer.stop()
 		$FireBladeDirectDelayTimer.stop()
 		destroy_all_enemies()
+		get_tree().current_scene.touhou_screen_toggle()
 		phase_3_state = Phase3State.ENDING_ATTACK
 	if phase_3_state == Phase3State.ENDING_ATTACK:
 		if not platform_bhv.on_floor:

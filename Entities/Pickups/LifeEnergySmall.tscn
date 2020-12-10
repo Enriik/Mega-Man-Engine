@@ -31,7 +31,7 @@ extents = Vector2( 3, 4 )
 [sub_resource type="RectangleShape2D" id=4]
 extents = Vector2( 3, 3 )
 
-[node name="LifeEnergySmall" index="0" instance=ExtResource( 1 )]
+[node name="LifeEnergySmall" instance=ExtResource( 1 )]
 script = ExtResource( 2 )
 sprite_preview_texture = SubResource( 1 )
 

@@ -6,7 +6,7 @@ const MOVE_SPEED = 60
 const ATTTACK_MOVE_SPEED = 0
 const DASH_SPEED = 240
 
-const ATTACK_RANGE = 76
+const ATTACK_RANGE = 164
 
 export (PackedScene) var large_explosion
 export (PackedScene) var metall

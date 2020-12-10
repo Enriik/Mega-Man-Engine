@@ -25,7 +25,7 @@ export (bool) var reset_velocity_x = false
 export (bool) var reset_velocity_y = false
 
 #Adds up delay time in seconds before the screen begins transiting.
-export (float, 0, 1) var start_delay = 0
+export (float, 0, 5) var start_delay = 0
 
 #Adds up delay time in seconds after the screen finishes transiting.
 export (float, 0, 1) var finish_delay = 0

@@ -1,10 +1,11 @@
-[gd_scene load_steps=21 format=2]
+[gd_scene load_steps=24 format=2]
 
 [ext_resource path="res://Entities/Player/Player.gd" type="Script" id=1]
 [ext_resource path="res://DatabaseCore/CharacterData/RokkoChan.tres" type="Resource" id=2]
 [ext_resource path="res://Lib/FJ_LibHelper/PlatformBehavior2D/PlatformBehavior2D.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Misc/PlatformerSprite/PlatformerSprite.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Assets/Sprites/Effects/Damage.png" type="Texture" id=5]
+[ext_resource path="res://Assets/Sprites/GUI/WeaponHUD.png" type="Texture" id=6]
 
 [sub_resource type="Animation" id=1]
 resource_name = "Init"
@@ -204,19 +205,49 @@ tracks/5/keys = {
 } ]
 }
 
-[sub_resource type="RectangleShape2D" id=9]
+[sub_resource type="Animation" id=18]
+resource_name = "Init"
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+
+[sub_resource type="Animation" id=19]
+resource_name = "Show"
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.6 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+
+[sub_resource type="RectangleShape2D" id=20]
 extents = Vector2( 5, 10 )
 
-[sub_resource type="RectangleShape2D" id=10]
+[sub_resource type="RectangleShape2D" id=21]
 extents = Vector2( 10, 6 )
 
-[sub_resource type="RectangleShape2D" id=11]
+[sub_resource type="RectangleShape2D" id=22]
 extents = Vector2( 6, 10 )
 
-[sub_resource type="RectangleShape2D" id=12]
+[sub_resource type="RectangleShape2D" id=23]
 extents = Vector2( 10, 6 )
 
-[sub_resource type="Animation" id=13]
+[sub_resource type="Animation" id=24]
 length = 0.032
 loop = true
 step = 0.016
@@ -233,7 +264,7 @@ tracks/0/keys = {
 "values": [ false, true ]
 }
 
-[sub_resource type="Animation" id=14]
+[sub_resource type="Animation" id=16]
 length = 0.06
 loop = true
 step = 0.03
@@ -250,7 +281,7 @@ tracks/0/keys = {
 "values": [ true, false ]
 }
 
-[sub_resource type="Animation" id=15]
+[sub_resource type="Animation" id=17]
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:visible")
 tracks/0/interp = 1
@@ -287,7 +318,7 @@ DEFAULT_CONTROL_JUMP = ""
 [node name="PlatformerSprite" parent="." instance=ExtResource( 4 )]
 pause_mode = 2
 offset = Vector2( 0, 2 )
-frame = 606
+frame = 0
 path_to_platformer_behavior = NodePath("../PlatformBehavior")
 
 [node name="ShootPos" type="Position2D" parent="PlatformerSprite"]
@@ -313,14 +344,25 @@ autoplay = "TeleportIn"
 playback_speed = 0.8
 anims/TeleportIn = SubResource( 8 )
 
+[node name="WeaponHUD" type="Sprite" parent="."]
+position = Vector2( 0, -24 )
+texture = ExtResource( 6 )
+vframes = 8
+hframes = 8
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="WeaponHUD"]
+autoplay = "Init"
+anims/Init = SubResource( 18 )
+anims/Show = SubResource( 19 )
+
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2( 0, 3 )
-shape = SubResource( 9 )
+shape = SubResource( 20 )
 
 [node name="SlideCollisionShape2D" type="CollisionShape2D" parent="."]
 visible = false
 position = Vector2( 0, 7 )
-shape = SubResource( 10 )
+shape = SubResource( 21 )
 disabled = true
 
 [node name="AttackCooldownTimer" type="Timer" parent="."]
@@ -338,11 +380,11 @@ collision_layer = 2
 collision_mask = 60
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-shape = SubResource( 11 )
+shape = SubResource( 22 )
 
 [node name="SlideCollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 position = Vector2( 0, 4 )
-shape = SubResource( 12 )
+shape = SubResource( 23 )
 disabled = true
 
 [node name="InvincibleTimer" type="Timer" parent="."]
@@ -351,7 +393,7 @@ one_shot = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 pause_mode = 2
-anims/Invincible = SubResource( 13 )
+anims/Invincible = SubResource( 24 )
 
 [node name="TransitionTween" type="Tween" parent="."]
 
@@ -361,8 +403,8 @@ texture = ExtResource( 5 )
 
 [node name="Ani" type="AnimationPlayer" parent="DamageSprite"]
 pause_mode = 2
-anims/Flashing = SubResource( 14 )
-anims/StopFlashin = SubResource( 15 )
+anims/Flashing = SubResource( 16 )
+anims/StopFlashin = SubResource( 17 )
 
 [node name="Sprite" type="Sprite" parent="."]
 

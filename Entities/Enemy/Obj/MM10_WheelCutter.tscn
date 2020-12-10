@@ -38,7 +38,7 @@ script = ExtResource( 2 )
 sprite_preview_texture = SubResource( 1 )
 damage_area_nodes = [ NodePath("DamageArea2D") ]
 contact_damage = 5.0
-hit_points_base = 5
+hit_points_base = 12
 
 [node name="PlatformBehavior" parent="." index="0" instance=ExtResource( 4 )]
 VELOCITY_X_DAMPING = 0.02

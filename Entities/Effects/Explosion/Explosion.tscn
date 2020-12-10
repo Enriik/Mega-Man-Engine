@@ -4,7 +4,6 @@
 [ext_resource path="res://Entities/Effects/Explosion/Explosion.gd" type="Script" id=2]
 [ext_resource path="res://Entities/Effects/Particles/ExplosionParticles.tscn" type="PackedScene" id=3]
 
-
 [sub_resource type="Animation" id=1]
 step = 0.05
 tracks/0/type = "value"
@@ -101,11 +100,12 @@ tracks/1/keys = {
 self_modulate = Color( 1, 1, 1, 0 )
 texture = ExtResource( 1 )
 hframes = 5
+frame = 4
 script = ExtResource( 2 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 autoplay = "InitialState"
-playback_speed = 1.2
+playback_speed = 1.5
 anims/Explodse = SubResource( 1 )
 anims/InitialState = SubResource( 2 )
 

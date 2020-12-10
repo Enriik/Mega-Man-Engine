@@ -52,7 +52,12 @@ func start_attack():
 	state = State.FALLING
 
 func fire():
-	var directions = [-10, 10, -170, -190]
+	var directions : Array
+	
+	if GlobalVariables.touhou:
+		directions = [45, 35, 25, 15, 5, -5, -15, -25, -35, -45, 225, 215, 205, 195, 185, 175, 165, 155, 145, 135]
+	else:
+		directions = [-10, 10, -170, -190]
 	
 	for i in directions:
 		var blt = BULLET.instance()

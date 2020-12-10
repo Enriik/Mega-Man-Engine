@@ -66,6 +66,8 @@ export var IS_A_CLONE = false
 
 export var invincible_enabled = false
 
+export var show_invincible_sprite = false # Used for bosses
+
 export var pickups_drop_enabled = true
 
 
@@ -148,17 +150,26 @@ func hit_by_player_projectile(var damage : float, var player_proj_source : Playe
 			apply_damage(damage_output)
 			emit_signal("taken_damage", damage_output, self, player_proj_source)
 			spawn_damage_counter(damage_output)
-			if invincible_enabled:
+			if invincible_enabled or player_proj_source.invis_time_apply > 0:
 				flicker_anim.play("Damage_Loop")
-				damage_sprite_ani.play("Flashing")
-				invis_timer.start()
+				
+				if show_invincible_sprite:
+					damage_sprite_ani.play("Flashing")
+				
+				if player_proj_source.invis_time_apply > 0:
+					var _prev_invis_timer = invis_timer.wait_time
+					invis_timer.start(player_proj_source.invis_time_apply)
+					invis_timer.wait_time = _prev_invis_timer
+				else:
+					invis_timer.start()
+				
 				is_invincible = true
 			else:
 				#Play animation "Blink". Blinking sprite indicates that
 				#the enemy is taking damage or being invincible.
 				flicker_anim.play("Damage")
-		
-		check_for_death()
+			
+			check_for_death()
 		
 		#Damage is applied. Set value to true.
 		condition = true
@@ -291,15 +302,11 @@ func check_for_death():
 		FJ_AudioManager.sfx_combat_buster_fullycharged.call_deferred("stop")
 	
 	if !death_immunity && current_hp <= 0:
-#		if FJ_AudioManager.sfx_character_enemy_damage.is_playing():
-#			FJ_AudioManager.sfx_character_enemy_damage.call_deferred("stop")
-#		play_death_sfx()
+		play_death_sfx()
 		emit_signal("dying")
 		die()
-#	else:
-#		FJ_AudioManager.sfx_character_enemy_damage.play()
-	
-	FJ_AudioManager.sfx_character_enemy_damage.play()
+	else:
+		FJ_AudioManager.sfx_character_enemy_damage.play()
 	
 
 func die():
@@ -339,7 +346,7 @@ func queue_free_start(by_dying : bool):
 func play_death_sfx():
 	match death_sound:
 		dead_sfx.COLLAPSE:
-			FJ_AudioManager.sfx_character_enemy_collapse.play()
+			FJ_AudioManager.sfx_character_enemy_damage.play()
 		dead_sfx.LARGE_EXPLOSION:
 			FJ_AudioManager.sfx_combat_large_explosion.play()
 		dead_sfx.LARGE_EXPLOSION_MM3:

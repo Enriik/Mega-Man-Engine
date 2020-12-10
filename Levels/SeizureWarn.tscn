@@ -1,0 +1,91 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Assets/Fonts/Font.tres" type="DynamicFont" id=1]
+[ext_resource path="res://Levels/SeizureWarn.gd" type="Script" id=2]
+
+[sub_resource type="Animation" id=1]
+resource_name = "New Anim"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+
+[node name="Node" type="Node"]
+script = ExtResource( 2 )
+
+[node name="ColorRect" type="ColorRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -193.0
+margin_top = -115.0
+margin_right = 821.0
+margin_bottom = 260.0
+color = Color( 0, 0, 0, 1 )
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="Control" type="Control" parent="."]
+margin_left = 437.506
+margin_top = 232.947
+margin_right = 477.506
+margin_bottom = 272.947
+__meta__ = {
+"_edit_group_": true,
+"_edit_lock_": true
+}
+
+[node name="Label" type="Label" parent="Control"]
+modulate = Color( 0.882353, 0.709804, 0.470588, 1 )
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -12.0
+margin_top = 31.0
+margin_right = 228.0
+margin_bottom = 84.0
+grow_horizontal = 2
+grow_vertical = 2
+custom_fonts/font = ExtResource( 1 )
+text = "WARNING!"
+align = 1
+autowrap = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label2" type="Label" parent="Control"]
+modulate = Color( 0.901961, 0.901961, 0.901961, 1 )
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -12.0
+margin_top = 52.0
+margin_right = 228.0
+margin_bottom = 147.0
+grow_horizontal = 2
+grow_vertical = 2
+custom_fonts/font = ExtResource( 1 )
+text = "This video contains extended periods of FLASHING LIGHTS that may cause discomfort and/or seizures for those with photosensitive epilepsy.
+
+Viewer discretion is advised."
+align = 1
+autowrap = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Control"]
+"anims/New Anim" = SubResource( 1 )
